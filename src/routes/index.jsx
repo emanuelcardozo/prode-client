@@ -1,5 +1,5 @@
-import Inicio from "layouts/Inicio/Inicio.jsx";
+import Inicio from 'layouts/Inicio/App.jsx'
 
-const indexRoutes = [{ path: "/", component: Inicio }];
+const indexRoutes = [{ path: '/', component: Inicio }]
 
-export default indexRoutes;
+export default indexRoutes

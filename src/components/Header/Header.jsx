@@ -1,27 +1,21 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-// @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
-// @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
-// core components
 import Button from "components/CustomButtons/Button";
-
-import Avatar from "@material-ui/core/Avatar"
-import avatar from "assets/img/faces/marc.jpg";
-
+import Avatar from "@material-ui/core/Avatar";
 
 import headerStyle from "assets/jss/material-dashboard-react/components/headerStyle.jsx";
 
 function Header({ ...props }) {
   function makeBrand() {
     var name;
-    props.routes.map((prop, key) => {
+    props.routes.map(prop => {
       if (prop.path === props.location.pathname) {
         name = prop.navbarName;
       }
@@ -29,13 +23,10 @@ function Header({ ...props }) {
     });
     return name;
   }
-  const { classes, color } = props;
-  const appBarClasses = classNames({
-    [" " + classes[color]]: color
-  });
+  const { classes, user } = props;
 
   return (
-    <AppBar className={classes.appBar + appBarClasses}>
+    <AppBar className={classes.appBar}>
       <Toolbar className={classes.container}>
         <div className={classes.flex}>
           <Button color="transparent" href="#" className={classes.title}>
@@ -44,9 +35,9 @@ function Header({ ...props }) {
         </div>
         <Avatar
           alt=""
-          src={avatar}
+          src={user.picture.data.url}
           className={classNames(classes.avatar, classes.bigAvatar)}
-        /> {/* sacar el src y cambiar por la foto del usuario */}
+        />
         <Hidden mdUp implementation="css">
           <IconButton
             color="inherit"
@@ -63,7 +54,11 @@ function Header({ ...props }) {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
-  color: PropTypes.oneOf(["primary", "info", "success", "warning", "danger"])
+  user: PropTypes.object.isRequired,
+  color: PropTypes.oneOf(["primary", "info", "success", "warning", "danger"]),
+  routes: PropTypes.array,
+  handleDrawerToggle: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default withStyles(headerStyle)(Header);

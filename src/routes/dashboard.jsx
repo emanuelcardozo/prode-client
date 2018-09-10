@@ -1,54 +1,53 @@
-import Inicio from "views/Inicio/Inicio.jsx";
-import UserProfile from "views/UserProfile/UserProfile.jsx";
-import Torneos from "views/Torneos/Torneos.jsx";
-import Reglamento from "views/Reglamento/Reglamento.jsx";
-import Fechas from "views/Fechas/Fechas.jsx";
-import Timba from "views/Timba/Timba.jsx";
+import Inicio from 'views/Inicio/Inicio.jsx'
+import UserProfile from 'views/UserProfile/UserProfile.jsx'
+import Torneos from 'views/Torneos/Torneos.jsx'
+import Reglamento from 'views/Reglamento/Reglamento.jsx'
+import Fechas from 'views/Fechas/Fechas.jsx'
+import Timba from 'views/Timba/Timba.jsx'
 
 const dashboardRoutes = [
   {
-    path: "/inicio",
-    sidebarName: "Inicio",
-    navbarName: "Inicio",
-    icon: "dashboard",
+    path: '/inicio',
+    sidebarName: 'Inicio',
+    navbarName: 'Inicio',
+    icon: 'dashboard',
     component: Inicio
   },
   {
-    path: "/timba",
-    sidebarName: "Mi timba",
-    navbarName: "Mi Timba",
-    icon: "attach_money",
+    path: '/timba',
+    sidebarName: 'Mi timba',
+    navbarName: 'Mi Timba',
+    icon: 'attach_money',
     component: Timba
   },
   {
-    path: "/torneos",
-    sidebarName: "Torneos",
-    navbarName: "Lista de Torneos",
-    icon: "content_paste",
+    path: '/torneos',
+    sidebarName: 'Torneos',
+    navbarName: 'Lista de Torneos',
+    icon: 'content_paste',
     component: Torneos
   },
   {
-    path: "/fechas",
-    sidebarName: "Fechas",
-    navbarName: "Fechas",
-    icon: "calendar_today",
+    path: '/fechas',
+    sidebarName: 'Fechas',
+    navbarName: 'Fechas',
+    icon: 'calendar_today',
     component: Fechas
   },
   {
-    path: "/reglamento",
-    sidebarName: "Reglas",
-    navbarName: "Reglamento",
-    icon: "library_books",
+    path: '/reglamento',
+    sidebarName: 'Reglas',
+    navbarName: 'Reglamento',
+    icon: 'library_books',
     component: Reglamento
   },
   {
-    path: "/usuario",
-    sidebarName: "Usuario",
-    navbarName: "Usuario",
-    icon: "person",
+    path: '/usuario',
+    sidebarName: 'Usuario',
+    navbarName: 'Usuario',
+    icon: 'person',
     component: UserProfile
-  },
-  { redirect: true, path: "/", to: "/inicio", navbarName: "Redirect" }
-];
+  }
+]
 
-export default dashboardRoutes;
+export default dashboardRoutes

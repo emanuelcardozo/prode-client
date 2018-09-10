@@ -115,7 +115,7 @@ class Timba extends React.Component {
               />
               <SnackbarContent
                 message={
-                  "This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style."
+                  "This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you dont have to worry about the style."
                 }
                 close
                 icon={AddAlert}
