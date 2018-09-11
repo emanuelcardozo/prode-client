@@ -183,8 +183,20 @@ const completedTasksChart = {
   }
 }
 
+const leagues = [
+  {id: 1, name: 'Primera Division - Argentina', dateMatch: '5'},
+  {id: 2, name: 'UEFA CHAMPIONS LEAGUE', dateMatch: 'Clasificacion - Etapa 1'},
+  {id: 3, name: 'Copa Argentina', dateMatch: '32avos'},
+  {id: 4, name: 'Primera Division - Argentina', dateMatch: '5'},
+  {id: 5, name: 'Primera Division - Argentina', dateMatch: '5'},
+  {id: 6, name: 'Primera Division - Argentina', dateMatch: '5'},
+  {id: 7, name: 'Primera Division - Argentina', dateMatch: '5'},
+  {id: 8, name: 'Primera Division - Argentina', dateMatch: '5'},
+]
+
 module.exports = {
   dailySalesChart,
   emailsSubscriptionChart,
-  completedTasksChart
+  completedTasksChart,
+  leagues
 }

@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 const leagues = {
   getLeagues: function(callback) {
-    $.get(config.api + '/soccerseasons/457/leaguetable', function(response) {
+    $.get(config.api + '/soccer_seasons/457/leaguetable', function(response) {
       callback(response)
     })
   }

@@ -1,52 +1,49 @@
-/* eslint-disable */
-import React from "react";
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-// @material-ui/icons
-import AddAlert from "@material-ui/icons/AddAlert";
-// core components
-import GridItem from "components/Grid/GridItem.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import Button from "components/CustomButtons/Button.jsx";
-import SnackbarContent from "components/Snackbar/SnackbarContent.jsx";
-import Snackbar from "components/Snackbar/Snackbar.jsx";
-import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardBody from "components/Card/CardBody.jsx";
+import React from 'react'
+import PropTypes from 'prop-types'
+import withStyles from '@material-ui/core/styles/withStyles'
+import AddAlert from '@material-ui/icons/AddAlert'
+import GridItem from 'components/Grid/GridItem.jsx'
+import GridContainer from 'components/Grid/GridContainer.jsx'
+import Button from 'components/CustomButtons/Button.jsx'
+import SnackbarContent from 'components/Snackbar/SnackbarContent.jsx'
+import Snackbar from 'components/Snackbar/Snackbar.jsx'
+import Card from 'components/Card/Card.jsx'
+import CardHeader from 'components/Card/CardHeader.jsx'
+import CardBody from 'components/Card/CardBody.jsx'
 
 const styles = {
   cardCategoryWhite: {
-    "&,& a,& a:hover,& a:focus": {
-      color: "rgba(255,255,255,.62)",
-      margin: "0",
-      fontSize: "14px",
-      marginTop: "0",
-      marginBottom: "0"
+    '&,& a,& a:hover,& a:focus': {
+      color: 'rgba(255,255,255,.62)',
+      margin: '0',
+      fontSize: '14px',
+      marginTop: '0',
+      marginBottom: '0'
     },
-    "& a,& a:hover,& a:focus": {
-      color: "#FFFFFF"
+    '& a,& a:hover,& a:focus': {
+      color: '#FFFFFF'
     }
   },
   cardTitleWhite: {
-    color: "#FFFFFF",
-    marginTop: "0px",
-    minHeight: "auto",
-    fontWeight: "300",
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    marginBottom: "3px",
-    textDecoration: "none",
-    "& small": {
-      color: "#777",
-      fontSize: "65%",
-      fontWeight: "400",
-      lineHeight: "1"
+    color: '#FFFFFF',
+    marginTop: '0px',
+    minHeight: 'auto',
+    fontWeight: '300',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    marginBottom: '3px',
+    textDecoration: 'none',
+    '& small': {
+      color: '#777',
+      fontSize: '65%',
+      fontWeight: '400',
+      lineHeight: '1'
     }
   }
-};
+}
 
 class Timba extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       tl: false,
       tc: false,
@@ -54,48 +51,38 @@ class Timba extends React.Component {
       bl: false,
       bc: false,
       br: false
-    };
-    this.lertTimeout = null;
+    }
+    this.lertTimeout = null
   }
   componentWillUnmount() {
-    this.clearAlertTimeout();
+    this.clearAlertTimeout()
   }
   clearAlertTimeout() {
     if (this.alertTimeout !== null) {
-      clearTimeout(this.alertTimeout);
+      clearTimeout(this.alertTimeout)
     }
   }
   showNotification(place) {
-    var x = [];
-    x[place] = true;
-    this.setState(x);
-    this.clearAlertTimeout();
+    var x = []
+    x[place] = true
+    this.setState(x)
+    this.clearAlertTimeout()
     this.alertTimeout = setTimeout(
       function() {
-        x[place] = false;
-        this.setState(x);
+        x[place] = false
+        this.setState(x)
       }.bind(this),
       6000
-    );
+    )
   }
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <Card>
-        <CardHeader color="primary">
+        <CardHeader color='primary'>
           <h4 className={classes.cardTitleWhite}>Notifications</h4>
           <p className={classes.cardCategoryWhite}>
-            Handcrafted by our friends from{" "}
-            <a target="_blank" href="https://material-ui-next.com/">
-              Material UI
-            </a>{" "}
-            and styled by{" "}
-            <a target="_blank" href="https://www.creative-tim.com/">
-              Creative Tim
-            </a>. Please checkout the{" "}
-            <a href="#pablo" target="_blank">
-              full documentation
-            </a>.
+            algo
           </p>
         </CardHeader>
         <CardBody>
@@ -103,19 +90,19 @@ class Timba extends React.Component {
             <GridItem xs={12} sm={12} md={6}>
               <h5>Notifications Style</h5>
               <br />
-              <SnackbarContent message={"This is a plain notification"} />
+              <SnackbarContent message={'This is a plain notification'} />
               <SnackbarContent
-                message={"This is a notification with close button."}
+                message={'This is a notification with close button.'}
                 close
               />
               <SnackbarContent
-                message={"This is a notification with close button and icon."}
+                message={'This is a notification with close button and icon.'}
                 close
                 icon={AddAlert}
               />
               <SnackbarContent
                 message={
-                  "This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you dont have to worry about the style."
+                  'This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you dont have to worry about the style.'
                 }
                 close
                 icon={AddAlert}
@@ -129,64 +116,64 @@ class Timba extends React.Component {
                   'INFO - This is a regular notification made with color="info"'
                 }
                 close
-                color="info"
+                color='info'
               />
               <SnackbarContent
                 message={
                   'SUCCESS - This is a regular notification made with color="success"'
                 }
                 close
-                color="success"
+                color='success'
               />
               <SnackbarContent
                 message={
                   'WARNING - This is a regular notification made with color="warning"'
                 }
                 close
-                color="warning"
+                color='warning'
               />
               <SnackbarContent
                 message={
                   'DANGER - This is a regular notification made with color="danger"'
                 }
                 close
-                color="danger"
+                color='danger'
               />
               <SnackbarContent
                 message={
                   'PRIMARY - This is a regular notification made with color="primary"'
                 }
                 close
-                color="primary"
+                color='primary'
               />
             </GridItem>
           </GridContainer>
           <br />
           <br />
-          <GridContainer justify="center">
-            <GridItem xs={12} sm={12} md={6} style={{ textAlign: "center" }}>
+          <GridContainer justify='center'>
+            <GridItem xs={12} sm={12} md={6} style={{ textAlign: 'center' }}>
               <h5>
                 Notifications Places
                 <small>Click to view notifications</small>
               </h5>
             </GridItem>
           </GridContainer>
-          <GridContainer justify="center">
+          <GridContainer justify='center'>
             <GridItem xs={12} sm={12} md={10} lg={8}>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <Button
                     fullWidth
-                    color="primary"
-                    onClick={() => this.showNotification("tl")}
+                    color='primary'
+                    onClick={() => this.showNotification('tl')}
                   >
                     Top Left
                   </Button>
                   <Snackbar
-                    place="tl"
-                    color="info"
+                    place='tl'
+                    color='info'
                     icon={AddAlert}
-                    message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
                     open={this.state.tl}
                     closeNotification={() => this.setState({ tl: false })}
                     close
@@ -195,16 +182,16 @@ class Timba extends React.Component {
                 <GridItem xs={12} sm={12} md={4}>
                   <Button
                     fullWidth
-                    color="primary"
-                    onClick={() => this.showNotification("tc")}
+                    color='primary'
+                    onClick={() => this.showNotification('tc')}
                   >
                     Top Center
                   </Button>
                   <Snackbar
-                    place="tc"
-                    color="info"
+                    place='tc'
+                    color='info'
                     icon={AddAlert}
-                    message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
                     open={this.state.tc}
                     closeNotification={() => this.setState({ tc: false })}
                     close
@@ -213,16 +200,16 @@ class Timba extends React.Component {
                 <GridItem xs={12} sm={12} md={4}>
                   <Button
                     fullWidth
-                    color="primary"
-                    onClick={() => this.showNotification("tr")}
+                    color='primary'
+                    onClick={() => this.showNotification('tr')}
                   >
                     Top Right
                   </Button>
                   <Snackbar
-                    place="tr"
-                    color="info"
+                    place='tr'
+                    color='info'
                     icon={AddAlert}
-                    message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
                     open={this.state.tr}
                     closeNotification={() => this.setState({ tr: false })}
                     close
@@ -231,22 +218,22 @@ class Timba extends React.Component {
               </GridContainer>
             </GridItem>
           </GridContainer>
-          <GridContainer justify={"center"}>
+          <GridContainer justify={'center'}>
             <GridItem xs={12} sm={12} md={10} lg={8}>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={4}>
                   <Button
                     fullWidth
-                    color="primary"
-                    onClick={() => this.showNotification("bl")}
+                    color='primary'
+                    onClick={() => this.showNotification('bl')}
                   >
                     Bottom Left
                   </Button>
                   <Snackbar
-                    place="bl"
-                    color="info"
+                    place='bl'
+                    color='info'
                     icon={AddAlert}
-                    message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
                     open={this.state.bl}
                     closeNotification={() => this.setState({ bl: false })}
                     close
@@ -255,16 +242,16 @@ class Timba extends React.Component {
                 <GridItem xs={12} sm={12} md={4}>
                   <Button
                     fullWidth
-                    color="primary"
-                    onClick={() => this.showNotification("bc")}
+                    color='primary'
+                    onClick={() => this.showNotification('bc')}
                   >
                     Bottom Center
                   </Button>
                   <Snackbar
-                    place="bc"
-                    color="info"
+                    place='bc'
+                    color='info'
                     icon={AddAlert}
-                    message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
                     open={this.state.bc}
                     closeNotification={() => this.setState({ bc: false })}
                     close
@@ -273,16 +260,16 @@ class Timba extends React.Component {
                 <GridItem xs={12} sm={12} md={4}>
                   <Button
                     fullWidth
-                    color="primary"
-                    onClick={() => this.showNotification("br")}
+                    color='primary'
+                    onClick={() => this.showNotification('br')}
                   >
                     Bottom Right
                   </Button>
                   <Snackbar
-                    place="br"
-                    color="info"
+                    place='br'
+                    color='info'
                     icon={AddAlert}
-                    message="Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer."
+                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
                     open={this.state.br}
                     closeNotification={() => this.setState({ br: false })}
                     close
@@ -293,8 +280,12 @@ class Timba extends React.Component {
           </GridContainer>
         </CardBody>
       </Card>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(Timba);
+Timba.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles)(Timba)

@@ -3,10 +3,14 @@ import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
 import GridItem from 'components/Grid/GridItem.jsx'
 import GridContainer from 'components/Grid/GridContainer'
-import Table from 'components/Table/Table'
 import Card from 'components/Card/Card'
 import CardHeader from 'components/Card/CardHeader'
 import CardBody from 'components/Card/CardBody'
+import Video from '@material-ui/icons/VideogameAsset'
+import SnackbarContent from 'components/Snackbar/SnackbarContent.jsx'
+import Snackbar from '@material-ui/core/Snackbar'
+
+import { leagues } from 'variables/charts'
 
 const styles = {
   cardCategoryWhite: {
@@ -38,39 +42,67 @@ const styles = {
   }
 }
 
-function Torneos(props) {
-  const { classes, leagues } = props
-  console.log(props)
-  return (
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={12}>
-        <Card>
-          <CardHeader color='primary'>
-            <h4 className={classes.cardTitleWhite}>{leagues.leagueCaption}</h4>
-            <p className={classes.cardCategoryWhite}>{'Fecha: ' + leagues.matchday}</p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor='primary'
-              tableHead={['Posición', 'Equipo', 'PG', 'PP', 'PE', 'Pts']}
-              tableData={[
-                ['Dakota Rice', 'Niger', 'Oud-Turnhout', '$36,738'],
-                ['Minerva Hooper', 'Curaçao', 'Sinaai-Waas', '$23,789'],
-                ['Sage Rodriguez', 'Netherlands', 'Baileux', '$56,142'],
-                ['Philip Chaney', 'Korea, South', 'Overland Park', '$38,735'],
-                ['Doris Greene', 'Malawi', 'Feldkirchen in Kärnten', '$63,542'],
-                ['Mason Porter', 'Chile', 'Gloucester', '$78,615']
-              ]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-    </GridContainer>
-  )
+class Torneos extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { open: false }
+
+    this.handleClose = this.handleClose.bind(this)
+  }
+
+  handleClick(id) {
+    console.log(id)
+    this.setState({ open: true })
+  }
+
+  handleClose(event, reason) {
+    if (reason === 'clickaway')
+      return
+    this.setState({ open: false })
+  }
+
+  render(){
+    const { classes } = this.props
+
+    return (
+      <GridContainer>
+        <GridItem xs={12} sm={12} md={12}>
+          <Card>
+            <CardHeader color='success'>
+              <h4 className={classes.cardTitleWhite}>Lista de Torneos</h4>
+            </CardHeader>
+            <CardBody>
+              {leagues.map((league, index) => {
+                return (
+                  <div key={index} style={{ cursor: 'pointer' }}>
+                    <SnackbarContent
+                      message={league.name + ' - ' + league.dateMatch}
+                      color='warning'
+                      icon={Video}
+                      click={this.handleClick.bind(this, league.id)}
+                    />
+                  </div>
+                )
+              })}
+            </CardBody>
+          </Card>
+        </GridItem>
+        <Snackbar
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          ContentProps={{ 'aria-describedby': 'message-id' }}
+          message={<span id="message-id">Torneo agregado a Mi Timba</span>}
+        />
+      </GridContainer>
+    )
+  }
 }
 
-Torneos.propTypes = { classes: PropTypes.object.isRequired }
+Torneos.propTypes = {
+  classes: PropTypes.object.isRequired,
+  leagues: PropTypes.object
+}
 
 export default withStyles(styles)(Torneos)
-
-{/* wins losses draws points*/}
