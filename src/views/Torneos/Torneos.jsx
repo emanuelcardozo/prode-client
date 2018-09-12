@@ -50,8 +50,8 @@ class Torneos extends React.Component {
     this.handleClose = this.handleClose.bind(this)
   }
 
-  handleClick(id) {
-    console.log(id)
+  handleClick(index) {
+    this.props.setBet({ tournaments: leagues[index], type: 'tournaments' })
     this.setState({ open: true })
   }
 
@@ -79,7 +79,7 @@ class Torneos extends React.Component {
                       message={league.name + ' - ' + league.dateMatch}
                       color='warning'
                       icon={Video}
-                      click={this.handleClick.bind(this, league.id)}
+                      click={this.handleClick.bind(this, index)}
                     />
                   </div>
                 )
@@ -102,7 +102,8 @@ class Torneos extends React.Component {
 
 Torneos.propTypes = {
   classes: PropTypes.object.isRequired,
-  leagues: PropTypes.object
+  leagues: PropTypes.object,
+  setBet: PropTypes.func
 }
 
 export default withStyles(styles)(Torneos)

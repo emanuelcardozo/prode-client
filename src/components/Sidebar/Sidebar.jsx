@@ -22,7 +22,7 @@ const Sidebar = ({ ...props }) => {
   var links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
-        if (prop.redirect) return null
+        if (prop.redirect || prop.notDisplay) return null
         var activePro = ' '
         var listItemClasses
         if (prop.path === '/usuario') {
@@ -66,7 +66,7 @@ const Sidebar = ({ ...props }) => {
   )
 
   var brand = (
-    <div className={classes.logo}>
+    <div className={classes.logo} onClick={ (e)=>{ e.preventDefault() }}>
       <a href='' className={classes.logoLink}>
         <div className={classes.logoImage}>
           <img src={logo} alt='logo' className={classes.img} />
@@ -83,13 +83,9 @@ const Sidebar = ({ ...props }) => {
           variant='temporary'
           anchor='right'
           open={props.open}
-          classes={{
-            paper: classes.drawerPaper
-          }}
+          classes={{ paper: classes.drawerPaper }}
           onClose={props.handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true
-          }}
+          ModalProps={{ keepMounted: true }}
         >
           {brand}
 

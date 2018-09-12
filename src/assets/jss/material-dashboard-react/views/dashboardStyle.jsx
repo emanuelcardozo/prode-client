@@ -72,18 +72,13 @@ const dashboardStyle = {
       lineHeight: '1'
     }
   },
-  matchContainer: {
-    display: 'flex',
-    textAlignLast: 'justify'
+  cover: {
+    width: '70px',
+    height: '70px',
+    margin: '10px'
   },
-  resultContainer: {
-    width: '280px',
-    fontSize: '65px',
-    height: '100px'
-  },
-  result: {
-    margin: 0,
-    marginTop: '20px !important'
+  paperContainer: {
+    boxShadow: 'unset!important'
   }
 }
 

@@ -1,6 +1,10 @@
 const state = {
   user: {},
-  leagues: {}
+  leagues: {},
+  bets: {
+    tournaments: [],
+    matches: []
+  }
 }
 
 export default state

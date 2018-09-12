@@ -10,7 +10,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import dashboardRoutes from 'routes/dashboard.jsx'
 import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx'
 import image from 'assets/img/stadium.jpg'
-import logo from 'assets/img/pelota.png'
+import logo from 'assets/img/balon.png'
 // import Login from './Login'
 import SDK from 'library/SDK'
 
@@ -85,7 +85,7 @@ class Main extends React.Component {
               {<Switch>
                 {dashboardRoutes.map((prop, key) => {
                   if (prop.redirect)
-                    return <Redirect from={prop.path} to={prop.to} key={key} />
+                    return <Redirect from={prop.path} to={prop.to} key={key} {...rest}/>
                   return <PropsRoute path={prop.path} component={prop.component} key={key} {...rest}/>
                 })}
               </Switch>}

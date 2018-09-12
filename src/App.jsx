@@ -7,7 +7,8 @@ import Main from './layouts/Inicio/Main'
 const mapStateToProps = state => {
   return {
     user: state.user,
-    leagues: state.leagues
+    leagues: state.leagues,
+    bets: state.bets
   }
 }
 
@@ -16,10 +17,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const App = withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Main)
+  connect(mapStateToProps, mapDispatchToProps)(Main)
 )
 
 export default App

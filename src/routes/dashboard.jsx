@@ -5,6 +5,8 @@ import Reglamento from 'views/Reglamento/Reglamento.jsx'
 import Fechas from 'views/Fechas/Fechas.jsx'
 import Timba from 'views/Timba/Timba.jsx'
 
+import Torneo from 'views/Torneos/Torneo.jsx'
+
 const dashboardRoutes = [
   {
     path: '/inicio',
@@ -47,7 +49,13 @@ const dashboardRoutes = [
     navbarName: 'Usuario',
     icon: 'person',
     component: UserProfile
-  }
+  },
+  {
+    path: '/torneo/:id',
+    notDisplay: true,
+    component: Torneo
+  },
+  { redirect: true, path: '/', to: '/inicio', navbarName: '' }
 ]
 
 export default dashboardRoutes

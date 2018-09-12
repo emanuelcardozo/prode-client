@@ -7,7 +7,10 @@ import Card from 'components/Card/Card'
 import CardHeader from 'components/Card/CardHeader'
 import CardBody from 'components/Card/CardBody'
 import CardFooter from 'components/Card/CardFooter'
-import CardIcon from 'components/Card/CardIcon'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+import CardMedia from '@material-ui/core/CardMedia'
+
 import Account from '@material-ui/icons/AccountCircle'
 import Chevron from '@material-ui/icons/ChevronRight'
 import { tournamentsBet, matchesBet } from 'variables/charts'
@@ -16,11 +19,14 @@ import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardS
 class Timba extends React.Component {
 
   viewTournament(id) {
-    console.log('tu puta bolo', id)
+    this.props.history.push('/torneo/' + id)
   }
 
   render() {
     const { classes } = this.props
+    // const { bets } = this.props
+    // const tournamentsBet = bets.tournaments
+
     return (
       <div>
         <GridContainer>
@@ -42,7 +48,7 @@ class Timba extends React.Component {
                     <p>Posición: {timba.position}</p>
                   </CardBody>
                   <CardFooter chart>
-                    <Chevron className={classes.icon}  onClick={this.viewTournament.bind(null, timba.id)}/>
+                    <Chevron className={classes.icon}  onClick={this.viewTournament.bind(this, timba.id)}/>
                   </CardFooter>
                 </Card>
               </GridItem>
@@ -54,23 +60,25 @@ class Timba extends React.Component {
               <GridItem xs={12} sm={12} md={4} key={index}>
                 <Card chart>
                   <CardBody>
-                    <div className={classes.matchContainer}>
-                      <div>
-                        <CardIcon>
-                          <img src={match.imgHome} alt='...' style={{ width: '50px' }}/>
+                    <Grid container spacing={24} direction="row" align="center">
+                      <Grid item xs>
+                        <Paper xs={3} className={classes.paperContainer}>
+                          <CardMedia className={classes.cover} image={match.imgHome} />
                           <h4 className={classes.cardTitle}>{match.homeTeam}</h4>
-                        </CardIcon>
-                      </div>
-                      <div className={classes.resultContainer}>
-                        <p className={classes.result}>{match.homeBet + ' - ' + match.awayBet}</p>
-                      </div>
-                      <div>
-                        <CardIcon>
-                          <img src={match.imgAway} alt='...' style={{ width: '50px' }}/>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs>
+                        <Paper className={classes.paperContainer}>
+                          <h2>{match.homeBet + ' - ' + match.awayBet}</h2>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs>
+                        <Paper className={classes.paperContainer}>
+                          <CardMedia className={classes.cover} image={match.imgAway} />
                           <h4 className={classes.cardTitle}>{match.awayTeam}</h4>
-                        </CardIcon>
-                      </div>
-                    </div>
+                        </Paper>
+                      </Grid>
+                    </Grid>
                   </CardBody>
                   <CardFooter chart>
                     <p>Fecha del Partido: {match.dateMatch}</p>
@@ -87,7 +95,9 @@ class Timba extends React.Component {
 }
 
 Timba.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  bets: PropTypes.object,
+  history: PropTypes.object,
 }
 
 export default withStyles(dashboardStyle)(Timba)

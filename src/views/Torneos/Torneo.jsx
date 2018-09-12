@@ -7,9 +7,6 @@ import Table from 'components/Table/Table'
 import Card from 'components/Card/Card'
 import CardHeader from 'components/Card/CardHeader'
 import CardBody from 'components/Card/CardBody'
-import Button from 'components/CustomButtons/Button'
-import Video from '@material-ui/icons/VideogameAsset'
-import classNames from 'classnames'
 
 const styles = {
   cardCategoryWhite: {
@@ -38,22 +35,22 @@ const styles = {
       fontWeight: '400',
       lineHeight: '1'
     }
-  },
-  buttonIcon: {
-    display: 'flex',
-    justifyContent: 'end'
   }
 }
 
 function getLeaguesTable(leagues) {
   const data = []
-  leagues.forEach( team => {
-    data.push([team.position.toString(), team.teamName, team.wins.toString(), team.losses.toString(), team.draws.toString(), team.points.toString()])
-  })
+  if(leagues) {
+    leagues.forEach( team => {
+      data.push([team.position.toString(), team.teamName, team.wins.toString(), team.losses.toString(), team.draws.toString(), team.points.toString()])
+    })
+  }
   return data
 }
 
-function TorneosDos(props) {
+// TABLA DE POSIVIONES DE UN TORNEO
+
+function Torneo(props) {
   const { classes, leagues } = props
 
   return (
@@ -63,12 +60,6 @@ function TorneosDos(props) {
           <CardHeader color='success' style={{ height: 100 }}>
             <h4 className={classes.cardTitleWhite}>{leagues.leagueCaption}</h4>
             <p className={classes.cardCategoryWhite}>{'Fecha: ' + leagues.matchday}</p>
-            <div className={classes.buttonIcon}>
-              <Button variant='fab' size='lg' color='transparent' className={classes.button}>
-                <Video className={classNames(classes.rightIcon, classes.iconMedium)} />
-                Jugar
-              </Button>
-            </div>
           </CardHeader>
           <CardBody>
             <Table
@@ -83,9 +74,9 @@ function TorneosDos(props) {
   )
 }
 
-TorneosDos.propTypes = {
+Torneo.propTypes = {
   classes: PropTypes.object.isRequired,
   leagues: PropTypes.object
 }
 
-export default withStyles(styles)(TorneosDos)
+export default withStyles(styles)(Torneo)
