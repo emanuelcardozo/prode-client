@@ -11,7 +11,7 @@ import dashboardRoutes from 'routes/dashboard.jsx'
 import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx'
 import image from 'assets/img/stadium.jpg'
 import logo from 'assets/img/pelota.png'
-import Login from './Login'
+// import Login from './Login'
 import SDK from 'library/SDK'
 
 class Main extends React.Component {
@@ -57,7 +57,7 @@ class Main extends React.Component {
   render() {
     const { classes, ...rest } = this.props
 
-    if(!this.props.user.id) return <Login {...this.props} />
+    // if(!this.props.user.id) return <Login {...this.props} />
 
     return (
       <div className={classes.wrapper}>

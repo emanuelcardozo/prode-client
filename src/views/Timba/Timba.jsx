@@ -1,291 +1,93 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
-import AddAlert from '@material-ui/icons/AddAlert'
-import GridItem from 'components/Grid/GridItem.jsx'
-import GridContainer from 'components/Grid/GridContainer.jsx'
-import Button from 'components/CustomButtons/Button.jsx'
-import SnackbarContent from 'components/Snackbar/SnackbarContent.jsx'
-import Snackbar from 'components/Snackbar/Snackbar.jsx'
-import Card from 'components/Card/Card.jsx'
-import CardHeader from 'components/Card/CardHeader.jsx'
-import CardBody from 'components/Card/CardBody.jsx'
-
-const styles = {
-  cardCategoryWhite: {
-    '&,& a,& a:hover,& a:focus': {
-      color: 'rgba(255,255,255,.62)',
-      margin: '0',
-      fontSize: '14px',
-      marginTop: '0',
-      marginBottom: '0'
-    },
-    '& a,& a:hover,& a:focus': {
-      color: '#FFFFFF'
-    }
-  },
-  cardTitleWhite: {
-    color: '#FFFFFF',
-    marginTop: '0px',
-    minHeight: 'auto',
-    fontWeight: '300',
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    marginBottom: '3px',
-    textDecoration: 'none',
-    '& small': {
-      color: '#777',
-      fontSize: '65%',
-      fontWeight: '400',
-      lineHeight: '1'
-    }
-  }
-}
+import GridItem from 'components/Grid/GridItem'
+import GridContainer from 'components/Grid/GridContainer'
+import Card from 'components/Card/Card'
+import CardHeader from 'components/Card/CardHeader'
+import CardBody from 'components/Card/CardBody'
+import CardFooter from 'components/Card/CardFooter'
+import CardIcon from 'components/Card/CardIcon'
+import Account from '@material-ui/icons/AccountCircle'
+import Chevron from '@material-ui/icons/ChevronRight'
+import { tournamentsBet, matchesBet } from 'variables/charts'
+import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
 class Timba extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      tl: false,
-      tc: false,
-      tr: false,
-      bl: false,
-      bc: false,
-      br: false
-    }
-    this.lertTimeout = null
+
+  viewTournament(id) {
+    console.log('tu puta bolo', id)
   }
-  componentWillUnmount() {
-    this.clearAlertTimeout()
-  }
-  clearAlertTimeout() {
-    if (this.alertTimeout !== null) {
-      clearTimeout(this.alertTimeout)
-    }
-  }
-  showNotification(place) {
-    var x = []
-    x[place] = true
-    this.setState(x)
-    this.clearAlertTimeout()
-    this.alertTimeout = setTimeout(
-      function() {
-        x[place] = false
-        this.setState(x)
-      }.bind(this),
-      6000
-    )
-  }
+
   render() {
     const { classes } = this.props
     return (
-      <Card>
-        <CardHeader color='primary'>
-          <h4 className={classes.cardTitleWhite}>Notifications</h4>
-          <p className={classes.cardCategoryWhite}>
-            algo
-          </p>
-        </CardHeader>
-        <CardBody>
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
-              <h5>Notifications Style</h5>
-              <br />
-              <SnackbarContent message={'This is a plain notification'} />
-              <SnackbarContent
-                message={'This is a notification with close button.'}
-                close
-              />
-              <SnackbarContent
-                message={'This is a notification with close button and icon.'}
-                close
-                icon={AddAlert}
-              />
-              <SnackbarContent
-                message={
-                  'This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you dont have to worry about the style.'
-                }
-                close
-                icon={AddAlert}
-              />
-            </GridItem>
-            <GridItem xs={12} sm={12} md={6}>
-              <h5>Notifications States</h5>
-              <br />
-              <SnackbarContent
-                message={
-                  'INFO - This is a regular notification made with color="info"'
-                }
-                close
-                color='info'
-              />
-              <SnackbarContent
-                message={
-                  'SUCCESS - This is a regular notification made with color="success"'
-                }
-                close
-                color='success'
-              />
-              <SnackbarContent
-                message={
-                  'WARNING - This is a regular notification made with color="warning"'
-                }
-                close
-                color='warning'
-              />
-              <SnackbarContent
-                message={
-                  'DANGER - This is a regular notification made with color="danger"'
-                }
-                close
-                color='danger'
-              />
-              <SnackbarContent
-                message={
-                  'PRIMARY - This is a regular notification made with color="primary"'
-                }
-                close
-                color='primary'
-              />
-            </GridItem>
-          </GridContainer>
-          <br />
-          <br />
-          <GridContainer justify='center'>
-            <GridItem xs={12} sm={12} md={6} style={{ textAlign: 'center' }}>
-              <h5>
-                Notifications Places
-                <small>Click to view notifications</small>
-              </h5>
-            </GridItem>
-          </GridContainer>
-          <GridContainer justify='center'>
-            <GridItem xs={12} sm={12} md={10} lg={8}>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Button
-                    fullWidth
-                    color='primary'
-                    onClick={() => this.showNotification('tl')}
-                  >
-                    Top Left
-                  </Button>
-                  <Snackbar
-                    place='tl'
-                    color='info'
-                    icon={AddAlert}
-                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
-                    open={this.state.tl}
-                    closeNotification={() => this.setState({ tl: false })}
-                    close
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Button
-                    fullWidth
-                    color='primary'
-                    onClick={() => this.showNotification('tc')}
-                  >
-                    Top Center
-                  </Button>
-                  <Snackbar
-                    place='tc'
-                    color='info'
-                    icon={AddAlert}
-                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
-                    open={this.state.tc}
-                    closeNotification={() => this.setState({ tc: false })}
-                    close
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Button
-                    fullWidth
-                    color='primary'
-                    onClick={() => this.showNotification('tr')}
-                  >
-                    Top Right
-                  </Button>
-                  <Snackbar
-                    place='tr'
-                    color='info'
-                    icon={AddAlert}
-                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
-                    open={this.state.tr}
-                    closeNotification={() => this.setState({ tr: false })}
-                    close
-                  />
-                </GridItem>
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
-          <GridContainer justify={'center'}>
-            <GridItem xs={12} sm={12} md={10} lg={8}>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Button
-                    fullWidth
-                    color='primary'
-                    onClick={() => this.showNotification('bl')}
-                  >
-                    Bottom Left
-                  </Button>
-                  <Snackbar
-                    place='bl'
-                    color='info'
-                    icon={AddAlert}
-                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
-                    open={this.state.bl}
-                    closeNotification={() => this.setState({ bl: false })}
-                    close
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Button
-                    fullWidth
-                    color='primary'
-                    onClick={() => this.showNotification('bc')}
-                  >
-                    Bottom Center
-                  </Button>
-                  <Snackbar
-                    place='bc'
-                    color='info'
-                    icon={AddAlert}
-                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
-                    open={this.state.bc}
-                    closeNotification={() => this.setState({ bc: false })}
-                    close
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <Button
-                    fullWidth
-                    color='primary'
-                    onClick={() => this.showNotification('br')}
-                  >
-                    Bottom Right
-                  </Button>
-                  <Snackbar
-                    place='br'
-                    color='info'
-                    icon={AddAlert}
-                    message='Welcome to MATERIAL DASHBOARD React - a beautiful freebie for every web developer.'
-                    open={this.state.br}
-                    closeNotification={() => this.setState({ br: false })}
-                    close
-                  />
-                </GridItem>
-              </GridContainer>
-            </GridItem>
-          </GridContainer>
-        </CardBody>
-      </Card>
+      <div>
+        <GridContainer>
+          {tournamentsBet.map((timba, index) => {
+            return (
+              <GridItem xs={12} sm={12} md={4} key={index}>
+                <Card chart>
+                  <CardHeader color='success'>
+                    <img src={timba.img} alt='...' style={{ width: '100%' }}/>
+                  </CardHeader>
+                  <CardBody>
+                    <h4 className={classes.cardTitle}>{timba.name}</h4>
+                    <p className={classes.cardCategory}>
+                      <span className={classes.successText}>
+                        <Account className={classes.icon} />
+                      </span> Usuarios en el torneo: {timba.amount}
+                    </p>
+                    <p>Fecha: {timba.dateMatch}</p>
+                    <p>Posición: {timba.position}</p>
+                  </CardBody>
+                  <CardFooter chart>
+                    <Chevron className={classes.icon}  onClick={this.viewTournament.bind(null, timba.id)}/>
+                  </CardFooter>
+                </Card>
+              </GridItem>
+            )
+          })}
+
+          {matchesBet.map((match, index) => {
+            return (
+              <GridItem xs={12} sm={12} md={4} key={index}>
+                <Card chart>
+                  <CardBody>
+                    <div className={classes.matchContainer}>
+                      <div>
+                        <CardIcon>
+                          <img src={match.imgHome} alt='...' style={{ width: '50px' }}/>
+                          <h4 className={classes.cardTitle}>{match.homeTeam}</h4>
+                        </CardIcon>
+                      </div>
+                      <div className={classes.resultContainer}>
+                        <p className={classes.result}>{match.homeBet + ' - ' + match.awayBet}</p>
+                      </div>
+                      <div>
+                        <CardIcon>
+                          <img src={match.imgAway} alt='...' style={{ width: '50px' }}/>
+                          <h4 className={classes.cardTitle}>{match.awayTeam}</h4>
+                        </CardIcon>
+                      </div>
+                    </div>
+                  </CardBody>
+                  <CardFooter chart>
+                    <p>Fecha del Partido: {match.dateMatch}</p>
+                  </CardFooter>
+                </Card>
+              </GridItem>
+            )
+          })}
+
+        </GridContainer>
+      </div>
     )
   }
 }
 
 Timba.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(Timba)
+export default withStyles(dashboardStyle)(Timba)

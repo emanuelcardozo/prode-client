@@ -194,9 +194,29 @@ const leagues = [
   {id: 8, name: 'Primera Division - Argentina', dateMatch: '5'},
 ]
 
+const tournamentsBet = [
+  {id: 1, name: 'UEFA CHAMPIONS LEAGUE', img: 'https://i.ytimg.com/vi/t0r0KJe4L6U/maxresdefault.jpg', amount: 12, dateMatch: '1', position: 1},
+  {id: 2, name: 'SUPER LIGA ARGENTINA', img: 'https://viapais.com.ar/media/cache/resolve/small/https://viapais.com.ar/files/2018/05/20180505010321_32587604_0_body.jpg', amount: 8, dateMatch: '5', position: 1},
+  {id: 3, name: 'COPA LIBERTADORES', img: 'https://prod.media.libero.pe/660x378/libero/imagen/2018/05/21/noticia-copa-libertadores-2018.jpg', amount: 250, dateMatch: '4tos', position: 1},
+]
+
+const matchesBet = [
+  {id: 1, homeTeam: 'Barcelona FC', imgHome: 'http://www.escudosdefutbolyequipaciones.com/images_esc3/ESPA/CATALU%D1A/escudos_min/MIN_ESC_F.C.%20BARCELONA.png', homeBet: 3,
+    awayTeam: 'Arsenal', imgAway: 'https://ugc.kn3.net/i/origin/http://lh4.ggpht.com/_gHhBxs3JECA/TO7EInnjZhI/AAAAAAAAALc/dhysgzqUE_I/Arsenal.png', awayBet: 1, dateMatch: '23-Sep-2018 12hs'
+  },
+  {id: 2, homeTeam: 'Rosario Central', imgHome: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR43ojccMoq2TFldz_63CeElbcUq9Zx-ZVE9th6eUimeNn2oN6DeA', homeBet: 2,
+    awayTeam: 'Newell old boys', imgAway: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Newell%27s_escudo_2016.png/170px-Newell%27s_escudo_2016.png', awayBet: 1, dateMatch: '23-Sep-2018 12hs'
+  },
+  {id: 3, homeTeam: 'Brasil', imgHome: 'https://icon2.kisspng.com/20180401/yoq/kisspng-dream-league-soccer-brazil-national-football-team-brazil-5ac0e6fe0363c2.1059782515225914860139.jpg', homeBet: 0,
+    awayTeam: 'Argentina', imgAway: 'https://vignette.wikia.nocookie.net/logopedia/images/9/90/AFA_logo_%282014%29.png/revision/latest?cb=20150803000338', awayBet: 1, dateMatch: '23-Sep-2018 12hs'
+  },
+]
+
 module.exports = {
   dailySalesChart,
   emailsSubscriptionChart,
   completedTasksChart,
-  leagues
+  leagues,
+  tournamentsBet,
+  matchesBet
 }

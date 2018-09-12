@@ -25,6 +25,8 @@ function Header({ ...props }) {
   }
   const { classes, user } = props;
 
+  // src={user.picture.data.url}
+
   return (
     <AppBar className={classes.appBar}>
       <Toolbar className={classes.container}>
@@ -35,7 +37,6 @@ function Header({ ...props }) {
         </div>
         <Avatar
           alt=""
-          src={user.picture.data.url}
           className={classNames(classes.avatar, classes.bigAvatar)}
         />
         <Hidden mdUp implementation="css">
