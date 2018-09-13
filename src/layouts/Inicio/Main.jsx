@@ -85,7 +85,7 @@ class Main extends React.Component {
               {<Switch>
                 {dashboardRoutes.map((prop, key) => {
                   if (prop.redirect)
-                    return <Redirect from={prop.path} to={prop.to} key={key} {...rest}/>
+                    return <Redirect from={prop.path} to={prop.to} key={key} {...rest} />
                   return <PropsRoute path={prop.path} component={prop.component} key={key} {...rest}/>
                 })}
               </Switch>}

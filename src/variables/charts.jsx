@@ -213,48 +213,115 @@ const matchesBet = [
 ]
 
 const league = [
-  { schedule: { dayOfWeek: 'Vie.,', date: '31/8', hour: 'Fin' }, local: { name: 'Argentinos Jrs.', goals: 2 }, visitant: { name: 'Lanús', goals: 0 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Vie.,', date: '31/8', hour: 'Fin' }, local: { name: 'San Martín', goals: 1 }, visitant: { name: 'Huracán', goals: 2 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '1/9', hour: 'Fin' }, local: { name: 'Defensa y Justicia', goals: 1 }, visitant: { name: 'Belgrano', goals: 1 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '1/9', hour: 'Fin' }, local: { name: 'Banfield', goals: 1 }, visitant: { name: 'Patronato', goals: 0 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '1/9', hour: 'Fin' }, local: { name: 'Talleres', goals: 1 }, visitant: { name: 'Godoy Cruz', goals: 0 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '1/9', hour: 'Fin' }, local: { name: 'San Lorenzo', goals: 1 }, visitant: { name: 'River Plate', goals: 1 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '2/9', hour: 'Fin' },local: { name: 'Racing', goals: 2 }, visitant: { name: 'Rosario Central', goals: 0 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '2/9', hour: 'Fin' }, local: { name: 'Estudiantes', goals: 2 }, visitant: { name: 'Independiente', goals: 2 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '2/9', hour: 'Fin' }, local: { name: 'Aldosivi', goals: 0 }, visitant: { name: 'Tigre', goals: 2 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '2/9', hour: 'Fin' }, local: { name: 'Colón', goals: 0 }, visitant: { name: 'Unión', goals: 0 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '2/9', hour: 'Fin' }, local: { name: 'Boca Juniors', goals: 3 }, visitant: { name: 'Vélez', goals: 0 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Lun.,', date: '3/9', hour: 'Fin' }, local: { name: 'Newell\'s', goals: 1 }, visitant: { name: 'Atlético Tucumán', goals: 2 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Lun.,', date: '3/9', hour: 'Fin' }, local: { name: 'San Martín de Tucumán', goals: 1 }, visitant: { name: 'Gimnasia', goals: 1 }, state: 'Finished' },
-  { schedule: { dayOfWeek: 'Vie.,', date: '14/9', hour: '19:00' }, local: { name: 'Estudiantes' }, visitant: { name: 'Aldosivi' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Vie.,', date: '14/9', hour: '21:00' }, local: { name: 'Atlético Tucumán' }, visitant: { name: 'Tigre' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '15/9', hour: '13:15' }, local: { name: 'Independiente' }, visitant: { name: 'Colón' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '15/9', hour: '15:30' }, local: { name: 'River Plate' }, visitant: { name: 'San Martín' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '15/9', hour: '17:45' }, local: { name: 'Belgrano' }, visitant: { name: 'Newell\'s' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '15/9', hour: '20:00' }, local: { name: 'Argentinos Jrs.' }, visitant: { name: 'Boca Juniors' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '16/9', hour: '11:00' }, local: { name: 'Patronato' }, visitant: { name: 'Gimnasia' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '16/9', hour: '13:15' }, local: { name: 'Vélez' }, visitant: { name: 'San Martín de Tucumán' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '16/9', hour: '15:30' }, local: { name: 'Unión' }, visitant: { name: 'Talleres' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '16/9', hour: '17:45' }, local: { name: 'Lanús' }, visitant: { name: 'Racing' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '16/9', hour: '20:00' }, local: { name: 'Godoy Cruz' }, visitant: { name: 'San Lorenzo' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Lun.,', date: '17/9', hour: '19:00' }, local: { name: 'Huracán' }, visitant: { name: 'Banfield' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Lun.,', date: '17/9', hour: '21:00' }, local: { name: 'Rosario Central' }, visitant: { name: 'Defensa y Justicia' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Vie.,', date: '21/9', hour: '19:00' }, local: { name: 'San Lorenzo' }, visitant: { name: 'Patronato' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Vie.,', date: '21/9', hour: '21:00' }, local: { name: 'Colón' }, visitant: { name: 'Godoy Cruz' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '22/9', hour: '13:15' }, local: { name: 'Newell\'s' }, visitant: { name: 'Lanús' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '22/9', hour: '15:30' }, local: { name: 'Talleres' }, visitant: { name: 'Vélez' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '22/9', hour: '17:45' }, local: { name: 'Defensa y Justicia' }, visitant: { name: 'Estudiantes' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Sáb.,', date: '22/9', hour: '20:00' }, local: { name: 'Banfield' }, visitant: { name: 'Independiente' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '23/9', hour: '11:00' }, local: { name: 'San Martín de Tucumán' }, visitant: { name: 'Argentinos Jrs.' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '23/9', hour: '11:00' }, local: { name: 'Tigre' }, visitant: { name: 'Huracán' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '23/9', hour: '13:15' }, local: { name: 'San Martín' }, visitant: { name: 'Atlético Tucumán' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '23/9', hour: '13:15' }, local: { name: 'Gimnasia' }, visitant: { name: 'Rosario Central' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Dom.,', date: '23/9', hour: '17:45' }, local: { name: 'Boca Juniors' }, visitant: { name: 'River Plate' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Lun.,', date: '24/9', hour: '19:00' }, local: { name: 'Aldosivi' }, visitant: { name: 'Belgrano' }, state: 'Pending' },
-  { schedule: { dayOfWeek: 'Lun.,', date: '24/9', hour: '21:00' }, local: { name: 'Racing' }, visitant: { name: 'Unión' }, state: 'Pending' },
-  { schedule: { dayOfWeek: '28/9', date: '18:45', hour: undefined }, local: { name: 'Independiente' }, visitant: { name: 'Tigre' }, state: 'Pending' }
+  {
+    name: 'Fecha 1',
+    matches: [
+      { schedule: { dayOfWeek: null, date: '10/8', hour: null }, local: { name: 'Vélez', goals: 2 }, visitant: { name: 'Newell\'s', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '10/8', hour: null }, local: { name: 'Tigre', goals: 2 }, visitant: { name: 'San Lorenzo', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '11/8', hour: null }, local: { name: 'Gimnasia', goals: 1 }, visitant: { name: 'Argentinos Jrs.', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '11/8', hour: null }, local: { name: 'Unión', goals: 1 }, visitant: { name: 'Aldosivi', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '11/8', hour: null }, local: { name: 'Patronato', goals: 0 }, visitant: { name: 'Colón', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '11/8', hour: null }, local: { name: 'Belgrano', goals: 0 }, visitant: { name: 'San Martín', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '11/8', hour: null }, local: { name: 'Independiente' }, visitant: { name: 'San Martín de Tucumán' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '12/8', hour: null }, local: { name: 'Boca Juniors', goals: 1 }, visitant: { name: 'Talleres', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '12/8', hour: null }, local: { name: 'Godoy Cruz', goals: 1 }, visitant: { name: 'Estudiantes', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '12/8', hour: null }, local: { name: 'Lanús', goals: 2 }, visitant: { name: 'Defensa y Justicia', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '12/8', hour: null }, local: { name: 'Rosario Central', goals: 1 }, visitant: { name: 'Banfield', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '12/8', hour: null }, local: { name: 'Huracán', goals: 0 }, visitant: { name: 'River Plate', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '13/8', hour: null }, local: { name: 'Atlético Tucumán', goals: 2 }, visitant: { name: 'Racing', goals: 2 }, state: 'Finished' }
+    ]
+  },
+  {
+    name: 'Fecha 2',
+    matches: [
+      { schedule: { dayOfWeek: null, date: '17/8', hour: null }, local: { name: 'Talleres', goals: 0 }, visitant: { name: 'Rosario Central', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '17/8', hour: null }, local: { name: 'Newell\'s', goals: 2 }, visitant: { name: 'Independiente', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '18/8', hour: null }, local: { name: 'Defensa y Justicia', goals: 1 }, visitant: { name: 'Atlético Tucumán', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '18/8', hour: null }, local: { name: 'Banfield', goals: 1 }, visitant: { name: 'Gimnasia', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '18/8', hour: null }, local: { name: 'Argentinos Jrs.', goals: 0 }, visitant: { name: 'Godoy Cruz', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '18/8', hour: null }, local: { name: 'River Plate', goals: 0 }, visitant: { name: 'Belgrano', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '19/8', hour: null }, local: { name: 'San Martín', goals: 1 }, visitant: { name: 'Patronato', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '19/8', hour: null }, local: { name: 'Colón', goals: 2 }, visitant: { name: 'Tigre', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '19/8', hour: null }, local: { name: 'Aldosivi', goals: 2 }, visitant: { name: 'Huracán', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '19/8', hour: null }, local: { name: 'San Lorenzo', goals: 2 }, visitant: { name: 'Lanús', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '19/8', hour: null }, local: { name: 'Racing', goals: 2 }, visitant: { name: 'Vélez', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '20/8', hour: null }, local: { name: 'Estudiantes', goals: 2 }, visitant: { name: 'Boca Juniors', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '20/8', hour: null }, local: { name: 'San Martín de Tucumán', goals: 1 }, visitant: { name: 'Unión', goals: 1 }, state: 'Finished' }
+    ]
+  },
+  {
+    name: 'Fecha 3',
+    matches: [
+      { schedule: { dayOfWeek: null, date: '24/8', hour: null }, local: { name: 'Belgrano', goals: 2 }, visitant: { name: 'Estudiantes', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '24/8', hour: null }, local: { name: 'Patronato', goals: 0 }, visitant: { name: 'Racing', goals: 3 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '24/8', hour: null }, local: { name: 'Independiente', goals: 0 }, visitant: { name: 'Defensa y Justicia', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '24/8', hour: null }, local: { name: 'Atlético Tucumán', goals: 2 }, visitant: { name: 'Colón', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '25/8', hour: null }, local: { name: 'Gimnasia', goals: 0 }, visitant: { name: 'Talleres', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '25/8', hour: null }, local: { name: 'Tigre', goals: 2 }, visitant: { name: 'San Martín', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '25/8', hour: null }, local: { name: 'River Plate', goals: 0 }, visitant: { name: 'Argentinos Jrs.', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '26/8', hour: null }, local: { name: 'Vélez', goals: 1 }, visitant: { name: 'Banfield', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '26/8', hour: null }, local: { name: 'Lanús', goals: 0 }, visitant: { name: 'Aldosivi', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '26/8', hour: null }, local: { name: 'Rosario Central', goals: 2 }, visitant: { name: 'San Martín de Tucumán', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '26/8', hour: null }, local: { name: 'Huracán', goals: 0 }, visitant: { name: 'Boca Juniors', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '27/8', hour: null }, local: { name: 'Godoy Cruz', goals: 2 }, visitant: { name: 'Newell\'s', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: null, date: '27/8', hour: null }, local: { name: 'Unión', goals: 1 }, visitant: { name: 'San Lorenzo', goals: 1 }, state: 'Finished' }
+    ]
+  },
+  {
+    name: 'Fecha 4',
+    matches: [
+      { schedule: { dayOfWeek: 'Vie.,', date: '31/8', hour: null }, local: { name: 'Argentinos Jrs.', goals: 2 }, visitant: { name: 'Lanús', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Vie.,', date: '31/8', hour: null }, local: { name: 'San Martín', goals: 1 }, visitant: { name: 'Huracán', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Sáb.,', date: '01/9', hour: null }, local: { name: 'Defensa y Justicia', goals: 1 }, visitant: { name: 'Belgrano', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Sáb.,', date: '01/9', hour: null }, local: { name: 'Banfield', goals: 1 }, visitant: { name: 'Patronato', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Sáb.,', date: '01/9', hour: null }, local: { name: 'Talleres', goals: 1 }, visitant: { name: 'Godoy Cruz', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Sáb.,', date: '01/9', hour: null }, local: { name: 'San Lorenzo', goals: 1 }, visitant: { name: 'River Plate', goals: 1 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Dom.,', date: '02/9', hour: null }, local: { name: 'Racing', goals: 2 }, visitant: { name: 'Rosario Central', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Dom.,', date: '02/9', hour: null }, local: { name: 'Estudiantes', goals: 2 }, visitant: { name: 'Independiente', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Dom.,', date: '02/9', hour: null }, local: { name: 'Aldosivi', goals: 0 }, visitant: { name: 'Tigre', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Dom.,', date: '02/9', hour: null }, local: { name: 'Colón', goals: 0 }, visitant: { name: 'Unión', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Dom.,', date: '02/9', hour: null }, local: { name: 'Boca Juniors', goals: 3 }, visitant: { name: 'Vélez', goals: 0 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Lun.,', date: '03/9', hour: null }, local: { name: 'Newell\'s', goals: 1 }, visitant: { name: 'Atlético Tucumán', goals: 2 }, state: 'Finished' },
+      { schedule: { dayOfWeek: 'Lun.,', date: '03/9', hour: null }, local: { name: 'San Martín de Tucumán', goals: 1 }, visitant: { name: 'Gimnasia', goals: 1 }, state: 'Finished' }
+    ]
+  },
+  {
+    name: 'Fecha 5',
+    matches: [
+      { schedule: { dayOfWeek: null, date: '14/9', hour: '19:00' }, local: { name: 'Estudiantes' }, visitant: { name: 'Aldosivi' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '14/9', hour: '21:00' }, local: { name: 'Atlético Tucumán' }, visitant: { name: 'Tigre' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '15/9', hour: '13:15' }, local: { name: 'Independiente' }, visitant: { name: 'Colón' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '15/9', hour: '15:30' }, local: { name: 'River Plate' }, visitant: { name: 'San Martín' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '15/9', hour: '17:45' }, local: { name: 'Belgrano' }, visitant: { name: 'Newell\'s' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '15/9', hour: '20:00' }, local: { name: 'Argentinos Jrs.' }, visitant: { name: 'Boca Juniors' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '16/9', hour: '11:00' }, local: { name: 'Patronato' }, visitant: { name: 'Gimnasia' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '16/9', hour: '13:15' }, local: { name: 'Vélez' }, visitant: { name: 'San Martín de Tucumán' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '16/9', hour: '15:30' }, local: { name: 'Unión' }, visitant: { name: 'Talleres' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '16/9', hour: '17:45' }, local: { name: 'Lanús' }, visitant: { name: 'Racing' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '16/9', hour: '20:00' }, local: { name: 'Godoy Cruz' }, visitant: { name: 'San Lorenzo' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '17/9', hour: '19:00' }, local: { name: 'Huracán' }, visitant: { name: 'Banfield' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '17/9', hour: '21:00' }, local: { name: 'Rosario Central' }, visitant: { name: 'Defensa y Justicia' }, state: 'Pending' }
+    ]
+  },
+  {
+    name: 'Fecha 6',
+    matches: [
+      { schedule: { dayOfWeek: null, date: '21/9', hour: '19:00' }, local: { name: 'San Lorenzo' }, visitant: { name: 'Patronato' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '21/9', hour: '21:00' }, local: { name: 'Colón' }, visitant: { name: 'Godoy Cruz' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '22/9', hour: '13:15' }, local: { name: 'Newell\'s' }, visitant: { name: 'Lanús' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '22/9', hour: '15:30' }, local: { name: 'Talleres' }, visitant: { name: 'Vélez' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '22/9', hour: '17:45' }, local: { name: 'Defensa y Justicia' }, visitant: { name: 'Estudiantes' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '22/9', hour: '20:00' }, local: { name: 'Banfield' }, visitant: { name: 'Independiente' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '23/9', hour: '11:00' }, local: { name: 'San Martín de Tucumán' }, visitant: { name: 'Argentinos Jrs.' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '23/9', hour: '11:00' }, local: { name: 'Tigre' }, visitant: { name: 'Huracán' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '23/9', hour: '13:15' }, local: { name: 'San Martín' }, visitant: { name: 'Atlético Tucumán' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '23/9', hour: '13:15' }, local: { name: 'Gimnasia' }, visitant: { name: 'Rosario Central' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '23/9', hour: '17:45' }, local: { name: 'Boca Juniors' }, visitant: { name: 'River Plate' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '24/9', hour: '19:00' }, local: { name: 'Aldosivi' }, visitant: { name: 'Belgrano' }, state: 'Pending' },
+      { schedule: { dayOfWeek: null, date: '24/9', hour: '21:00' }, local: { name: 'Racing' }, visitant: { name: 'Unión' }, state: 'Pending' }
+    ]
+  }
 ]
-
 
 module.exports = {
   dailySalesChart,

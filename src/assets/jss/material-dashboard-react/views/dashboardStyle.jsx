@@ -79,6 +79,14 @@ const dashboardStyle = {
   },
   paperContainer: {
     boxShadow: 'unset!important'
+  },
+  betPaperContainer: {
+    boxShadow: 'unset!important',
+    display: 'inline-flex'
+  },
+  inputField:{
+    height: '30%',
+    margin: '30px'
   }
 }
 

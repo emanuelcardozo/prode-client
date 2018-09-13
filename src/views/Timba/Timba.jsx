@@ -25,7 +25,7 @@ class Timba extends React.Component {
   render() {
     const { classes } = this.props
     // const { bets } = this.props
-    // const tournamentsBet = bets.tournaments
+    // const tournamentsBet = bets.tournaments.reverse()
 
     return (
       <div>
@@ -54,7 +54,8 @@ class Timba extends React.Component {
               </GridItem>
             )
           })}
-
+        </GridContainer>
+        <GridContainer>
           {matchesBet.map((match, index) => {
             return (
               <GridItem xs={12} sm={12} md={4} key={index}>
@@ -87,7 +88,6 @@ class Timba extends React.Component {
               </GridItem>
             )
           })}
-
         </GridContainer>
       </div>
     )

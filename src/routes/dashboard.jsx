@@ -1,11 +1,11 @@
-import Inicio from 'views/Inicio/Inicio.jsx'
-import UserProfile from 'views/UserProfile/UserProfile.jsx'
-import Torneos from 'views/Torneos/Torneos.jsx'
-import Reglamento from 'views/Reglamento/Reglamento.jsx'
-import Fechas from 'views/Fechas/Fechas.jsx'
-import Timba from 'views/Timba/Timba.jsx'
+import Inicio from 'views/Inicio/Inicio'
+import UserProfile from 'views/UserProfile/UserProfile'
+import Torneos from 'views/Torneos/Torneos'
+import Ayuda from 'views/Ayuda/Ayuda'
+import Fechas from 'views/Fechas/Fechas'
+import Timba from 'views/Timba/Timba'
 
-import Torneo from 'views/Torneos/Torneo.jsx'
+import Torneo from 'views/Torneos/Torneo'
 
 const dashboardRoutes = [
   {
@@ -37,17 +37,17 @@ const dashboardRoutes = [
     component: Fechas
   },
   {
-    path: '/reglamento',
-    sidebarName: 'Reglas',
-    navbarName: 'Reglamento',
-    icon: 'library_books',
-    component: Reglamento
+    path: '/ayuda',
+    sidebarName: 'Ayuda',
+    navbarName: 'Ayuda',
+    icon: 'help_outline',
+    component: Ayuda
   },
   {
     path: '/usuario',
     sidebarName: 'Usuario',
     navbarName: 'Usuario',
-    icon: 'person',
+    icon: 'account_circle',
     component: UserProfile
   },
   {

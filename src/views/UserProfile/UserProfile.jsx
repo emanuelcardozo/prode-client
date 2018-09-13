@@ -7,7 +7,7 @@ import Card from 'components/Card/Card.jsx'
 import CardAvatar from 'components/Card/CardAvatar.jsx'
 import CardBody from 'components/Card/CardBody.jsx'
 import SnackbarContent from 'components/Snackbar/SnackbarContent.jsx'
-//----icons----
+
 import Email from '@material-ui/icons/Email'
 import Account from '@material-ui/icons/AccountCircle'
 import Grade from '@material-ui/icons/Grade'
