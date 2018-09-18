@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@material-ui/core/styles/withStyles'
-import GridItem from 'components/Grid/GridItem.jsx'
-import GridContainer from 'components/Grid/GridContainer'
 import Card from 'components/Card/Card'
-import CardHeader from 'components/Card/CardHeader'
 import CardBody from 'components/Card/CardBody'
-import Video from '@material-ui/icons/VideogameAsset'
-import SnackbarContent from 'components/Snackbar/SnackbarContent.jsx'
+import GridItem from 'components/Grid/GridItem'
+import CardHeader from 'components/Card/CardHeader'
+import GridContainer from 'components/Grid/GridContainer'
+import SnackbarContent from 'components/Snackbar/SnackbarContent'
 import Snackbar from '@material-ui/core/Snackbar'
+import Video from '@material-ui/icons/VideogameAsset'
+import withStyles from '@material-ui/core/styles/withStyles'
 
 import { leagues } from 'variables/charts'
 
@@ -39,7 +39,8 @@ class Torneos extends React.Component {
   }
 
   handleClick(index) {
-    this.props.setBet({ tournaments: leagues[index], type: 'tournaments' })
+    var tournament = { ...leagues[index] }
+    this.props.setBet({ tournaments: tournament, type: 'tournaments'})
     this.setState({ open: true })
   }
 
@@ -54,6 +55,14 @@ class Torneos extends React.Component {
 
     return (
       <GridContainer>
+        <Snackbar
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          open={this.state.open}
+          autoHideDuration={2000}
+          onClose={this.handleClose}
+          ContentProps={{ 'aria-describedby': 'message-id' }}
+          message={<span id="message-id">El torneo se agrego a Mi Timba</span>}
+        />
         <GridItem xs={12} sm={12} md={12}>
           <Card>
             <CardHeader color='success'>
@@ -75,14 +84,6 @@ class Torneos extends React.Component {
             </CardBody>
           </Card>
         </GridItem>
-        <Snackbar
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-          open={this.state.open}
-          autoHideDuration={6000}
-          onClose={this.handleClose}
-          ContentProps={{ 'aria-describedby': 'message-id' }}
-          message={<span id="message-id">Torneo agregado a Mi Timba</span>}
-        />
       </GridContainer>
     )
   }

@@ -15,48 +15,55 @@ import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardS
 class Match extends React.Component {
 
   sendMatchBet(id) {
-    var local = document.getElementById('local' + id).value
-    var visitant = document.getElementById('visitant' + id).value
-    console.log(this.props.match.matches[id], local, visitant)
+    const local = document.getElementById('local' + id).value
+    const visitant = document.getElementById('visitant' + id).value
+    const idDate = parseInt(this.props.dateMatch.name, 10) - 1
+    const idTournament = this.props.idTournament
+
+    this.props.setTournamentBet({local, visitant, idDate, idTournament, idMatch: id})
+  }
+
+  isZero(number) {
+    return number === undefined ? '' : number
   }
 
   render(){
-    const { match, classes } = this.props
+    const { dateMatch, classes } = this.props
 
     return(
       <GridItem xs={12} sm={12} md={12}>
-        <Card>
-          {match.matches.map((m, index) => {
-            return(
-              <Card key={index}>
-                <CardBody >
-                  <Grid container spacing={24} direction="row" align="center">
-                    <Grid item xs>
-                      <Paper className={classes.paperContainer}><h3><strong>{m.local.name}</strong></h3></Paper>
-                    </Grid>
-                    <Grid item xs>
+        {dateMatch.matches.map((m, index) => {
+          return(
+            <Card key={index}>
+              <CardBody >
+                <Grid container spacing={16} direction="row" align="center">
+                  <Grid item xs>
+                    <Paper className={classes.paperContainer}><h3><strong>{m.local.name}</strong></h3></Paper>
+                  </Grid>
+                  <Grid item xs>
+                    {m.state === 'Finished' ? <h3>{this.isZero(m.local.bet)} - {this.isZero(m.visitant.bet)}</h3> :
                       <Paper className={classes.betPaperContainer}>
                         <TextField id={'local' + index} type='number' inputProps={{ min: '0', max: '10', step: '1' }} className={classes.inputField} />
                         <h2> - </h2>
                         <TextField id={'visitant' + index} type='number' inputProps={{ min: '0', max: '10', step: '1' }} className={classes.inputField} />
-                      </Paper>
-                    </Grid>
-                    <Grid item xs>
-                      <Paper className={classes.paperContainer}><h3><strong>{m.visitant.name}</strong></h3></Paper></Grid>
+                      </Paper>}
                   </Grid>
-                </CardBody>
-                <CardFooter chart>
-                  <p>Fecha: {m.schedule.date} {m.schedule.hour} - Resultado: {m.state === 'Finished' ? (m.local.name + ' ' + m.local.goals + ' - ' + m.visitant.goals + ' ' + m.visitant.name) : 'Pendiente'}</p>
-                  {m.state === 'Pending' &&
-                  <Button variant="extendedFab" aria-label="Delete" className={classes.button} onClick={this.sendMatchBet.bind(this, index)}>
-                    Jugar
-                    <Play className={classes.extendedIcon} />
-                  </Button>}
-                </CardFooter>
-              </Card>
-            )
-          })}
-        </Card>
+                  <Grid item xs>
+                    <Paper className={classes.paperContainer}><h3><strong>{m.visitant.name}</strong></h3></Paper></Grid>
+                </Grid>
+              </CardBody>
+              <CardFooter chart>
+                <p>Fecha: {m.schedule.date} {m.schedule.hour} - Resultado:  {m.local.name} {this.isZero(m.local.goals)} - {this.isZero(m.visitant.goals)} {m.visitant.name}</p>
+                {m.state === 'Pending' && <p>Apuesta: {m.local.name} {this.isZero(m.local.bet)} - {this.isZero(m.visitant.bet)} {m.visitant.name}</p>}
+                {m.state === 'Pending' &&
+                <Button variant="extendedFab" aria-label="Delete" className={classes.button} onClick={this.sendMatchBet.bind(this, index)}>
+                  Jugar
+                  <Play className={classes.extendedIcon} />
+                </Button>}
+              </CardFooter>
+            </Card>
+          )
+        })}
       </GridItem>
     )
   }
@@ -64,7 +71,9 @@ class Match extends React.Component {
 
 Match.propTypes = {
   classes: PropTypes.object,
-  match: PropTypes.object
+  dateMatch: PropTypes.object,
+  idTournament: PropTypes.number,
+  setTournamentBet: PropTypes.func
 }
 
 export default withStyles(dashboardStyle)(Match)

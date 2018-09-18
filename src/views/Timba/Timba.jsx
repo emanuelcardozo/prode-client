@@ -13,7 +13,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 
 import Account from '@material-ui/icons/AccountCircle'
 import Chevron from '@material-ui/icons/ChevronRight'
-import { tournamentsBet, matchesBet } from 'variables/charts'
+import { matchesBet } from 'variables/charts'
 import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
 class Timba extends React.Component {
@@ -23,38 +23,41 @@ class Timba extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
-    // const { bets } = this.props
-    // const tournamentsBet = bets.tournaments.reverse()
+    const { classes, bets } = this.props
+    const tournamentsBet = bets.tournaments
 
     return (
       <div>
+        {/* ----LISTA DE TORNEOS A LOS QUE JUEGA CADA USUARIO---- */}
         <GridContainer>
-          {tournamentsBet.map((timba, index) => {
+          {tournamentsBet.map((tournament, index) => {
+            if(!tournament) return null
             return (
               <GridItem xs={12} sm={12} md={4} key={index}>
                 <Card chart>
                   <CardHeader color='success'>
-                    <img src={timba.img} alt='...' style={{ width: '100%' }}/>
+                    <img src={tournament.img} alt='...' style={{ width: '100%' }}/>
                   </CardHeader>
                   <CardBody>
-                    <h4 className={classes.cardTitle}>{timba.name}</h4>
+                    <h4 className={classes.cardTitle}>{tournament.name}</h4>
                     <p className={classes.cardCategory}>
                       <span className={classes.successText}>
                         <Account className={classes.icon} />
-                      </span> Usuarios en el torneo: {timba.amount}
+                      </span> Usuarios en el torneo: {tournament.amount}
                     </p>
-                    <p>Fecha: {timba.dateMatch}</p>
-                    <p>Posición: {timba.position}</p>
+                    <p>Fecha: {tournament.dateMatch}</p>
+                    <p>Posición: {tournament.position}</p>
                   </CardBody>
                   <CardFooter chart>
-                    <Chevron className={classes.icon}  onClick={this.viewTournament.bind(this, timba.id)}/>
+                    <Chevron className={classes.icon}  onClick={this.viewTournament.bind(this, tournament.id)}/>
                   </CardFooter>
                 </Card>
               </GridItem>
             )
           })}
         </GridContainer>
+
+        {/* ----LISTA DE PARTIDOS INDIVIDUALES A LOS QUE SE APUESTAN---- */}
         <GridContainer>
           {matchesBet.map((match, index) => {
             return (
