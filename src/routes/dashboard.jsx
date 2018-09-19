@@ -6,6 +6,7 @@ import Fechas from 'views/Fechas/Fechas'
 import Timba from 'views/Timba/Timba'
 
 import Torneo from 'views/Torneos/Torneo'
+import Stage from 'views/Fechas/Stage'
 
 const dashboardRoutes = [
   {
@@ -54,6 +55,11 @@ const dashboardRoutes = [
     path: '/torneo/:id',
     notDisplay: true,
     component: Torneo
+  },
+  {
+    path: '/fecha/:id',
+    notDisplay: true,
+    component: Stage
   },
   { redirect: true, path: '/', to: '/inicio', navbarName: '' }
 ]

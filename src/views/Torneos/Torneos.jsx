@@ -39,8 +39,8 @@ class Torneos extends React.Component {
   }
 
   handleClick(index) {
-    var tournament = { ...leagues[index] }
-    this.props.setBet({ tournaments: tournament, type: 'tournaments'})
+    const tournament = { ...leagues[index] }
+    this.props.setBet({ obj: tournament, type: 'tournaments'})
     this.setState({ open: true })
   }
 
@@ -61,12 +61,12 @@ class Torneos extends React.Component {
           autoHideDuration={2000}
           onClose={this.handleClose}
           ContentProps={{ 'aria-describedby': 'message-id' }}
-          message={<span id="message-id">El torneo se agrego a Mi Timba</span>}
+          message={<span id="message-id">El torneo se agregó a Mi Timba</span>}
         />
         <GridItem xs={12} sm={12} md={12}>
           <Card>
             <CardHeader color='success'>
-              <h4 className={classes.cardTitleWhite}>Lista de Torneos</h4>
+              <h4 className={classes.cardTitleWhite}>Torneos</h4>
             </CardHeader>
             <CardBody>
               {leagues.map((league, index) => {
