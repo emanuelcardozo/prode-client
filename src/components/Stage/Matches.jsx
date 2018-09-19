@@ -1,15 +1,16 @@
 import React from 'react'
+import _ from 'lodash'
 import PropTypes from 'prop-types'
 import Card from 'components/Card/Card'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
 import CardMedia from '@material-ui/core/CardMedia'
 import TextField from '@material-ui/core/TextField'
 import CardFooter from 'components/Card/CardFooter'
-import Play from '@material-ui/icons/PlayCircleFilled'
+// import Play from '@material-ui/icons/PlayCircleFilled'
 import GridContainer from 'components/Grid/GridContainer'
 import withStyles from '@material-ui/core/styles/withStyles'
 import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
@@ -49,9 +50,21 @@ class Matches extends React.Component {
                     <Grid item xs>
                       {match.state === 'Finished' ? <h3>{this.isZero(match.local.bet)} - {this.isZero(match.visitant.bet)}</h3> :
                         <Paper className={classes.betPaperContainer}>
-                          <TextField id={'local' + index} type='number' inputProps={{ min: '0', max: '10', step: '1' }} className={classes.inputField} />
+                          <TextField
+                            id={'local' + index}
+                            type='number'
+                            inputProps={{ min: '0', max: '10', step: '1' }}
+                            className={classes.inputField}
+                            onChange={ _.debounce(this.sendBet.bind(this, index), 2000) }
+                          />
                           <h2> - </h2>
-                          <TextField id={'visitant' + index} type='number' inputProps={{ min: '0', max: '10', step: '1' }} className={classes.inputField} />
+                          <TextField
+                            id={'visitant' + index}
+                            type='number'
+                            inputProps={{ min: '0', max: '10', step: '1' }}
+                            className={classes.inputField}
+                            onChange={ _.debounce(this.sendBet.bind(this, index), 2000) }
+                          />
                         </Paper>}
                     </Grid>
                     <Grid item xs>
@@ -72,10 +85,10 @@ class Matches extends React.Component {
                       <span>Resultado: {match.local.name} {match.local.goals} - {match.visitant.goals} {match.visitant.name}</span>
                     }
                   </div>
-                  {match.state === 'Pending' &&
+                  {/*match.state === 'Pending' &&
                   <Button className={classes.button} onClick={this.sendBet.bind(this, index)}>
                     <Play className={classes.extendedIcon} />
-                  </Button>}
+                  </Button>*/}
                 </CardFooter>
               </Card>
             </GridItem>
