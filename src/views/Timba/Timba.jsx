@@ -20,7 +20,7 @@ class Timba extends React.Component {
   componentDidMount() {
     const { tournaments, matches } = this.props.bets
 
-    if(tournaments.length === 0 && matches.length === 0) this.props.history.push('/torneos')
+    if(tournaments.length === 0 && matches.length === 0) this.props.history.push('/fechas')
   }
 
   render() {

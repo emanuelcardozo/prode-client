@@ -626,18 +626,6 @@ const leagues = [
   ]},
 ]
 
-const matchesBet = [
-  {id: 1, homeTeam: 'Barcelona FC', imgHome: 'http://www.escudosdefutbolyequipaciones.com/images_esc3/ESPA/CATALU%D1A/escudos_min/MIN_ESC_F.C.%20BARCELONA.png', homeBet: 3,
-    awayTeam: 'Arsenal', imgAway: 'https://ugc.kn3.net/i/origin/http://lh4.ggpht.com/_gHhBxs3JECA/TO7EInnjZhI/AAAAAAAAALc/dhysgzqUE_I/Arsenal.png', awayBet: 1, dateMatch: '23-Sep-2018 12hs'
-  },
-  {id: 2, homeTeam: 'Rosario Central', imgHome: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR43ojccMoq2TFldz_63CeElbcUq9Zx-ZVE9th6eUimeNn2oN6DeA', homeBet: 2,
-    awayTeam: 'Newell old boys', imgAway: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Newell%27s_escudo_2016.png/170px-Newell%27s_escudo_2016.png', awayBet: 1, dateMatch: '23-Sep-2018 12hs'
-  },
-  {id: 3, homeTeam: 'Brasil', imgHome: 'https://icon2.kisspng.com/20180401/yoq/kisspng-dream-league-soccer-brazil-national-football-team-brazil-5ac0e6fe0363c2.1059782515225914860139.jpg', homeBet: 0,
-    awayTeam: 'Argentina', imgAway: 'https://vignette.wikia.nocookie.net/logopedia/images/9/90/AFA_logo_%282014%29.png/revision/latest?cb=20150803000338', awayBet: 1, dateMatch: '23-Sep-2018 12hs'
-  },
-]
-
 const stages = [
   {
     id: 1, number: '4', league: 'SUPER LIGA ARGENTINA',amount: 2, begin: '31/8', end: '03/9',
@@ -695,11 +683,31 @@ const stages = [
   }
 ]
 
+const betsMatch = {
+  id: 1,
+  bets: [
+    { idUser: 1, name: 'nombre1', mail: 'test@prode.com', local: {bet: 1}, visitant: {bet: 2} },
+    { idUser: 2, name: 'nombre2', mail: 'test@prode.com', local: {bet: 3}, visitant: {bet: 2} },
+    { idUser: 3, name: 'nombre3', mail: 'test@prode.com', local: {bet: 2}, visitant: {bet: 1} },
+    { idUser: 4, name: 'nombre4', mail: 'test@prode.com', local: {bet: 1}, visitant: {bet: 0} },
+    { idUser: 5, name: 'nombre5', mail: 'test@prode.com', local: {bet: 0}, visitant: {bet: 0} },
+    { idUser: 6, name: 'nombre6', mail: 'test@prode.com', local: {bet: 5}, visitant: {bet: 2} },
+    { idUser: 7, name: 'nombre7', mail: 'test@prode.com', local: {bet: 3}, visitant: {bet: 2} },
+    { idUser: 8, name: 'nombre8', mail: 'test@prode.com', local: {bet: 2}, visitant: {bet: 2} },
+    { idUser: 9, name: 'nombre9', mail: 'test@prode.com', local: {bet: 1}, visitant: {bet: 1} },
+    { idUser: 10, name: 'nombre10', mail: 'test@prode.com', local: {bet: 0}, visitant: {bet: 2} },
+    { idUser: 11, name: 'nombre11', mail: 'test@prode.com', local: {bet: 3}, visitant: {bet: 1} },
+    { idUser: 12, name: 'nombre12', mail: 'test@prode.com', local: {bet: 1}, visitant: {bet: 1} },
+    { idUser: 13, name: 'nombre13', mail: 'test@prode.com', local: {bet: 1}, visitant: {bet: 0} },
+    { idUser: 14, name: 'nombre14', mail: 'test@prode.com', local: {bet: 3}, visitant: {bet: 3} },
+  ]
+}
+
 module.exports = {
   dailySalesChart,
   emailsSubscriptionChart,
   completedTasksChart,
   leagues,
   stages,
-  matchesBet
+  betsMatch
 }

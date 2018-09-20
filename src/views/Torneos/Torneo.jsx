@@ -48,12 +48,12 @@ class Torneo extends React.Component {
             <CardBody>
               <Table
                 tableHeaderColor='danger'
-                tableHead={['Posición', 'Nombre', 'Mail']}
+                tableHead={['Posición', 'Nombre', 'Mail', 'Ptos']}
                 tableData={[
-                  ['1', 'nombre1', 'prode@test.com'],
-                  ['2', 'nombre2', 'prode@test.com'],
-                  ['3', 'nombre3', 'prode@test.com'],
-                  ['4', 'nombre4', 'prode@test.com']
+                  ['1', 'nombre1', 'prode@test.com', '20'],
+                  ['2', 'nombre2', 'prode@test.com', '19'],
+                  ['3', 'nombre3', 'prode@test.com', '15'],
+                  ['4', 'nombre4', 'prode@test.com', '14']
                 ]}
               />
             </CardBody>

@@ -1,12 +1,12 @@
 import React from 'react'
-import Match from 'components/Stage/Matches'
 import PropTypes from 'prop-types'
-import GridItem from 'components/Grid/GridItem.jsx'
-import GridContainer from 'components/Grid/GridContainer'
-import CardBody from 'components/Card/CardBody'
-import Table from 'components/Table/Table'
 import Card from 'components/Card/Card'
+import Table from 'components/Table/Table'
+import Match from 'components/Stage/Matches'
+import GridItem from 'components/Grid/GridItem'
+import CardBody from 'components/Card/CardBody'
 import CardHeader from 'components/Card/CardHeader'
+import GridContainer from 'components/Grid/GridContainer'
 
 class Stage extends React.Component {
 
@@ -42,12 +42,12 @@ class Stage extends React.Component {
             <CardBody>
               <Table
                 tableHeaderColor='info'
-                tableHead={['Posición', 'Nombre', 'Mail']}
+                tableHead={['Posición', 'Nombre', 'Mail', 'Pts']}
                 tableData={[
-                  ['1', 'nombre1', 'prode@test.com'],
-                  ['2', 'nombre2', 'prode@test.com'],
-                  ['3', 'nombre3', 'prode@test.com'],
-                  ['4', 'nombre4', 'prode@test.com']
+                  ['1', 'nombre1', 'prode@test.com', '12'],
+                  ['2', 'nombre2', 'prode@test.com', '11'],
+                  ['3', 'nombre3', 'prode@test.com', '9'],
+                  ['4', 'nombre4', 'prode@test.com', '5']
                 ]}
               />
             </CardBody>

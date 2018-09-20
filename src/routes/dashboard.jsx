@@ -1,21 +1,14 @@
-import Inicio from 'views/Inicio/Inicio'
-import UserProfile from 'views/UserProfile/UserProfile'
-import Torneos from 'views/Torneos/Torneos'
 import Ayuda from 'views/Ayuda/Ayuda'
-import Fechas from 'views/Fechas/Fechas'
 import Timba from 'views/Timba/Timba'
+import Inicio from 'views/Inicio/Inicio'
+import Fechas from 'views/Fechas/Fechas'
+import Torneos from 'views/Torneos/Torneos'
+import UserProfile from 'views/UserProfile/UserProfile'
 
-import Torneo from 'views/Torneos/Torneo'
 import Stage from 'views/Fechas/Stage'
+import Torneo from 'views/Torneos/Torneo'
 
 const dashboardRoutes = [
-  {
-    path: '/inicio',
-    sidebarName: 'Inicio',
-    navbarName: 'Inicio',
-    icon: 'dashboard',
-    component: Inicio
-  },
   {
     path: '/timba',
     sidebarName: 'Mi timba',
@@ -43,6 +36,13 @@ const dashboardRoutes = [
     navbarName: 'Ayuda',
     icon: 'help_outline',
     component: Ayuda
+  },
+  {
+    path: '/inicio',
+    sidebarName: 'Inicio',
+    navbarName: 'Inicio',
+    icon: 'dashboard',
+    component: Inicio
   },
   {
     path: '/usuario',
