@@ -1,14 +1,13 @@
 import React from 'react'
-import _ from 'lodash'
 import Bets from './Bets'
 import PropTypes from 'prop-types'
+import InputGoals from './InputGoals'
 import Card from 'components/Card/Card'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
 import CardMedia from '@material-ui/core/CardMedia'
-import TextField from '@material-ui/core/TextField'
 import CardFooter from 'components/Card/CardFooter'
 import GridContainer from 'components/Grid/GridContainer'
 import withStyles from '@material-ui/core/styles/withStyles'
@@ -16,21 +15,10 @@ import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardS
 
 class Matches extends React.Component {
 
-  sendBet(index) {
-    const local = document.getElementById('local' + index).value
-    const visitant = document.getElementById('visitant' + index).value
-    const idMatch = index
-    const idToS = this.props.idToS
-    var params = { local, visitant, idMatch, idToS }
-    if(this.props.idDate) params['idDate'] = parseInt(this.props.idDate, 10) - 1
-
-    this.props.setBet(params)
-  }
-
   isZero(number) { return number === undefined ? '' : number }
 
   render(){
-    const { matches, classes, idToS } = this.props
+    const { matches, classes, idToS, idDate } = this.props
 
     return(
       <GridContainer>
@@ -47,24 +35,26 @@ class Matches extends React.Component {
                       </Paper>
                     </Grid>
                     <Grid item xs>
-                      {match.state === 'Finished' ? <h3>{this.isZero(match.local.bet)} - {this.isZero(match.visitant.bet)}</h3> :
+                      {match.state === 'Finished' ?
+                        <h3>{this.isZero(match.local.bet)} - {this.isZero(match.visitant.bet)}</h3> :
                         <Paper className={classes.betPaperContainer}>
-                          <TextField
-                            id={'local' + index}
-                            type='number'
-                            inputProps={{ min: '0', max: '10', step: '1' }}
-                            className={classes.inputField}
-                            onChange={ _.debounce(this.sendBet.bind(this, index), 2000) }
-                          />
-                          <h2> - </h2>
-                          <TextField
-                            id={'visitant' + index}
-                            type='number'
-                            inputProps={{ min: '0', max: '10', step: '1' }}
-                            className={classes.inputField}
-                            onChange={ _.debounce(this.sendBet.bind(this, index), 2000) }
-                          />
-                        </Paper>}
+                          <InputGoals
+                            classes={classes}
+                            idToS={idToS}
+                            index={index}
+                            type={'local'}
+                            setBet={this.props.setBet}
+                            idDate={idDate} />
+                          <h2 style={{ alignSelf: 'center' }}> - </h2>
+                          <InputGoals
+                            classes={classes}
+                            idToS={idToS}
+                            index={index}
+                            type={'visitant'}
+                            setBet={this.props.setBet}
+                            idDate={idDate} />
+                        </Paper>
+                      }
                     </Grid>
                     <Grid item xs>
                       <Paper className={classes.paperContainer}>

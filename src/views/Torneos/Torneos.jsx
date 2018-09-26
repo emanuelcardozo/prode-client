@@ -10,7 +10,7 @@ import Snackbar from '@material-ui/core/Snackbar'
 import Video from '@material-ui/icons/VideogameAsset'
 import withStyles from '@material-ui/core/styles/withStyles'
 
-import { leagues } from 'variables/charts'
+import { leagues } from 'variables/generales'
 
 const styles = {
   cardTitleWhite: {

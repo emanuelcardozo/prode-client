@@ -46,7 +46,7 @@ const dashboardStyle = {
   },
   cardTitle: {
     color: '#3C4858',
-    marginTop: '0px',
+    marginTop: '5px',
     minHeight: 'auto',
     fontWeight: '300',
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -84,9 +84,22 @@ const dashboardStyle = {
     boxShadow: 'unset!important',
     display: 'inline-flex'
   },
+  chevron: {
+    cursor: 'pointer',
+    width: '30px !important',
+    height: '30px !important'
+  },
   inputField:{
     height: '30%',
-    margin: '30px'
+    margin: '0px 30px',
+    alignItems: 'center',
+    textAlignLast: 'end'
+  },
+  buttonStep: {
+    color: 'green',
+    cursor: 'pointer',
+    width: '40px',
+    height: '40px'
   }
 }
 

@@ -11,7 +11,7 @@ import GridContainer from 'components/Grid/GridContainer'
 import DialogContent from '@material-ui/core/DialogContent'
 import withStyles from '@material-ui/core/styles/withStyles'
 
-import { betsMatch } from 'variables/charts'
+import { betsMatch } from 'variables/generales'
 
 const styles = {
   titleContairner: {
@@ -37,7 +37,7 @@ class Bets extends React.Component {
 
   handleClose() { this.setState({ open: false }) }
 
-  getRows(idToS, idMatch) {
+  getRows() {
     if(betsMatch) {
       return betsMatch.bets.map( bet => {
         return [bet.name, bet.local.bet.toString(), '-', bet.visitant.bet.toString()]
@@ -47,7 +47,7 @@ class Bets extends React.Component {
   }
 
   render(){
-    const { classes, home, away, idToS, idMatch } = this.props
+    const { classes, home, away, idToS } = this.props
 
     return (
       <GridContainer>
@@ -68,7 +68,7 @@ class Bets extends React.Component {
                   {this.state.open &&
                     <Table
                       tableHead={['Nombre', home.name, '', away.name]}
-                      tableData={this.getRows(idToS, idMatch)}
+                      tableData={this.getRows(idToS)}
                     />}
                 </CardBody>
               </Card>
@@ -86,7 +86,6 @@ Bets.propTypes = {
   home: PropTypes.object,
   away: PropTypes.object,
   idToS: PropTypes.number,
-  idMatch: PropTypes.number
 }
 
 export default withStyles(styles)(Bets)

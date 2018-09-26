@@ -1,11 +1,8 @@
 import React from 'react'
-import Match from 'components/Stage/Matches'
 import PropTypes from 'prop-types'
-import Card from 'components/Card/Card'
-import Table from 'components/Table/Table'
+import Matches from 'components/Stage/Matches'
 import GridItem from 'components/Grid/GridItem'
-import CardBody from 'components/Card/CardBody'
-import CardHeader from 'components/Card/CardHeader'
+import CustomTable from 'components/Table/CustomTable'
 import GridContainer from 'components/Grid/GridContainer'
 import CustomTabs from 'components/CustomTabs/CustomTabs'
 
@@ -29,7 +26,7 @@ class Torneo extends React.Component {
               return ({
                 tabName: 'Fecha ' + dateMatch.name,
                 tabContent:
-                (<Match
+                (<Matches
                   matches={dateMatch.matches}
                   idToS={id}
                   setBet={this.props.setTournamentBet}
@@ -39,26 +36,18 @@ class Torneo extends React.Component {
           />
         </GridItem>
         {/* ----RANKING DE LOS JUGADORES DEL TORNEO---- */}
-        <GridItem xs={12} sm={12} md={6}>
-          <Card>
-            <CardHeader color='danger'>
-              <h4>Torneo General { tournament.name }</h4>
-              <p>Ranking</p>
-            </CardHeader>
-            <CardBody>
-              <Table
-                tableHeaderColor='danger'
-                tableHead={['Posición', 'Nombre', 'Mail', 'Ptos']}
-                tableData={[
-                  ['1', 'nombre1', 'prode@test.com', '20'],
-                  ['2', 'nombre2', 'prode@test.com', '19'],
-                  ['3', 'nombre3', 'prode@test.com', '15'],
-                  ['4', 'nombre4', 'prode@test.com', '14']
-                ]}
-              />
-            </CardBody>
-          </Card>
-        </GridItem>
+        <CustomTable
+          title={'Fecha General ' + tournament.name }
+          subtitle={'Ranking'}
+          color={'danger'}
+          columns={['Posición', 'Nombre', 'Mail', 'Pts']}
+          data={[
+            ['1', 'nombre1', 'prode@test.com', '12'],
+            ['2', 'nombre2', 'prode@test.com', '11'],
+            ['3', 'nombre3', 'prode@test.com', '9'],
+            ['4', 'nombre4', 'prode@test.com', '5']
+          ]}
+        />
       </GridContainer>
     )
   }

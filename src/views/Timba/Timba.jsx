@@ -48,11 +48,10 @@ class Timba extends React.Component {
                       </span> Usuarios en el torneo: {tournament.amount}
                     </p>
                     <p>Fecha: {tournament.dateMatch}</p>
-                    <p>Posición: {tournament.position}</p>
                   </CardBody>
                   <CardFooter chart>
                     <span></span>
-                    <Chevron className={classes.icon} style={{ cursor: 'pointer' }} onClick={this.viewTournament.bind(this, 'torneo', tournament.id)}/>
+                    <Chevron className={classes.chevron} onClick={this.viewTournament.bind(this, 'torneo', tournament.id)}/>
                   </CardFooter>
                 </Card>
               </GridItem>
@@ -70,13 +69,9 @@ class Timba extends React.Component {
                     <CardIcon color='warning' style={{ width: '7%' }}>
                       <img src={logo} alt='..'style={{ width: '100%' }} />
                     </CardIcon>
-                    <h3 className={classes.cardTitle}>Fecha: {stage.number}</h3>
-                    <p className={classes.cardTitle}>{stage.league}</p>
+                    <h3 className={classes.cardTitle}>{stage.league}</h3>
+                    <p className={classes.cardTitle}>Fecha {stage.number}</p>
                   </CardHeader>
-                  <CardBody>
-                    <p className={classes.cardTitle}>Fecha de Inicio: {stage.begin}</p>
-                    <p className={classes.cardTitle}>Fecha de cierre: {stage.end}</p>
-                  </CardBody>
                   <CardFooter stats>
                     <div className={classes.stats}>
                       <p className={classes.cardCategory}>
@@ -85,7 +80,7 @@ class Timba extends React.Component {
                         </span> Usuarios en la fecha: {stage.amount}
                       </p>
                     </div>
-                    <Chevron className={classes.icon} style={{ cursor: 'pointer' }} onClick={this.viewTournament.bind(this, 'fecha', stage.id)}/>
+                    <Chevron className={classes.chevron} onClick={this.viewTournament.bind(this, 'fecha', stage.id)}/>
                   </CardFooter>
                 </Card>
               </GridItem>

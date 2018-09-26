@@ -1,8 +1,8 @@
 import Ayuda from 'views/Ayuda/Ayuda'
 import Timba from 'views/Timba/Timba'
-import Inicio from 'views/Inicio/Inicio'
 import Fechas from 'views/Fechas/Fechas'
 import Torneos from 'views/Torneos/Torneos'
+import Partido from 'views/Eventos/Partido'
 import UserProfile from 'views/UserProfile/UserProfile'
 
 import Stage from 'views/Fechas/Stage'
@@ -26,9 +26,16 @@ const dashboardRoutes = [
   {
     path: '/fechas',
     sidebarName: 'Fechas',
-    navbarName: 'Fechas',
+    navbarName: 'Fechas disponibles',
     icon: 'calendar_today',
     component: Fechas
+  },
+  {
+    path: '/eventos',
+    sidebarName: 'Eventos',
+    navbarName: 'Próximo evento',
+    icon: 'dashboard',
+    component: Partido
   },
   {
     path: '/ayuda',
@@ -38,16 +45,9 @@ const dashboardRoutes = [
     component: Ayuda
   },
   {
-    path: '/inicio',
-    sidebarName: 'Inicio',
-    navbarName: 'Inicio',
-    icon: 'dashboard',
-    component: Inicio
-  },
-  {
     path: '/usuario',
     sidebarName: 'Usuario',
-    navbarName: 'Usuario',
+    navbarName: 'Perfil de usuario',
     icon: 'account_circle',
     component: UserProfile
   },
@@ -61,7 +61,7 @@ const dashboardRoutes = [
     notDisplay: true,
     component: Stage
   },
-  { redirect: true, path: '/', to: '/inicio', navbarName: '' }
+  { redirect: true, path: '/', to: '/timba', navbarName: '' }
 ]
 
 export default dashboardRoutes

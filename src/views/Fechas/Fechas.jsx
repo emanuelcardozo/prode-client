@@ -11,7 +11,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import SnackbarContent from 'components/Snackbar/SnackbarContent'
 import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
-import { stages } from 'variables/charts'
+import { stages } from 'variables/generales'
 
 class Fechas extends React.Component {
   constructor(props) {
