@@ -9,19 +9,24 @@ import CardHeader from 'components/Card/CardHeader'
 class CustomTable extends React.Component {
 
   render() {
-    const { title, subtitle, color, columns, data } = this.props
+    const { title, color } = this.props
     return (
       <GridItem xs={12} sm={12} md={6}>
         <Card>
           <CardHeader color={ color }>
             <h4>{ title }</h4>
-            <p>{ subtitle }</p>
+            <p>Ranking</p>
           </CardHeader>
           <CardBody>
             <Table
               tableHeaderColor={ color }
-              tableHead={ columns }
-              tableData={ data }
+              tableHead={['Posición', 'Nombre', 'Mail', 'Pts']}
+              tableData={[
+                ['1', 'nombre1', 'prode@test.com', '12'],
+                ['2', 'nombre2', 'prode@test.com', '11'],
+                ['3', 'nombre3', 'prode@test.com', '9'],
+                ['4', 'nombre4', 'prode@test.com', '5']
+              ]}
             />
           </CardBody>
         </Card>
@@ -34,10 +39,7 @@ CustomTable.defaultProps = { tableHeaderColor: 'gray' }
 
 CustomTable.propTypes = {
   title: PropTypes.string,
-  subtitle: PropTypes.string,
-  color: PropTypes.string,
-  columns: PropTypes.array,
-  data: PropTypes.array
+  color: PropTypes.string
 }
 
 export default CustomTable

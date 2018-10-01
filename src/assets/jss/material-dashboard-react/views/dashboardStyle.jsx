@@ -72,10 +72,28 @@ const dashboardStyle = {
       lineHeight: '1'
     }
   },
+  footer: {
+    width: '100%',
+    height: '35px',
+    background: 'transparent',
+    display: 'inline-flex'
+  },
+  container: {
+    minHeight: '81vh',
+    overflow: 'hidden',
+    display: 'block',
+    position: 'relative',
+  },
   cover: {
     width: '70px',
     height: '70px',
     margin: '10px'
+  },
+  line: {
+    width: '100%',
+    height: '5px',
+    border: 'none',
+    backgroundColor: '#EEEEEE'
   },
   paperContainer: {
     boxShadow: 'unset!important'
@@ -100,6 +118,37 @@ const dashboardStyle = {
     cursor: 'pointer',
     width: '40px',
     height: '40px'
+  },
+  inputRadio: {
+    display: 'inline-block',
+    width: '25px',
+    height: '25px',
+    cursor: 'pointer'
+  },
+  tableCell: {
+    textAlign: 'center'
+  },
+  selectOptions: {
+    cursor: 'pointer',
+    width: '40px',
+    height: '30px',
+    fontSize: '15px',
+    border: 'none',
+    backgroundColor: 'white'
+  },
+  headerTitle: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  headerTeams: {
+    display: 'flex',
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+  headerGoals: {
+    fontSize: '90px',
+    alignSelf: 'center',
+    marginBottom: '30px'
   }
 }
 

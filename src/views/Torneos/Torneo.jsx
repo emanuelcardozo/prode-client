@@ -36,18 +36,7 @@ class Torneo extends React.Component {
           />
         </GridItem>
         {/* ----RANKING DE LOS JUGADORES DEL TORNEO---- */}
-        <CustomTable
-          title={'Fecha General ' + tournament.name }
-          subtitle={'Ranking'}
-          color={'danger'}
-          columns={['Posición', 'Nombre', 'Mail', 'Pts']}
-          data={[
-            ['1', 'nombre1', 'prode@test.com', '12'],
-            ['2', 'nombre2', 'prode@test.com', '11'],
-            ['3', 'nombre3', 'prode@test.com', '9'],
-            ['4', 'nombre4', 'prode@test.com', '5']
-          ]}
-        />
+        <CustomTable title={'Fecha General ' + tournament.name } color={'danger'} />
       </GridContainer>
     )
   }

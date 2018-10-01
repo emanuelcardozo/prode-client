@@ -33,18 +33,7 @@ class Stage extends React.Component {
           </Card>
         </GridItem>
         {/* ----RANKING DE LOS JUGADORES DEL TORNEO---- */}
-        <CustomTable
-          title={'Fecha General ' + stage.name }
-          subtitle={'Ranking'}
-          color={'info'}
-          columns={['Posición', 'Nombre', 'Mail', 'Pts']}
-          data={[
-            ['1', 'nombre1', 'prode@test.com', '12'],
-            ['2', 'nombre2', 'prode@test.com', '11'],
-            ['3', 'nombre3', 'prode@test.com', '9'],
-            ['4', 'nombre4', 'prode@test.com', '5']
-          ]}
-        />
+        <CustomTable title={'Fecha General ' + stage.name } color={'info'} />
       </GridContainer>
     )
   }

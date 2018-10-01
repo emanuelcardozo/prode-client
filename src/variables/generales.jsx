@@ -495,7 +495,7 @@ const stages = [
       { schedule: { dayOfWeek: null, date: '23/9', hour: '13:15' }, local: { name: 'Gimnasia', img: 'http://www.escudosdefutbolyequipaciones.com/images_esc3/ESPA/CATALU%D1A/escudos_min/MIN_ESC_F.C.%20BARCELONA.png' }, visitant: { name: 'Rosario Central', img: 'https://ugc.kn3.net/i/origin/http://lh4.ggpht.com/_gHhBxs3JECA/TO7EInnjZhI/AAAAAAAAALc/dhysgzqUE_I/Arsenal.png' }, state: 'Pending' },
       { schedule: { dayOfWeek: null, date: '23/9', hour: '17:45' }, local: { name: 'Boca Juniors', img: 'http://www.escudosdefutbolyequipaciones.com/images_esc3/ESPA/CATALU%D1A/escudos_min/MIN_ESC_F.C.%20BARCELONA.png' }, visitant: { name: 'River Plate', img: 'https://ugc.kn3.net/i/origin/http://lh4.ggpht.com/_gHhBxs3JECA/TO7EInnjZhI/AAAAAAAAALc/dhysgzqUE_I/Arsenal.png' }, state: 'Pending' },
       { schedule: { dayOfWeek: null, date: '24/9', hour: '19:00' }, local: { name: 'Aldosivi', img: 'http://www.escudosdefutbolyequipaciones.com/images_esc3/ESPA/CATALU%D1A/escudos_min/MIN_ESC_F.C.%20BARCELONA.png' }, visitant: { name: 'Belgrano', img: 'https://ugc.kn3.net/i/origin/http://lh4.ggpht.com/_gHhBxs3JECA/TO7EInnjZhI/AAAAAAAAALc/dhysgzqUE_I/Arsenal.png' }, state: 'Pending' },
-      { schedule: { dayOfWeek: null, date: '24/9', hour: '21:00' }, local: { name: 'Racing', img: 'http://www.escudosdefutbolyequipaciones.com/images_esc3/ESPA/CATALU%D1A/escudos_min/MIN_ESC_F.C.%20BARCELONA.png' }, visitant: { name: 'Unión', img: 'https://ugc.kn3.net/i/origin/http://lh4.ggpht.com/_gHhBxs3JECA/TO7EInnjZhI/AAAAAAAAALc/dhysgzqUE_I/Arsenal.png' }, state: 'Pending' }
+      { schedule: { dayOfWeek: null, date: '24/9', hour: '21:00' }, local: { name: 'Racing', img: 'https://ssl.gstatic.com/onebox/media/sports/logos/0iShHhASp5q1SL4JhtwJiw_96x96.png' }, visitant: { name: 'Unión', img: 'https://ssl.gstatic.com/onebox/media/sports/logos/PWRLYBJqlGrAAsKkUN6eng_96x96.png' }, state: 'Pending' }
     ]
   }
 ]
@@ -522,14 +522,24 @@ const betsMatch = {
 }
 
 const eventMacth = {
-  id: 1, tournament: 'COPA LIBERTADORES', date: 'Mie, 10/2, 7:30 PM', stage: 'Cuartos de final - Leg 2 of 2', stadium: 'San Paolo',
-  home: { id: 1, name: 'Napoli', img: 'https://ssl.gstatic.com/onebox/media/sports/logos/PWRLYBJqlGrAAsKkUN6eng_96x96.png', winProb: 27},
-  away: { id: 2, name: 'Liverpool', img: 'https://ssl.gstatic.com/onebox/media/sports/logos/0iShHhASp5q1SL4JhtwJiw_96x96.png', winProb: 47}
+  id: 1, tournament: 'CHAMPIONS LEAGUE', date: 'Mie 10/2, 15:30 PM', stage: 'Clasificación - Leg 2 of 2', stadium: 'San Paolo',
+  home: { id: 1234, name: 'Napoli', img: 'https://ssl.gstatic.com/onebox/media/sports/logos/PWRLYBJqlGrAAsKkUN6eng_96x96.png' },
+  away: { id: 4321, name: 'Liverpool', img: 'https://ssl.gstatic.com/onebox/media/sports/logos/0iShHhASp5q1SL4JhtwJiw_96x96.png' }
 }
+
+const rowsTable =  [
+  { name: 'Primera Falta', key: 'cb1' },
+  { name: 'Primer tarjeta amarilla', key: 'cb2' },
+  { name: 'Primer Lateral', key: 'cb3' },
+  { name: 'Primer Corner', key: 'cb4' },
+  { name: 'Primer disparo al arco', key: 'cb5' },
+  { name: 'Primer Offside', key: 'cb5' }
+]
 
 module.exports = {
   leagues,
   stages,
   betsMatch,
-  eventMacth
+  eventMacth,
+  rowsTable,
 }
