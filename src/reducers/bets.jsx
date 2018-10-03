@@ -3,7 +3,7 @@ const bets = (state = [], action) => {
 
   switch (action.type) {
   case 'SET_BET': {
-    const { type, obj } = action.bets
+    const { type, obj } = action.bet
     object[type] = [...state[type]]
     object[type][obj.id] = {...obj}
 
@@ -26,6 +26,10 @@ const bets = (state = [], action) => {
     object.matches[idToS].matches[idMatch].visitant.bet = visitant
 
     return ({ ...object })
+  }
+
+  case 'SET_BET_ON_MATCH': {
+    return ({ ...state, match: action.bet})
   }
 
   default:

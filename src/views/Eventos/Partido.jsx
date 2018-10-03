@@ -20,21 +20,24 @@ class Partido extends React.Component {
     const goals = Array.from(document.getElementsByTagName('select'))
     const inputs = Array.from(document.getElementsByTagName('input'))
     const result = inputs.filter(word => word.checked)
-    const gHome = goals[0].value
-    const gAway = goals[1].value
-    const Foul = result[0].value
-    const yCard = result[1].value
-    const Lateral = result[2].value
-    const Corner = result[3].value
-    const sOnTarget = result[4].value
-    const offside = result[5].value
+    if(result.length === 6) {
+      const gHome = goals[0].value
+      const gAway = goals[1].value
+      const foul = result[0].value
+      const yCard = result[1].value
+      const lateral = result[2].value
+      const corner = result[3].value
+      const sOnTarget = result[4].value
+      const offside = result[5].value
 
-    console.log(gHome, gAway, Foul, yCard, Lateral, Corner, sOnTarget, offside)
+      this.props.setBetOnMatch({ gHome, gAway, foul, yCard, lateral, corner, sOnTarget, offside })
+    }
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, bets } = this.props
     const { home, away } = eventMacth
+
     return (
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
@@ -42,10 +45,10 @@ class Partido extends React.Component {
             <HeaderMatch eventMacth={eventMacth} />
             <hr className={classes.line}/>
             <CardBody>
-              <TableMatch eventMacth={eventMacth}/>
+              <TableMatch eventMacth={eventMacth} bets={bets.match}/>
             </CardBody>
             <CardFooter>
-              <Games onClick={this.betOnMatch} />
+              <Games onClick={this.betOnMatch.bind(this)} style={{ cursor: 'pointer' }}/>
             </CardFooter>
           </Card>
         </GridItem>
@@ -56,7 +59,9 @@ class Partido extends React.Component {
 }
 
 Partido.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  bets: PropTypes.object,
+  setBetOnMatch: PropTypes.func
 }
 
 export default withStyles(dashboardStyle)(Partido)

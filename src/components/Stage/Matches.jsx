@@ -17,6 +17,8 @@ class Matches extends React.Component {
 
   isZero(number) { return number === undefined ? '' : number }
 
+  getColor(goals, bets) { return goals === bets ? 'green' : 'red' }
+
   render(){
     const { matches, classes, idToS, idDate } = this.props
 
@@ -34,9 +36,13 @@ class Matches extends React.Component {
                         <h4 className={classes.cardTitle}><strong>{match.local.name}</strong></h4>
                       </Paper>
                     </Grid>
-                    <Grid item xs>
+                    <Grid item xs style={{ fontSize: '20px', margin: '0px 36px'}}>
                       {match.state === 'Finished' ?
-                        <h3>{this.isZero(match.local.bet)} - {this.isZero(match.visitant.bet)}</h3> :
+                        <h3>
+                          <span style={{ color: this.getColor(match.local.goals, match.local.bet) }}>{this.isZero(match.local.bet)}</span>
+                          -
+                          <span style={{ color: this.getColor(match.visitant.goals, match.visitant.bet) }}>{this.isZero(match.visitant.bet)}</span>
+                        </h3> :
                         <Paper className={classes.betPaperContainer}>
                           <InputGoals
                             classes={classes}

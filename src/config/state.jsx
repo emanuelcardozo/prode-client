@@ -3,8 +3,9 @@ const state = {
   leagues: {},
   bets: {
     tournaments: [],
-    matches: []
-  }
+    matches: [],
+    match: {}
+  },
 }
 
 export default state

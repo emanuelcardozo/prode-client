@@ -35,9 +35,7 @@ class Main extends React.Component {
     }
     window.addEventListener('resize', this.resizeFunction)
 
-    SDK.getLeagues(function(response) {
-      self.props.setLeagues(response)
-    })
+    SDK.getLeagues((response) => { self.props.setLeagues(response) })
   }
 
   componentDidUpdate(e) {

@@ -9,7 +9,7 @@ class Footer extends React.Component {
     const { setBet } = this.props
 
     return (
-      <div style={{ display: 'inline-flex', width: '100%' }}>
+      <div style={{ width: '100%' }}>
         <Fechas setBet={setBet} />
         <Torneos setBet={setBet} />
       </div>

@@ -12,15 +12,40 @@ import { rowsTable } from 'variables/generales'
 class TableMatch extends React.Component {
 
   getSelectOptions(id) {
-    var row = []
+    var options = []
     for(var i = 0; i < 10; i++) {
-      row.push(<option value={i} key={id + i}>{i}</option>)
+      options.push(<option value={i} key={id + i}>{i}</option>)
     }
-    return row
+    return options
+  }
+
+  isChecked(index, id) {
+    const { corner, foul, lateral, offside, sOnTarget, yCard } = this.props.bets
+    var value = false
+    switch (index) {
+    case 0:
+      value = id === foul
+      break
+    case 1:
+      value = id === yCard
+      break
+    case 2:
+      value = id === lateral
+      break
+    case 3:
+      value = id === corner
+      break
+    case 4:
+      value = id === sOnTarget
+      break
+    default:
+      value = id === offside
+    }
+    return value
   }
 
   render() {
-    const { classes, eventMacth } = this.props
+    const { classes, eventMacth, bets } = this.props
     const { home, away } = eventMacth
 
     return (
@@ -35,13 +60,13 @@ class TableMatch extends React.Component {
         <TableBody>
           <TableRow>
             <TableCell className={classes.tableCell}>
-              <select className={classes.selectOptions}>
+              <select className={classes.selectOptions} defaultValue={bets.gHome}>
                 {this.getSelectOptions(home.id.toString())}
               </select>
             </TableCell>
             <TableCell className={classes.tableCell}>Goles</TableCell>
             <TableCell className={classes.tableCell}>
-              <select className={classes.selectOptions}>
+              <select className={classes.selectOptions} defaultValue={bets.gAway}>
                 {this.getSelectOptions(away.id.toString())}
               </select>
             </TableCell>
@@ -50,11 +75,11 @@ class TableMatch extends React.Component {
             return (
               <TableRow key={index}>
                 <TableCell className={classes.tableCell}>
-                  <input type='radio' className={classes.inputRadio} name={index} value={home.id} />
+                  <input type='radio' className={classes.inputRadio} name={index} value={home.id} defaultChecked={this.isChecked(index, home.id.toString())} />
                 </TableCell>
                 <TableCell className={classes.tableCell}>{row.name}</TableCell>
                 <TableCell className={classes.tableCell}>
-                  <input type='radio' className={classes.inputRadio} name={index} value={away.id} />
+                  <input type='radio' className={classes.inputRadio} name={index} value={away.id} defaultChecked={this.isChecked(index, away.id.toString())}/>
                 </TableCell>
               </TableRow>
             )
@@ -67,6 +92,7 @@ class TableMatch extends React.Component {
 
 TableMatch.propTypes = {
   classes: PropTypes.object.isRequired,
+  bets: PropTypes.object,
   eventMacth: PropTypes.object
 }
 
