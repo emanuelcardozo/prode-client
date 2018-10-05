@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import logo from 'assets/img/balon.png'
 import Card from 'components/Card/Card'
-import Footer from 'components/Footer/Footer'
 import CardIcon from 'components/Card/CardIcon'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
@@ -19,9 +18,11 @@ class Timba extends React.Component {
   viewTournament(type, id) { this.props.history.push('/' + type + '/' + id) }
 
   render() {
-    const { classes, bets, setBet } = this.props
+    const { classes, bets } = this.props
     const tournamentsBet = bets.tournaments
     const stagesBet = bets.matches
+
+    if(tournamentsBet.length === 0) this.props.history.push('/torneos')
 
     return (
       <div>
@@ -83,9 +84,6 @@ class Timba extends React.Component {
               )
             })}
           </GridContainer>
-        </div>
-        <div className={classes.footer}>
-          <Footer setBet={setBet} />
         </div>
       </div>
     )

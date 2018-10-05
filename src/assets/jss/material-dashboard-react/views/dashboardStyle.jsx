@@ -119,6 +119,15 @@ const dashboardStyle = {
     width: '40px',
     height: '40px'
   },
+  button: {
+    backgroundColor: 'green',
+    color: 'white',
+    width: '110px',
+    borderRadius: '25px',
+    '&:hover': {
+      color: 'black'
+    }
+  },
   inputRadio: {
     display: 'inline-block',
     width: '25px',

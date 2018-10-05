@@ -5,7 +5,7 @@ import {
   successBoxShadow,
   warningBoxShadow,
   dangerBoxShadow,
-  roseBoxShadow
+  greyBoxShadow
 } from 'assets/jss/material-dashboard-react.jsx'
 
 const snackbarContentStyle = {
@@ -58,10 +58,10 @@ const snackbarContentStyle = {
     color: '#ffffff',
     ...primaryBoxShadow
   },
-  rose: {
+  grey: {
     backgroundColor: '#eb3573',
     color: '#ffffff',
-    ...roseBoxShadow
+    ...greyBoxShadow
   },
   message: {
     padding: '0',
@@ -100,7 +100,7 @@ const snackbarContentStyle = {
   primaryIcon: {
     color: '#af2cc5'
   },
-  roseIcon: {
+  greyIcon: {
     color: '#eb3573'
   },
   iconMessage: {

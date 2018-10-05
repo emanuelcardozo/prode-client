@@ -21,22 +21,23 @@ class Torneo extends React.Component {
         <GridItem xs={12} sm={12} md={6}>
           <CustomTabs
             title={tournament.name}
-            headerColor='danger'
+            headerColor='#abb2bf'
             tabs={tournament.dateMatches.map((dateMatch) => {
               return ({
-                tabName: 'Fecha ' + dateMatch.name,
+                tabName: dateMatch.name,
                 tabContent:
                 (<Matches
                   matches={dateMatch.matches}
                   idToS={id}
                   setBet={this.props.setTournamentBet}
-                  idDate={dateMatch.name} />
+                  idDate={dateMatch.name}
+                  state={dateMatch.state} />
                 )})
             })}
           />
         </GridItem>
         {/* ----RANKING DE LOS JUGADORES DEL TORNEO---- */}
-        <CustomTable title={'Fecha General ' + tournament.name } color={'danger'} />
+        <CustomTable title={tournament.name} color={'danger'} />
       </GridContainer>
     )
   }

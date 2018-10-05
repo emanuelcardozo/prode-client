@@ -52,8 +52,7 @@ class Bets extends React.Component {
     return (
       <GridContainer>
         <Button onClick={this.handleClickOpen}>
-          Predicciones
-          <List />
+          Predicciones &nbsp; <List />
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose} scroll={'paper'}>
           <DialogContent>

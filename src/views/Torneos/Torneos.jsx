@@ -1,53 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Card from 'components/Card/Card'
+import Button from '@material-ui/core/Button'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
 import CardHeader from 'components/Card/CardHeader'
+import CardFooter from 'components/Card/CardFooter'
+import Play from '@material-ui/icons/PlayCircleFilled'
 import GridContainer from 'components/Grid/GridContainer'
-import SnackbarContent from 'components/Snackbar/SnackbarContent'
-import Snackbar from '@material-ui/core/Snackbar'
-import Video from '@material-ui/icons/VideogameAsset'
 import withStyles from '@material-ui/core/styles/withStyles'
+import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
 import { leagues } from 'variables/generales'
 
-const styles = {
-  cardTitleWhite: {
-    color: '#FFFFFF',
-    marginTop: '0px',
-    minHeight: 'auto',
-    fontWeight: '300',
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    marginBottom: '3px',
-    textDecoration: 'none',
-    '& small': {
-      color: '#777',
-      fontSize: '65%',
-      fontWeight: '400',
-      lineHeight: '1'
-    }
-  }
-}
-
 class Torneos extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { open: false }
 
-    this.handleClose = this.handleClose.bind(this)
-  }
-
-  handleClick(index) {
+  viewTournament(type, index) {
     const tournament = { ...leagues[index] }
-    this.props.setBet({ obj: tournament, type: 'tournaments'})
-    this.setState({ open: true })
-  }
-
-  handleClose(event, reason) {
-    if (reason === 'clickaway')
-      return
-    this.setState({ open: false })
+    this.props.setBet({ obj: tournament, type: 'tournaments' })
+    this.props.history.push('/' + type + '/' + tournament.id)
   }
 
   render(){
@@ -55,35 +26,28 @@ class Torneos extends React.Component {
 
     return (
       <GridContainer>
-        <Snackbar
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-          open={this.state.open}
-          autoHideDuration={2000}
-          onClose={this.handleClose}
-          ContentProps={{ 'aria-describedby': 'message-id' }}
-          message={<span id="message-id">El torneo se agregó a Mi Timba</span>}
-        />
-        <GridItem xs={12} sm={12} md={12}>
-          <Card>
-            <CardHeader color='success'>
-              <h4 className={classes.cardTitleWhite}>Torneos</h4>
-            </CardHeader>
-            <CardBody>
-              {leagues.map((league, index) => {
-                return (
-                  <div key={index} style={{ cursor: 'pointer' }}>
-                    <SnackbarContent
-                      message={league.name + ' - ' + league.dateMatch}
-                      color='warning'
-                      icon={Video}
-                      click={this.handleClick.bind(this, index)}
-                    />
-                  </div>
-                )
-              })}
-            </CardBody>
-          </Card>
-        </GridItem>
+        {leagues.map((tournament, index) => {
+          if(!tournament) return null
+          return (
+            <GridItem xs={12} sm={12} md={4} key={index}>
+              <Card chart>
+                <CardHeader color='grey'>
+                  <img src={tournament.img} alt='...' style={{ width: '100%' }}/>
+                </CardHeader>
+                <CardBody>
+                  <h4 className={classes.cardTitle}>{tournament.name}</h4>
+                  <p>Fecha {tournament.dateMatch}</p>
+                </CardBody>
+                <CardFooter chart>
+                  <span></span>
+                  <Button variant="contained" size="small" className={classes.button} onClick={this.viewTournament.bind(this, 'torneo', index)}>
+                    Jugar &nbsp; <Play className={classes.chevron} />
+                  </Button>
+                </CardFooter>
+              </Card>
+            </GridItem>
+          )
+        })}
       </GridContainer>
     )
   }
@@ -92,7 +56,8 @@ class Torneos extends React.Component {
 Torneos.propTypes = {
   classes: PropTypes.object.isRequired,
   leagues: PropTypes.object,
+  history: PropTypes.object,
   setBet: PropTypes.func
 }
 
-export default withStyles(styles)(Torneos)
+export default withStyles(dashboardStyle)(Torneos)

@@ -59,7 +59,7 @@ CustomTable.propTypes = {
     'danger',
     'success',
     'info',
-    'rose',
+    'grey',
     'gray'
   ]),
   tableHead: PropTypes.arrayOf(PropTypes.string),

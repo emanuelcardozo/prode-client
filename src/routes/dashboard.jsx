@@ -1,7 +1,7 @@
 import Ayuda from 'views/Ayuda/Ayuda'
 import Timba from 'views/Timba/Timba'
 // import Fechas from 'views/Fechas/Fechas'
-// import Torneos from 'views/Torneos/Torneos'
+import Torneos from 'views/Torneos/Torneos'
 import Partido from 'views/Eventos/Partido'
 import UserProfile from 'views/UserProfile/UserProfile'
 
@@ -16,13 +16,13 @@ const dashboardRoutes = [
     icon: 'attach_money',
     component: Timba
   },
-  // {
-  //   path: '/torneos',
-  //   sidebarName: 'Torneos',
-  //   navbarName: 'Lista de Torneos',
-  //   icon: 'content_paste',
-  //   component: Torneos
-  // },
+  {
+    path: '/torneos',
+    sidebarName: 'Torneos',
+    navbarName: 'Lista de Torneos',
+    icon: 'content_paste',
+    component: Torneos
+  },
   // {
   //   path: '/fechas',
   //   sidebarName: 'Fechas',

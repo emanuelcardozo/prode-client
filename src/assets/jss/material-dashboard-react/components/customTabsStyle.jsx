@@ -15,7 +15,7 @@ const customTabsStyle = {
     minHeight: "unset !important",
     overflowX: "visible"
   },
-  tabRootButton: {
+  tabRootButtonRed: {
     minHeight: "unset !important",
     minWidth: "unset !important",
     width: "unset !important",
@@ -26,7 +26,24 @@ const customTabsStyle = {
     borderRadius: "3px",
     lineHeight: "24px",
     border: "0 !important",
-    color: "#fff !important",
+    color: "red !important",
+    marginLeft: "4px",
+    "&:last-child": {
+      marginLeft: "0px"
+    }
+  },
+  tabRootButtonGreen: {
+    minHeight: "unset !important",
+    minWidth: "unset !important",
+    width: "unset !important",
+    height: "unset !important",
+    maxWidth: "unset !important",
+    maxHeight: "unset !important",
+    padding: "10px 15px",
+    borderRadius: "3px",
+    lineHeight: "24px",
+    border: "0 !important",
+    color: "green !important",
     marginLeft: "4px",
     "&:last-child": {
       marginLeft: "0px"
