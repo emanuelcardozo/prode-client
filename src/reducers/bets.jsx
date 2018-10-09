@@ -3,9 +3,9 @@ const bets = (state = [], action) => {
 
   switch (action.type) {
   case 'SET_BET': {
-    const { type, obj } = action.bet
-    object[type] = [...state[type]]
-    object[type][obj.id] = {...obj}
+    const { obj, type } = action.bet
+    object[type] = [ ...state[type] ]
+    object[type][obj.id] = { ...obj }
 
     return ({ ...state, ...object })
   }

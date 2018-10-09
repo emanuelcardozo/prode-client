@@ -1,7 +1,7 @@
-import leagues from './sdk/leagues'
+import tournaments from './sdk/tournaments'
 
 const SDK = {
-  ...leagues
+  ...tournaments
 }
 
 export default SDK

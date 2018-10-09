@@ -122,7 +122,8 @@ const dashboardStyle = {
   button: {
     backgroundColor: 'green',
     color: 'white',
-    width: '110px',
+    width: '70px',
+    height: '40px',
     borderRadius: '25px',
     '&:hover': {
       color: 'black'

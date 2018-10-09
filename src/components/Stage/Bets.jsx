@@ -84,7 +84,7 @@ Bets.propTypes = {
   setBet: PropTypes.func,
   home: PropTypes.object,
   away: PropTypes.object,
-  idToS: PropTypes.number,
+  idToS: PropTypes.string,
 }
 
 export default withStyles(styles)(Bets)

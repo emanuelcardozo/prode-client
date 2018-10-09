@@ -1,6 +1,6 @@
 const state = {
   user: {},
-  leagues: {},
+  tournaments: [],
   bets: {
     tournaments: [],
     matches: [],

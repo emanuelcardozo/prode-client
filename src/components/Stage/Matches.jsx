@@ -25,6 +25,7 @@ class Matches extends React.Component {
     return(
       <GridContainer>
         {matches.map((match, index) => {
+          const state = match.state === 'Finished'
           return (
             <GridItem xs={12} sm={12} md={12} key={index}>
               <Card chart>
@@ -32,16 +33,16 @@ class Matches extends React.Component {
                   <Grid container spacing={24} direction="row" align="center">
                     <Grid item xs>
                       <Paper xs={3} className={classes.paperContainer}>
-                        <CardMedia className={classes.cover} image={match.local.img} />
-                        <h4 className={classes.cardTitle}><strong>{match.local.name}</strong></h4>
+                        <CardMedia className={classes.cover} image={match.home.logo} />
+                        <h4 className={classes.cardTitle}><strong>{match.home.name}</strong></h4>
                       </Paper>
                     </Grid>
                     <Grid item xs style={{ fontSize: '20px', margin: '0px 36px'}}>
-                      {match.state === 'Finished' ?
+                      { state ?
                         <h3>
-                          <span style={{ color: this.getColor(match.local.goals, match.local.bet) }}>{this.isZero(match.local.bet)}</span>
+                          <span style={{ color: this.getColor(match.home.goals, match.home.bet) }}>{this.isZero(match.home.bet)}</span>
                           -
-                          <span style={{ color: this.getColor(match.visitant.goals, match.visitant.bet) }}>{this.isZero(match.visitant.bet)}</span>
+                          <span style={{ color: this.getColor(match.away.goals, match.away.bet) }}>{this.isZero(match.away.bet)}</span>
                         </h3> :
                         <Paper className={classes.betPaperContainer}>
                           <InputGoals
@@ -64,23 +65,23 @@ class Matches extends React.Component {
                     </Grid>
                     <Grid item xs>
                       <Paper className={classes.paperContainer}>
-                        <CardMedia className={classes.cover} image={match.visitant.img} />
-                        <h4 className={classes.cardTitle}><strong>{match.visitant.name}</strong></h4>
+                        <CardMedia className={classes.cover} image={match.away.logo} />
+                        <h4 className={classes.cardTitle}><strong>{match.away.name}</strong></h4>
                       </Paper>
                     </Grid>
                   </Grid>
                 </CardBody>
                 <CardFooter chart>
                   <div>
-                    {match.state === 'Pending' ?
+                    { !state ?
                       <div>
-                        <span>Fecha: {match.schedule.date} {match.schedule.hour}</span><br/>
-                        <span>Predicción: {match.local.name} {this.isZero(match.local.bet)} - {this.isZero(match.visitant.bet)} {match.visitant.name}</span>
+                        <span>Fecha: {match.date}</span><br/>
+                        <span>Predicción: {match.home.name} {this.isZero(match.home.bet)} - {this.isZero(match.away.bet)} {match.away.name}</span>
                       </div> :
-                      <span>Resultado: {match.local.name} {match.local.goals} - {match.visitant.goals} {match.visitant.name}</span>
+                      <span>Resultado: {match.home.name} {match.home.goals} - {match.away.goals} {match.away.name}</span>
                     }
                   </div>
-                  {match.state !== 'Pending' && <Bets home={match.local} away={match.visitant} idToS={idToS} idMatch={index + 1} />}
+                  { state && <Bets home={match.home} away={match.away} idToS={idToS} idMatch={index + 1} />}
                 </CardFooter>
               </Card>
             </GridItem>
@@ -95,7 +96,7 @@ Matches.propTypes = {
   classes: PropTypes.object,
   dateMatch: PropTypes.object,
   matches: PropTypes.array,
-  idToS: PropTypes.number,
+  idToS: PropTypes.string,
   setBet: PropTypes.func,
   idDate: PropTypes.string
 }

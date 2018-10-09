@@ -5,16 +5,25 @@ import GridItem from 'components/Grid/GridItem'
 import CustomTable from 'components/Table/CustomTable'
 import GridContainer from 'components/Grid/GridContainer'
 import CustomTabs from 'components/CustomTabs/CustomTabs'
+import SDK from 'library/SDK'
 
 class Torneo extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { matches: [] }
+
+    const self = this
+    const id = this.props.computedMatch.params.id
+    SDK.getTournamentStage(id, function(response) { self.setState({ matches: response }) })
+  }
+
 
   render(){
     const { bets } = this.props
-    const id = parseInt(this.props.computedMatch.params.id, 10)
+    const id = this.props.computedMatch.params.id
     const tournament = bets.tournaments[id]
 
     if(!tournament) return null
-
     return (
       <GridContainer>
         {/* ----LISTA DE FECHAS DEL TORNEO---- */}
@@ -22,16 +31,16 @@ class Torneo extends React.Component {
           <CustomTabs
             title={tournament.name}
             headerColor='#abb2bf'
-            tabs={tournament.dateMatches.map((dateMatch) => {
+            tabs={this.state.matches.map((dateMatch, index) => {
               return ({
-                tabName: dateMatch.name,
+                tabName: (index + 1).toString(),
                 tabContent:
                 (<Matches
                   matches={dateMatch.matches}
                   idToS={id}
                   setBet={this.props.setTournamentBet}
-                  idDate={dateMatch.name}
-                  state={dateMatch.state} />
+                  idDate={index.toString()}
+                  state={!dateMatch.state} />
                 )})
             })}
           />

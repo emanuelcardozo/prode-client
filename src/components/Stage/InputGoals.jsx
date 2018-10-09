@@ -15,7 +15,7 @@ class InputGoals extends React.Component {
     const idMatch = index
     const idToS = this.props.idToS
     var params = { local, visitant, idMatch, idToS }
-    if(this.props.idDate) params['idDate'] = parseInt(this.props.idDate, 10) - 1
+    if(this.props.idDate) params['idDate'] = parseInt(this.props.idDate, 10)
 
     this.props.setBet(params)
   }
@@ -61,7 +61,7 @@ InputGoals.propTypes = {
   classes: PropTypes.object,
   dateMatch: PropTypes.object,
   matches: PropTypes.array,
-  idToS: PropTypes.number,
+  idToS: PropTypes.string,
   index: PropTypes.number,
   setBet: PropTypes.func,
   type: PropTypes.string,

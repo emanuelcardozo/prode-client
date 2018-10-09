@@ -7,7 +7,7 @@ import Main from './layouts/Inicio/Main'
 const mapStateToProps = state => {
   return {
     user: state.user,
-    leagues: state.leagues,
+    tournaments: state.tournaments,
     bets: state.bets
   }
 }

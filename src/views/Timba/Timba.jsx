@@ -17,12 +17,16 @@ class Timba extends React.Component {
 
   viewTournament(type, id) { this.props.history.push('/' + type + '/' + id) }
 
+  componentDidMount() {
+    const { bets } = this.props
+    const tournamentsBet = bets.tournaments
+    if(tournamentsBet.length === 0) this.props.history.push('/torneos')
+  }
+
   render() {
     const { classes, bets } = this.props
     const tournamentsBet = bets.tournaments
     const stagesBet = bets.matches
-
-    if(tournamentsBet.length === 0) this.props.history.push('/torneos')
 
     return (
       <div>

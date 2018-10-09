@@ -6,27 +6,25 @@ import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
 import CardHeader from 'components/Card/CardHeader'
 import CardFooter from 'components/Card/CardFooter'
-import Play from '@material-ui/icons/PlayCircleFilled'
 import GridContainer from 'components/Grid/GridContainer'
 import withStyles from '@material-ui/core/styles/withStyles'
 import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
-import { leagues } from 'variables/generales'
-
 class Torneos extends React.Component {
 
   viewTournament(type, index) {
-    const tournament = { ...leagues[index] }
-    this.props.setBet({ obj: tournament, type: 'tournaments' })
+    const { tournaments } = this.props
+    const tournament = { ...tournaments[index] }
+    this.props.setBet({ obj: tournament, type: 'tournaments'})
     this.props.history.push('/' + type + '/' + tournament.id)
   }
 
   render(){
-    const { classes } = this.props
+    const { classes, tournaments } = this.props
 
     return (
       <GridContainer>
-        {leagues.map((tournament, index) => {
+        {tournaments.map((tournament, index) => {
           if(!tournament) return null
           return (
             <GridItem xs={12} sm={12} md={4} key={index}>
@@ -41,7 +39,7 @@ class Torneos extends React.Component {
                 <CardFooter chart>
                   <span></span>
                   <Button variant="contained" size="small" className={classes.button} onClick={this.viewTournament.bind(this, 'torneo', index)}>
-                    Jugar &nbsp; <Play className={classes.chevron} />
+                    Jugar
                   </Button>
                 </CardFooter>
               </Card>
@@ -55,7 +53,7 @@ class Torneos extends React.Component {
 
 Torneos.propTypes = {
   classes: PropTypes.object.isRequired,
-  leagues: PropTypes.object,
+  tournaments: PropTypes.array,
   history: PropTypes.object,
   setBet: PropTypes.func
 }
