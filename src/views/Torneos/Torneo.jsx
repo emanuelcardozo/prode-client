@@ -1,11 +1,11 @@
 import React from 'react'
+import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
 import Matches from 'components/Stage/Matches'
 import GridItem from 'components/Grid/GridItem'
 import CustomTable from 'components/Table/CustomTable'
 import GridContainer from 'components/Grid/GridContainer'
 import CustomTabs from 'components/CustomTabs/CustomTabs'
-import SDK from 'library/SDK'
 
 class Torneo extends React.Component {
   constructor(props) {
@@ -17,7 +17,6 @@ class Torneo extends React.Component {
     SDK.getTournamentStage(id, function(response) { self.setState({ matches: response }) })
   }
 
-
   render(){
     const { bets } = this.props
     const id = this.props.computedMatch.params.id
@@ -26,7 +25,6 @@ class Torneo extends React.Component {
     if(!tournament) return null
     return (
       <GridContainer>
-        {/* ----LISTA DE FECHAS DEL TORNEO---- */}
         <GridItem xs={12} sm={12} md={6}>
           <CustomTabs
             title={tournament.name}
@@ -45,7 +43,6 @@ class Torneo extends React.Component {
             })}
           />
         </GridItem>
-        {/* ----RANKING DE LOS JUGADORES DEL TORNEO---- */}
         <CustomTable title={tournament.name} color={'danger'} />
       </GridContainer>
     )

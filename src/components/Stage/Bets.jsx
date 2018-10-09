@@ -59,9 +59,9 @@ class Bets extends React.Component {
             <GridItem xs={12} sm={12} md={12}>
               <Card>
                 <div className={classes.titleContairner}>
-                  <img src={home.img} alt='...' style={{ width: '15%' }} />
+                  <img src={home.logo} alt='...' style={{ width: '15%' }} />
                   <strong className={classes.versus}> VS </strong>
-                  <img src={away.img} alt='...' style={{ width: '15%' }} />
+                  <img src={away.logo} alt='...' style={{ width: '15%' }} />
                 </div>
                 <CardBody>
                   {this.state.open &&

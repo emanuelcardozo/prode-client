@@ -107,11 +107,14 @@ const dashboardStyle = {
     width: '30px !important',
     height: '30px !important'
   },
-  inputField:{
+  inputField: {
     height: '30%',
     margin: '0px 30px',
     alignItems: 'center',
-    textAlignLast: 'end'
+    textAlignLast: 'end',
+    '&:before, &:after': {
+      content: 'none'
+    }
   },
   buttonStep: {
     color: 'green',

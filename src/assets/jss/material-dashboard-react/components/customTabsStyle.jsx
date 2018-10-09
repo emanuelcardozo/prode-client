@@ -13,7 +13,7 @@ const customTabsStyle = {
   },
   tabsRoot: {
     minHeight: "unset !important",
-    overflowX: "visible"
+    overflowX: "hidden"
   },
   tabRootButtonRed: {
     minHeight: "unset !important",

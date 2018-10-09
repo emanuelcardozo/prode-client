@@ -19,7 +19,7 @@ class Matches extends React.Component {
 
   getColor(goals, bets) { return goals === bets ? 'green' : 'red' }
 
-  render(){
+  render() {
     const { matches, classes, idToS, idDate } = this.props
 
     return(

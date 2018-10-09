@@ -10,9 +10,9 @@ import Torneo from 'views/Torneos/Torneo'
 
 const dashboardRoutes = [
   {
-    path: '/timba',
-    sidebarName: 'Mi timba',
-    navbarName: 'Mi Timba',
+    path: '/jugando',
+    sidebarName: 'Jugando',
+    navbarName: 'Jugando',
     icon: 'attach_money',
     component: Timba
   },
