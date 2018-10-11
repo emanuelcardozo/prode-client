@@ -162,6 +162,25 @@ const dashboardStyle = {
     fontSize: '90px',
     alignSelf: 'center',
     marginBottom: '30px'
+  },
+  tournamentContainer: {
+    backgroundPosition: 'center'
+  },
+  tournamentTitle: {
+    color: 'white',
+    fontSize: '20px',
+    fontWeight: '700'
+  },
+  stagesConteiner: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  stage: {
+    width: '30px',
+    height: '30px',
+    margin: '5px',
+    cursor: 'pointer'
   }
 }
 

@@ -33,13 +33,13 @@ class Matches extends React.Component {
                   <Grid container spacing={24} direction="row" align="center">
                     <Grid item xs>
                       <Paper xs={3} className={classes.paperContainer}>
-                        <CardMedia className={classes.cover} image={match.home.logo} />
+                        <CardMedia className={classes.cover} image={match.home.logo.large} />
                         <h4 className={classes.cardTitle}><strong>{match.home.name}</strong></h4>
                       </Paper>
                     </Grid>
-                    <Grid item xs style={{ fontSize: '20px', margin: '0px 36px'}}>
+                    <Grid item xs style={{ fontSize: '20px' }}>
                       { state ?
-                        <h3>
+                        <h3 style={{ minWidth: '220px' }}>
                           <span style={{ color: this.getColor(match.home.goals, match.home.bet) }}>{this.isZero(match.home.bet)}</span>
                           -
                           <span style={{ color: this.getColor(match.away.goals, match.away.bet) }}>{this.isZero(match.away.bet)}</span>
@@ -65,7 +65,7 @@ class Matches extends React.Component {
                     </Grid>
                     <Grid item xs>
                       <Paper className={classes.paperContainer}>
-                        <CardMedia className={classes.cover} image={match.away.logo} />
+                        <CardMedia className={classes.cover} image={match.away.logo.large} />
                         <h4 className={classes.cardTitle}><strong>{match.away.name}</strong></h4>
                       </Paper>
                     </Grid>

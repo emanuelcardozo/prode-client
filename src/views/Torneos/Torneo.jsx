@@ -1,47 +1,82 @@
 import React from 'react'
 import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
+import Card from 'components/Card/Card'
+import Avatar from '@material-ui/core/Avatar'
 import Matches from 'components/Stage/Matches'
 import GridItem from 'components/Grid/GridItem'
+import CardBody from 'components/Card/CardBody'
+import CardHeader from 'components/Card/CardHeader'
 import CustomTable from 'components/Table/CustomTable'
 import GridContainer from 'components/Grid/GridContainer'
-import CustomTabs from 'components/CustomTabs/CustomTabs'
+import withStyles from '@material-ui/core/styles/withStyles'
+import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
 class Torneo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { matches: [] }
+    this.state = { stage: [], container: [] }
 
     const self = this
-    const id = this.props.computedMatch.params.id
-    SDK.getTournamentStage(id, function(response) { self.setState({ matches: response }) })
+    const { id, stage } = self.props.computedMatch.params
+    SDK.getTournamentStage(id, stage, function(response) { self.setState({ stage: response }) })
+    SDK.getListStage(id, function(response) { self.setState({ container: response }) })
+  }
+
+  componentDidUpdate(nextProps) {
+    if(this.props !== nextProps) {
+      const self = this
+      const { id, stage } = self.props.computedMatch.params
+      SDK.getTournamentStage(id, stage,  function(response) { self.setState({ stage: response }) })
+    }
+  }
+
+  newStage(tournamentId, numStage) { this.props.history.push('/torneo/' + tournamentId + '/' + numStage ) }
+
+  listStages() {
+    const { classes, computedMatch } = this.props
+    const { container } = this.state
+    const { id } = computedMatch.params
+
+    var stages = []
+    container.forEach((stage, index) => {
+      const color = stage ? '#d23232' : 'green'
+      stages.push(
+        <Avatar className={classes.stage} style={{ backgroundColor: color }} key={index} onClick={this.newStage.bind(this, id, index+1)}>
+          <strong>{index+1}</strong>
+        </Avatar>
+      )
+    })
+    return stages
   }
 
   render(){
-    const { bets } = this.props
+    const { classes, bets } = this.props
+    const { stage } = this.state
     const id = this.props.computedMatch.params.id
     const tournament = bets.tournaments[id]
 
-    if(!tournament) return null
+    if(!tournament || stage.length === 0) return null
+
     return (
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
-          <CustomTabs
-            title={tournament.name}
-            headerColor='#abb2bf'
-            tabs={this.state.matches.map((dateMatch, index) => {
-              return ({
-                tabName: (index + 1).toString(),
-                tabContent:
-                (<Matches
-                  matches={dateMatch.matches}
-                  idToS={id}
-                  setBet={this.props.setTournamentBet}
-                  idDate={index.toString()}
-                  state={!dateMatch.state} />
-                )})
-            })}
-          />
+          <Card>
+            <CardHeader className={classes.tournamentContainer} style={{ backgroundImage: `url(${tournament.img})` }}>
+              <p className={classes.tournamentTitle}>{tournament.name}</p>
+              <div className={classes.stagesConteiner}>
+                { this.listStages() }
+              </div>
+            </CardHeader>
+            <CardBody>
+              <Matches
+                idToS={id}
+                idDate={'0'}
+                matches={stage.matches}
+                setBet={this.props.setTournamentBet}
+                state={false} />
+            </CardBody>
+          </Card>
         </GridItem>
         <CustomTable title={tournament.name} color={'danger'} />
       </GridContainer>
@@ -51,10 +86,13 @@ class Torneo extends React.Component {
 
 Torneo.propTypes = {
   leagues: PropTypes.object,
+  classes: PropTypes.object,
   bets: PropTypes.object,
+  history: PropTypes.object,
   computedMatch: PropTypes.object,
   location: PropTypes.object,
-  setTournamentBet: PropTypes.func
+  setTournamentBet: PropTypes.func,
+  tournaments: PropTypes.array
 }
 
-export default Torneo
+export default withStyles(dashboardStyle)(Torneo)

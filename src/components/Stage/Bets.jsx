@@ -52,16 +52,16 @@ class Bets extends React.Component {
     return (
       <GridContainer>
         <Button onClick={this.handleClickOpen}>
-          Predicciones &nbsp; <List />
+          <List />
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose} scroll={'paper'}>
           <DialogContent>
             <GridItem xs={12} sm={12} md={12}>
               <Card>
                 <div className={classes.titleContairner}>
-                  <img src={home.logo} alt='...' style={{ width: '15%' }} />
+                  <img src={home.logo.large} alt='...' style={{ width: '15%' }} />
                   <strong className={classes.versus}> VS </strong>
-                  <img src={away.logo} alt='...' style={{ width: '15%' }} />
+                  <img src={away.logo.large} alt='...' style={{ width: '15%' }} />
                 </div>
                 <CardBody>
                   {this.state.open &&

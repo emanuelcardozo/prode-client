@@ -52,7 +52,7 @@ const dashboardRoutes = [
     component: UserProfile
   },
   {
-    path: '/torneo/:id',
+    path: '/torneo/:id/:stage',
     notDisplay: true,
     component: Torneo
   },

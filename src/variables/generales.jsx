@@ -1,7 +1,7 @@
 // ---LISTA DE TORNEOS---
 const leagues = [
   { id: 1, name: 'SUPER LIGA ARGENTINA', dateMatch: '5', amount: 8, position: 1,
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_superliga.png',
+    logo: 'http://www.luiscotte.com/wp-content/uploads/2018/03/super-liga-1024x597.jpg',
     img: 'https://viapais.com.ar/media/cache/resolve/small/https://viapais.com.ar/files/2018/05/20180505010321_32587604_0_body.jpg',
     dateMatches: [
       {
