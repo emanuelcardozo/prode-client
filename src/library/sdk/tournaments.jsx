@@ -18,6 +18,14 @@ const tournaments = {
     $.get(config.api + '/tournaments/' + id + '/states', function(response) {
       callback(response)
     })
+  },
+
+  setBet: function(params) {
+    $.ajax({
+      method: 'POST',
+      data: params,
+      url: config.api + '/bets'
+    })
   }
 }
 

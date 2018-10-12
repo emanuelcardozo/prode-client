@@ -10,26 +10,22 @@ const bets = (state = [], action) => {
     return ({ ...state, ...object })
   }
 
-  case 'SET_TOURNAMENT_BET': {
-    const { local, visitant, idDate, idToS, idMatch } = action.bet
+  case 'SET_MATCH_BET': {
+    const { home_goals, away_goals, index } = action.bet
     object = { ...state }
-    object.tournaments[idToS].dateMatches[idDate].matches[idMatch].local.bet = local
-    object.tournaments[idToS].dateMatches[idDate].matches[idMatch].visitant.bet = visitant
-
-    return ({ ...object })
-  }
-
-  case 'SET_STAGE_BET': {
-    const { local, visitant, idMatch, idToS } = action.bet
-    object = { ...state }
-    object.matches[idToS].matches[idMatch].local.bet = local
-    object.matches[idToS].matches[idMatch].visitant.bet = visitant
+    object.stage[index].home.bet = home_goals
+    object.stage[index].away.bet = away_goals
 
     return ({ ...object })
   }
 
   case 'SET_BET_ON_MATCH': {
     return ({ ...state, match: action.bet})
+  }
+
+  case 'SET_STAGE': {
+    const { matches } = action.matches
+    return ({ ...state, stage: matches })
   }
 
   default:

@@ -9,17 +9,6 @@ import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardS
 
 class InputGoals extends React.Component {
 
-  sendBet(index) {
-    const local = document.getElementById('local' + index).value
-    const visitant = document.getElementById('visitant' + index).value
-    const idMatch = index
-    const idToS = this.props.idToS
-    var params = { local, visitant, idMatch, idToS }
-    if(this.props.idDate) params['idDate'] = parseInt(this.props.idDate, 10)
-
-    this.props.setBet(params)
-  }
-
   handleChange(op) {
     const { index, type } = this.props
     const num = document.getElementById(type + index)
@@ -47,7 +36,7 @@ class InputGoals extends React.Component {
           defaultValue={0}
           inputProps={{ min: '0', max: '10' }}
           className={classes.inputField}
-          onBlur={ _.debounce(this.sendBet.bind(this, index), 2000) }
+          onBlur={ _.debounce(this.props.sendBet.bind(this, index), 2000) }
         />
         <div>
           <Remove onClick={this.handleChange.bind(this, '-')} className={classes.buttonStep} />
@@ -59,13 +48,9 @@ class InputGoals extends React.Component {
 
 InputGoals.propTypes = {
   classes: PropTypes.object,
-  dateMatch: PropTypes.object,
-  matches: PropTypes.array,
-  idToS: PropTypes.string,
   index: PropTypes.number,
-  setBet: PropTypes.func,
-  type: PropTypes.string,
-  idDate: PropTypes.string,
+  sendBet: PropTypes.func,
+  type: PropTypes.string
 }
 
 export default withStyles(dashboardStyle)(InputGoals)

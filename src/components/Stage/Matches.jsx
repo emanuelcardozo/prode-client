@@ -1,5 +1,6 @@
 import React from 'react'
 import Bets from './Bets'
+import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
 import InputGoals from './InputGoals'
 import Card from 'components/Card/Card'
@@ -19,8 +20,17 @@ class Matches extends React.Component {
 
   getColor(goals, bets) { return goals === bets ? 'green' : 'red' }
 
+  sendBet(index) {
+    const { userId, match_id } = this.props
+    const home_goals = document.getElementById('local' + index).value
+    const away_goals = document.getElementById('visitant' + index).value
+    const params = { home_goals, away_goals, match_id, user_id: userId, index }
+    this.props.setMatchBet(params)
+    SDK.setBet(params)
+  }
+
   render() {
-    const { matches, classes, idToS, idDate } = this.props
+    const { matches, classes, idToS, userId } = this.props
 
     return(
       <GridContainer>
@@ -47,19 +57,23 @@ class Matches extends React.Component {
                         <Paper className={classes.betPaperContainer}>
                           <InputGoals
                             classes={classes}
-                            idToS={idToS}
                             index={index}
                             type={'local'}
-                            setBet={this.props.setBet}
-                            idDate={idDate} />
+                            match_id={match.id}
+                            sendBet={this.sendBet}
+                            setMatchBet={this.props.setMatchBet}
+                            matches={matches}
+                            userId={userId} />
                           <h2 style={{ alignSelf: 'center' }}> - </h2>
                           <InputGoals
                             classes={classes}
-                            idToS={idToS}
                             index={index}
                             type={'visitant'}
-                            setBet={this.props.setBet}
-                            idDate={idDate} />
+                            match_id={match.id}
+                            sendBet={this.sendBet}
+                            setMatchBet={this.props.setMatchBet}
+                            matches={matches}
+                            userId={userId} />
                         </Paper>
                       }
                     </Grid>
@@ -76,7 +90,7 @@ class Matches extends React.Component {
                     { !state ?
                       <div>
                         <span>Fecha: {match.date}</span><br/>
-                        <span>Predicción: {match.home.name} {this.isZero(match.home.bet)} - {this.isZero(match.away.bet)} {match.away.name}</span>
+                        <span><strong>Predicción: {match.home.name} {this.isZero(match.home.bet)} - {this.isZero(match.away.bet)} {match.away.name}</strong></span>
                       </div> :
                       <span>Resultado: {match.home.name} {match.home.goals} - {match.away.goals} {match.away.name}</span>
                     }
@@ -94,11 +108,12 @@ class Matches extends React.Component {
 
 Matches.propTypes = {
   classes: PropTypes.object,
-  dateMatch: PropTypes.object,
   matches: PropTypes.array,
   idToS: PropTypes.string,
+  match_id: PropTypes.string,
   setBet: PropTypes.func,
-  idDate: PropTypes.string
+  userId: PropTypes.string,
+  setMatchBet: PropTypes.func
 }
 
 export default withStyles(dashboardStyle)(Matches)

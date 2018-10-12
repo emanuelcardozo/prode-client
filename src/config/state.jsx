@@ -3,7 +3,7 @@ const state = {
   tournaments: [],
   bets: {
     tournaments: [],
-    matches: [],
+    stage: [],
     match: {}
   },
 }

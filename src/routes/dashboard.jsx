@@ -61,7 +61,7 @@ const dashboardRoutes = [
     notDisplay: true,
     component: Stage
   },
-  { redirect: true, path: '/', to: '/timba', navbarName: '' }
+  { redirect: true, path: '/', to: '/torneos', navbarName: '' }
 ]
 
 export default dashboardRoutes

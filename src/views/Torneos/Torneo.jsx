@@ -15,19 +15,22 @@ import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardS
 class Torneo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { stage: [], container: [] }
+    this.state = { container: [] }
 
     const self = this
     const { id, stage } = self.props.computedMatch.params
-    SDK.getTournamentStage(id, stage, function(response) { self.setState({ stage: response }) })
+    SDK.getTournamentStage(id, stage, function(response) { self.props.setStage(response) })
     SDK.getListStage(id, function(response) { self.setState({ container: response }) })
   }
 
   componentDidUpdate(nextProps) {
-    if(this.props !== nextProps) {
+    const { stage, id } = this.props.computedMatch.params
+    const nextParams = nextProps.computedMatch.params
+
+    if(stage !== nextParams.stage || id !== nextParams.id) {
       const self = this
       const { id, stage } = self.props.computedMatch.params
-      SDK.getTournamentStage(id, stage,  function(response) { self.setState({ stage: response }) })
+      SDK.getTournamentStage(id, stage,  function(response) { self.props.setStage(response) })
     }
   }
 
@@ -52,11 +55,10 @@ class Torneo extends React.Component {
 
   render(){
     const { classes, bets } = this.props
-    const { stage } = this.state
     const id = this.props.computedMatch.params.id
     const tournament = bets.tournaments[id]
 
-    if(!tournament || stage.length === 0) return null
+    if(!tournament || bets.stage.length === 0) return null
 
     return (
       <GridContainer>
@@ -72,8 +74,9 @@ class Torneo extends React.Component {
               <Matches
                 idToS={id}
                 idDate={'0'}
-                matches={stage.matches}
-                setBet={this.props.setTournamentBet}
+                matches={bets.stage}
+                setMatchBet={this.props.setMatchBet}
+                userId={this.props.user.id}
                 state={false} />
             </CardBody>
           </Card>
@@ -91,7 +94,8 @@ Torneo.propTypes = {
   history: PropTypes.object,
   computedMatch: PropTypes.object,
   location: PropTypes.object,
-  setTournamentBet: PropTypes.func,
+  user: PropTypes.object,
+  setMatchBet: PropTypes.func,
   tournaments: PropTypes.array
 }
 
