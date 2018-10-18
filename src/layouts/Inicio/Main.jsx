@@ -74,6 +74,7 @@ class Main extends React.Component {
 
           <Header
             routes={dashboardRoutes}
+            setUser={this.props.setUser}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />

@@ -35,7 +35,8 @@ class Matches extends React.Component {
     return(
       <GridContainer>
         {matches.map((match, index) => {
-          const state = match.state === 'Finished'
+          const state = match.state === 'Finished' || match.state === 'Playing'
+          const date = match.date || match.hour ? match.date : 'Pendiente'
           return (
             <GridItem xs={12} sm={12} md={12} key={index}>
               <Card chart>
@@ -48,7 +49,7 @@ class Matches extends React.Component {
                       </Paper>
                     </Grid>
                     <Grid item xs style={{ fontSize: '20px' }}>
-                      { state ?
+                      {state ?
                         <h3 style={{ minWidth: '220px' }}>
                           <span style={{ color: this.getColor(match.home.goals, match.home.bet) }}>{this.isZero(match.home.bet)}</span>
                           -
@@ -87,15 +88,15 @@ class Matches extends React.Component {
                 </CardBody>
                 <CardFooter chart>
                   <div>
-                    { !state ?
+                    {!state ?
                       <div>
-                        <span>Fecha: {match.date}</span><br/>
+                        <span>Fecha: {date} {match.hour} </span><br/>
                         <span><strong>Predicción: {match.home.name} {this.isZero(match.home.bet)} - {this.isZero(match.away.bet)} {match.away.name}</strong></span>
                       </div> :
                       <span>Resultado: {match.home.name} {match.home.goals} - {match.away.goals} {match.away.name}</span>
                     }
                   </div>
-                  { state && <Bets home={match.home} away={match.away} idToS={idToS} idMatch={index + 1} />}
+                  {state && <Bets home={match.home} away={match.away} idToS={idToS} idMatch={index + 1} />}
                 </CardFooter>
               </Card>
             </GridItem>

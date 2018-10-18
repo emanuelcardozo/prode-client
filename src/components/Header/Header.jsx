@@ -1,23 +1,24 @@
 import React from 'react'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
-import withStyles from '@material-ui/core/styles/withStyles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Hidden from '@material-ui/core/Hidden'
+import classNames from 'classnames'
 import Menu from '@material-ui/icons/Menu'
-import Button from 'components/CustomButtons/Button'
+import AppBar from '@material-ui/core/AppBar'
+import Hidden from '@material-ui/core/Hidden'
 import Avatar from '@material-ui/core/Avatar'
-
+import defaultState from 'config/state'
+import Toolbar from '@material-ui/core/Toolbar'
+import Logout from '@material-ui/icons/HighlightOff'
+import Button from 'components/CustomButtons/Button'
+import IconButton from '@material-ui/core/IconButton'
+import withStyles from '@material-ui/core/styles/withStyles'
 import headerStyle from 'assets/jss/material-dashboard-react/components/headerStyle.jsx'
 
-function Header({ ...props }) {
+class Header extends React.Component {
 
-  function makeBrand() {
+  makeBrand() {
     var name = ''
-    props.routes.map(prop => {
-      if (prop.path === props.location.pathname) {
+    this.props.routes.map(prop => {
+      if (prop.path === this.props.location.pathname) {
         name = prop.navbarName
       }
       return null
@@ -25,34 +26,33 @@ function Header({ ...props }) {
     return name
   }
 
-  const { classes } = props
-  // user
-  // src={user.picture.data.url}
+  logout() {
+    window.FB.logout()
+    this.props.setUser(defaultState.user)
+  }
 
-  return (
-    <AppBar className={classes.appBar}>
-      <Toolbar className={classes.container}>
-        <div className={classes.flex}>
-          <Button color='transparent' href='#' className={classes.title}>
-            {makeBrand()}
-          </Button>
-        </div>
-        <Avatar
-          alt=''
-          className={classNames(classes.avatar, classes.bigAvatar)}
-        />
-        <Hidden mdUp implementation='css'>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            onClick={props.handleDrawerToggle}
-          >
-            <Menu />
-          </IconButton>
-        </Hidden>
-      </Toolbar>
-    </AppBar>
-  )
+  render() {
+    const { classes, user } = this.props
+
+    return (
+      <AppBar className={classes.appBar}>
+        <Toolbar className={classes.container}>
+          <div className={classes.flex}>
+            <Button color='transparent' href='#' className={classes.title}>
+              {this.makeBrand()}
+            </Button>
+          </div>
+          <Avatar alt='' src={user.picture.data.url} className={classNames(classes.avatar, classes.bigAvatar)} />
+          <Logout className={classes.logout} onClick={this.logout.bind(this)} />
+          <Hidden mdUp implementation='css'>
+            <IconButton color='inherit' aria-label='open drawer' onClick={this.props.handleDrawerToggle}>
+              <Menu />
+            </IconButton>
+          </Hidden>
+        </Toolbar>
+      </AppBar>
+    )
+  }
 }
 
 Header.propTypes = {
@@ -61,6 +61,7 @@ Header.propTypes = {
   color: PropTypes.oneOf(['primary', 'info', 'success', 'warning', 'danger']),
   routes: PropTypes.array,
   handleDrawerToggle: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired
 }
 
