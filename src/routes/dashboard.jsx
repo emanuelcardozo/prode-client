@@ -1,54 +1,67 @@
-import Inicio from "views/Inicio/Inicio.jsx";
-import UserProfile from "views/UserProfile/UserProfile.jsx";
-import Torneos from "views/Torneos/Torneos.jsx";
-import Reglamento from "views/Reglamento/Reglamento.jsx";
-import Fechas from "views/Fechas/Fechas.jsx";
-import Timba from "views/Timba/Timba.jsx";
+import Ayuda from 'views/Ayuda/Ayuda'
+import Timba from 'views/Timba/Timba'
+// import Fechas from 'views/Fechas/Fechas'
+import Torneos from 'views/Torneos/Torneos'
+import Partido from 'views/Eventos/Partido'
+import UserProfile from 'views/UserProfile/UserProfile'
+
+import Stage from 'views/Fechas/Stage'
+import Torneo from 'views/Torneos/Torneo'
 
 const dashboardRoutes = [
   {
-    path: "/inicio",
-    sidebarName: "Inicio",
-    navbarName: "Inicio",
-    icon: "dashboard",
-    component: Inicio
-  },
-  {
-    path: "/timba",
-    sidebarName: "Mi timba",
-    navbarName: "Mi Timba",
-    icon: "attach_money",
+    path: '/jugando',
+    sidebarName: 'Jugando',
+    navbarName: 'Jugando',
+    icon: 'attach_money',
     component: Timba
   },
   {
-    path: "/torneos",
-    sidebarName: "Torneos",
-    navbarName: "Lista de Torneos",
-    icon: "content_paste",
+    path: '/torneos',
+    sidebarName: 'Torneos',
+    navbarName: 'Lista de Torneos',
+    icon: 'content_paste',
     component: Torneos
   },
+  // {
+  //   path: '/fechas',
+  //   sidebarName: 'Fechas',
+  //   navbarName: 'Fechas disponibles',
+  //   icon: 'calendar_today',
+  //   component: Fechas
+  // },
   {
-    path: "/fechas",
-    sidebarName: "Fechas",
-    navbarName: "Fechas",
-    icon: "calendar_today",
-    component: Fechas
+    path: '/eventos',
+    sidebarName: 'Eventos',
+    navbarName: 'Próximo evento',
+    icon: 'dashboard',
+    component: Partido
   },
   {
-    path: "/reglamento",
-    sidebarName: "Reglas",
-    navbarName: "Reglamento",
-    icon: "library_books",
-    component: Reglamento
+    path: '/ayuda',
+    sidebarName: 'Ayuda',
+    navbarName: 'Ayuda',
+    icon: 'help_outline',
+    component: Ayuda
   },
   {
-    path: "/usuario",
-    sidebarName: "Usuario",
-    navbarName: "Usuario",
-    icon: "person",
+    path: '/usuario',
+    sidebarName: 'Usuario',
+    navbarName: 'Perfil de usuario',
+    icon: 'account_circle',
     component: UserProfile
   },
-  { redirect: true, path: "/", to: "/inicio", navbarName: "Redirect" }
-];
+  {
+    path: '/torneo/:id/:stage',
+    notDisplay: true,
+    component: Torneo
+  },
+  {
+    path: '/fecha/:id',
+    notDisplay: true,
+    component: Stage
+  },
+  { redirect: true, path: '/', to: '/torneos', navbarName: '' }
+]
 
-export default dashboardRoutes;
+export default dashboardRoutes

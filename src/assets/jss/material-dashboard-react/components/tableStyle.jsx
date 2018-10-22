@@ -4,10 +4,10 @@ import {
   dangerColor,
   successColor,
   infoColor,
-  roseColor,
+  greyColor,
   grayColor,
   defaultFont
-} from "assets/jss/material-dashboard-react.jsx";
+} from 'assets/jss/material-dashboard-react.jsx'
 
 const tableStyle = theme => ({
   warningTableHeader: {
@@ -25,36 +25,37 @@ const tableStyle = theme => ({
   infoTableHeader: {
     color: infoColor
   },
-  roseTableHeader: {
-    color: roseColor
+  greyTableHeader: {
+    color: greyColor
   },
   grayTableHeader: {
     color: grayColor
   },
   table: {
-    marginBottom: "0",
-    width: "100%",
-    maxWidth: "100%",
-    backgroundColor: "transparent",
-    borderSpacing: "0",
-    borderCollapse: "collapse"
+    marginBottom: '0',
+    width: '100%',
+    maxWidth: '100%',
+    backgroundColor: 'transparent',
+    borderSpacing: '0',
+    borderCollapse: 'collapse'
   },
   tableHeadCell: {
-    color: "inherit",
+    color: 'inherit',
     ...defaultFont,
-    fontSize: "1em"
+    fontSize: '1em'
   },
   tableCell: {
     ...defaultFont,
-    lineHeight: "1.42857143",
-    padding: "12px 8px",
-    verticalAlign: "middle"
+    textAlign: 'center',
+    lineHeight: '1.42857143',
+    padding: '12px 8px',
+    verticalAlign: 'middle'
   },
   tableResponsive: {
-    width: "100%",
+    width: '100%',
     marginTop: theme.spacing.unit * 3,
-    overflowX: "auto"
+    overflowX: 'auto'
   }
-});
+})
 
-export default tableStyle;
+export default tableStyle

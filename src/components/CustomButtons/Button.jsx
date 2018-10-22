@@ -1,14 +1,10 @@
-import React from "react";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-// nodejs library to set properties for components
-import PropTypes from "prop-types";
+import React from 'react'
+import classNames from 'classnames'
+import PropTypes from 'prop-types'
+import withStyles from '@material-ui/core/styles/withStyles'
+import Button from '@material-ui/core/Button'
 
-// material-ui components
-import withStyles from "@material-ui/core/styles/withStyles";
-import Button from "@material-ui/core/Button";
-
-import buttonStyle from "assets/jss/material-dashboard-react/components/buttonStyle.jsx";
+import buttonStyle from 'assets/jss/material-dashboard-react/components/buttonStyle.jsx'
 function RegularButton({ ...props }) {
   const {
     classes,
@@ -24,7 +20,7 @@ function RegularButton({ ...props }) {
     className,
     muiClasses,
     ...rest
-  } = props;
+  } = props
   const btnClasses = classNames({
     [classes.button]: true,
     [classes[size]]: size,
@@ -36,27 +32,27 @@ function RegularButton({ ...props }) {
     [classes.link]: link,
     [classes.justIcon]: justIcon,
     [className]: className
-  });
+  })
   return (
     <Button {...rest} classes={muiClasses} className={btnClasses}>
       {children}
     </Button>
-  );
+  )
 }
 
 RegularButton.propTypes = {
   classes: PropTypes.object.isRequired,
   color: PropTypes.oneOf([
-    "primary",
-    "info",
-    "success",
-    "warning",
-    "danger",
-    "rose",
-    "white",
-    "transparent"
+    'primary',
+    'info',
+    'success',
+    'warning',
+    'danger',
+    'grey',
+    'white',
+    'transparent'
   ]),
-  size: PropTypes.oneOf(["sm", "lg"]),
+  size: PropTypes.oneOf(['sm', 'lg']),
   simple: PropTypes.bool,
   round: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -64,8 +60,7 @@ RegularButton.propTypes = {
   link: PropTypes.bool,
   justIcon: PropTypes.bool,
   className: PropTypes.string,
-  // use this to pass the classes props from Material-UI
   muiClasses: PropTypes.object
-};
+}
 
-export default withStyles(buttonStyle)(RegularButton);
+export default withStyles(buttonStyle)(RegularButton)

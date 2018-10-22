@@ -4,11 +4,11 @@ import {
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
-  roseCardHeader
+  greyCardHeader
 } from "assets/jss/material-dashboard-react.jsx";
 const cardIconStyle = {
   cardIcon: {
-    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader": {
+    "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$greyCardHeader": {
       borderRadius: "3px",
       backgroundColor: "#999",
       padding: "15px",
@@ -22,7 +22,7 @@ const cardIconStyle = {
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
-  roseCardHeader
+  greyCardHeader
 };
 
 export default cardIconStyle;

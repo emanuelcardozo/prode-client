@@ -1,71 +1,78 @@
-import React from "react";
-import PropTypes from "prop-types";
-// @material-ui/core components
-import withStyles from "@material-ui/core/styles/withStyles";
-import Hidden from "@material-ui/core/Hidden";
-// core components
-import GridItem from "components/Grid/GridItem.jsx";
-import GridContainer from "components/Grid/GridContainer.jsx";
-import Card from "components/Card/Card.jsx";
-import CardHeader from "components/Card/CardHeader.jsx";
-import CardBody from "components/Card/CardBody.jsx";
+import React from 'react'
+import PropTypes from 'prop-types'
+import Card from 'components/Card/Card'
+import Today from '@material-ui/icons/Today'
+import CardBody from 'components/Card/CardBody'
+import GridItem from 'components/Grid/GridItem'
+import Snackbar from '@material-ui/core/Snackbar'
+import CardHeader from 'components/Card/CardHeader'
+import GridContainer from 'components/Grid/GridContainer'
+import withStyles from '@material-ui/core/styles/withStyles'
+import SnackbarContent from 'components/Snackbar/SnackbarContent'
+import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
-import iconsStyle from "assets/jss/material-dashboard-react/views/iconsStyle.jsx";
+import { stages } from 'variables/generales'
 
-function Fechas(props) {
-  const { classes } = props;
-  return (
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={12}>
-        <Card plain>
-          <CardHeader plain color="primary">
-            <h4 className={classes.cardTitleWhite}>Material Design Icons</h4>
-            <p className={classes.cardCategoryWhite}>
-              Handcrafted by our friends from{" "}
-              <a
-                href="https://design.google.com/icons/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Google
-              </a>
-            </p>
-          </CardHeader>
-          <CardBody>
-            <Hidden only={["sm", "xs"]}>
-              <iframe
-                className={classes.iframe}
-                src="https://material.io/icons/"
-                title="Icons iframe"
-              >
-                <p>Your browser does not support iframes.</p>
-              </iframe>
-            </Hidden>
-            <Hidden only={["lg", "md"]}>
-              <GridItem xs={12} sm={12} md={6}>
-                <h5>
-                  The icons are visible on Desktop mode inside an iframe. Since
-                  the iframe is not working on Mobile and Tablets please visit
-                  the icons on their original page on Google. Check the
-                  <a
-                    href="https://design.google.com/icons/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Material Icons
-                  </a>
-                </h5>
-              </GridItem>
-            </Hidden>
-          </CardBody>
-        </Card>
-      </GridItem>
-    </GridContainer>
-  );
+class Fechas extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { open: false }
+  }
+
+  handleClick(index) {
+    const stage = { ...stages[index] }
+    this.props.setBet({ obj: stage, type: 'matches'})
+    this.setState({ open: true })
+  }
+
+  handleClose(event, reason) {
+    if (reason === 'clickaway')
+      return
+    this.setState({ open: false })
+  }
+
+  render(){
+    const { classes } = this.props
+
+    return (
+      <GridContainer>
+        <Snackbar
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          open={this.state.open}
+          autoHideDuration={2000}
+          onClose={this.handleClose.bind(this)}
+          ContentProps={{ 'aria-describedby': 'message-id' }}
+          message={<span id="message-id">La fecha se agregó a Mi Timba</span>}
+        />
+        <GridItem xs={12} sm={12} md={12}>
+          <Card>
+            <CardHeader color='warning'>
+              <h4 className={classes.cardTitleWhite}>Próximas Fechas</h4>
+            </CardHeader>
+            <CardBody>
+              {stages.map((stage, index) => {
+                return (
+                  <div key={index} style={{ cursor: 'pointer' }}>
+                    <SnackbarContent
+                      message={stage.league + ' - Fecha: ' + stage.number}
+                      color='success'
+                      icon={Today}
+                      click={this.handleClick.bind(this, index)}
+                    />
+                  </div>
+                )
+              })}
+            </CardBody>
+          </Card>
+        </GridItem>
+      </GridContainer>
+    )
+  }
 }
 
 Fechas.propTypes = {
-  classes: PropTypes.object.isRequired
-};
+  classes: PropTypes.object.isRequired,
+  setBet: PropTypes.func
+}
 
-export default withStyles(iconsStyle)(Fechas);
+export default withStyles(dashboardStyle)(Fechas)
