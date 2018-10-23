@@ -19,7 +19,9 @@ class Torneo extends React.Component {
 
     const self = this
     const { id, stage } = self.props.computedMatch.params
-    SDK.getTournamentStage(id, stage, function(response) { self.props.setStage(response) })
+    const { accessToken } = self.props.user
+
+    SDK.getTournamentStage(id, stage, accessToken, function(response) { self.props.setStage(response) })
     SDK.getListStage(id, function(response) { self.setState({ container: response }) })
   }
 
@@ -30,7 +32,9 @@ class Torneo extends React.Component {
     if(stage !== nextParams.stage || id !== nextParams.id) {
       const self = this
       const { id, stage } = self.props.computedMatch.params
-      SDK.getTournamentStage(id, stage,  function(response) { self.props.setStage(response) })
+      const { accessToken } = self.props.user
+
+      SDK.getTournamentStage(id, stage, accessToken, function(response) { self.props.setStage(response) })
     }
   }
 

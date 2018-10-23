@@ -27,6 +27,8 @@ class Main extends React.Component {
 
   resizeFunction() { if(window.innerWidth >= 960) this.setState({ mobileOpen: false }) }
 
+  componentWillUnmount() { window.removeEventListener('resize', this.resizeFunction) }
+
   componentDidMount() {
     const self = this
     if (navigator.platform.indexOf('Win') > -1) {
@@ -42,14 +44,8 @@ class Main extends React.Component {
     if (e.history.location.pathname !== e.location.pathname) {
       const container = document.getElementById('mainPanel')
       container.scrollTop = 0
-      if (this.state.mobileOpen) {
-        this.setState({ mobileOpen: false })
-      }
+      if (this.state.mobileOpen) this.setState({ mobileOpen: false })
     }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.resizeFunction)
   }
 
   render() {
