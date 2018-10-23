@@ -13,8 +13,8 @@ const bets = (state = [], action) => {
   case 'SET_MATCH_BET': {
     const { home_goals, away_goals, index } = action.bet
     object = { ...state }
-    object.stage[index].home.bet = home_goals
-    object.stage[index].away.bet = away_goals
+    object.stage[index].bet_home = home_goals
+    object.stage[index].bet_away = away_goals
 
     return ({ ...object })
   }

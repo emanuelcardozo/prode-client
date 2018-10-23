@@ -20,6 +20,12 @@ const tournaments = {
     })
   },
 
+  getRankingTournament: function(id, callback) {
+    $.get(config.api + '/tournaments/' + id + '/points' , function(response) {
+      callback(response)
+    })
+  },
+
   signin: function(data, callback) {
     $.ajax({
       url: config.api + '/sign_in',
