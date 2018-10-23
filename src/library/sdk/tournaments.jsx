@@ -26,6 +26,12 @@ const tournaments = {
     })
   },
 
+  getRankingStage: function(tournament, stage, callback) {
+    $.get(config.api + '/tournaments/' + tournament + '/stages/'+ stage +'/points' , function(response) {
+      callback(response)
+    })
+  },
+
   signin: function(data, callback) {
     $.ajax({
       url: config.api + '/sign_in',

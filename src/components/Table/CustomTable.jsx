@@ -1,12 +1,32 @@
 import React from 'react'
 import Table from './Table'
+import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
 import Card from 'components/Card/Card'
-import GridItem from 'components/Grid/GridItem'
 import CardBody from 'components/Card/CardBody'
 import CardHeader from 'components/Card/CardHeader'
 
 class CustomTable extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { rows: [] }
+
+    const self = this
+    const { idTournament, idStage } = self.props
+    if(idStage) {
+      SDK.getRankingStage(idTournament,idStage, function(response) { self.setState({ rows: self.getRows(response)}) })
+    } else {
+      SDK.getRankingTournament(idTournament, function(response) { self.setState({ rows: self.getRows(response)}) })
+    }
+  }
+
+  componentDidUpdate(nextProps) {
+    if(nextProps.idStage !== this.props.idStage) {
+      const self = this
+      const { idTournament, idStage } = self.props
+      SDK.getRankingStage(idTournament,idStage, function(response) { self.setState({ rows: self.getRows(response)}) })
+    }
+  }
 
   getRows(data) {
     var rows = []
@@ -17,24 +37,22 @@ class CustomTable extends React.Component {
   }
 
   render() {
-    const { title, color, data } = this.props
+    const { title, subtitle, color } = this.props
 
     return (
-      <GridItem xs={12} sm={12} md={6}>
-        <Card>
-          <CardHeader color={ color }>
-            <h4>{ title }</h4>
-            <p>Ranking</p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor={ color }
-              tableHead={['Posición', 'Nombre', 'Pts']}
-              tableData={this.getRows(data)}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
+      <Card>
+        <CardHeader color={ color } >
+          <h4>{ title }</h4>
+          <p>{ subtitle }</p>
+        </CardHeader>
+        <CardBody>
+          <Table
+            tableHeaderColor={ color }
+            tableHead={['Posición', 'Nombre', 'Pts']}
+            tableData={this.state.rows}
+          />
+        </CardBody>
+      </Card>
     )
   }
 }
@@ -43,6 +61,9 @@ CustomTable.defaultProps = { tableHeaderColor: 'gray' }
 
 CustomTable.propTypes = {
   title: PropTypes.string,
+  idTournament: PropTypes.string,
+  idStage: PropTypes.string,
+  subtitle: PropTypes.string,
   color: PropTypes.string,
   data: PropTypes.array
 }
