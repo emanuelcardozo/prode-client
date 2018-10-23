@@ -51,9 +51,9 @@ class Matches extends React.Component {
                     <Grid item xs style={{ fontSize: '20px' }}>
                       {state ?
                         <h3 style={{ minWidth: '220px' }}>
-                          <span style={{ color: this.getColor(match.home.goals, match.home.bet) }}>{this.isZero(match.home.bet)}</span>
+                          <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
                           -
-                          <span style={{ color: this.getColor(match.away.goals, match.away.bet) }}>{this.isZero(match.away.bet)}</span>
+                          <span style={{ color: this.getColor(match.away.goals, match.bet_away) }}>{this.isZero(match.bet_away)}</span>
                         </h3> :
                         <Paper className={classes.betPaperContainer}>
                           <InputGoals
@@ -91,7 +91,7 @@ class Matches extends React.Component {
                     {!state ?
                       <div>
                         <span>Fecha: {date} {match.hour} </span><br/>
-                        <span><strong>Predicción: {match.home.name} {this.isZero(match.home.bet)} - {this.isZero(match.away.bet)} {match.away.name}</strong></span>
+                        <span><strong>Predicción: {match.home.name} {this.isZero(match.bet_home)} - {this.isZero(match.bet_away)} {match.away.name}</strong></span>
                       </div> :
                       <span>Resultado: {match.home.name} {match.home.goals} - {match.away.goals} {match.away.name}</span>
                     }

@@ -9,7 +9,7 @@ const tournaments = {
   },
 
   getTournamentStage: function(id, stage, accessToken, callback) {
-    $.get(config.api + '/tournaments/' + id + '/stages/' + stage, { token: accessToken }, function(response) {
+    $.get(config.api + '/tournaments/' + id + '/stages/' + stage, { accessToken }, function(response) {
       callback(response)
     })
   },
