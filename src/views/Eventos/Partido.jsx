@@ -7,7 +7,7 @@ import Games from '@material-ui/icons/Games'
 import GridItem from 'components/Grid/GridItem'
 import CardBody from 'components/Card/CardBody'
 import CardFooter from 'components/Card/CardFooter'
-import CustomTable from 'components/Table/CustomTable'
+// import CustomTable from 'components/Table/CustomTable'
 import GridContainer from 'components/Grid/GridContainer'
 import withStyles from '@material-ui/core/styles/withStyles'
 import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
@@ -36,7 +36,7 @@ class Partido extends React.Component {
 
   render() {
     const { classes, bets } = this.props
-    const { home, away } = eventMacth
+    // const { home, away } = eventMacth
 
     return (
       <GridContainer>
@@ -52,7 +52,7 @@ class Partido extends React.Component {
             </CardFooter>
           </Card>
         </GridItem>
-        <CustomTable title={home.name + ' vs ' + away.name} color={'primary'} />
+        {/*<CustomTable title={home.name + ' vs ' + away.name} color={'primary'} />*/}
       </GridContainer>
     )
   }

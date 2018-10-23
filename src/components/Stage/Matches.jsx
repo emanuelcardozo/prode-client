@@ -50,7 +50,7 @@ class Matches extends React.Component {
                     </Grid>
                     <Grid item xs style={{ fontSize: '20px' }}>
                       {state ?
-                        <h3 style={{ minWidth: '220px' }}>
+                        <h3 className={classes.betsGoals}>
                           <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
                           -
                           <span style={{ color: this.getColor(match.away.goals, match.bet_away) }}>{this.isZero(match.bet_away)}</span>

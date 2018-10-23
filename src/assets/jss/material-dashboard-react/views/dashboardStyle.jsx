@@ -181,6 +181,11 @@ const dashboardStyle = {
     height: '30px',
     margin: '5px',
     cursor: 'pointer'
+  },
+  betsGoals: {
+    minWidth: '220px',
+    fontSize: '2.825em',
+    letterSpacing: '10px'
   }
 }
 

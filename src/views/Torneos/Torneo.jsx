@@ -15,13 +15,14 @@ import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardS
 class Torneo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { container: [] }
+    this.state = { container: [], ranking: [] }
 
     const self = this
     const { id, stage } = self.props.computedMatch.params
     const { accessToken } = self.props.user
 
     SDK.getTournamentStage(id, stage, accessToken, function(response) { self.props.setStage(response) })
+    SDK.getRankingTournament(id, function(response) { self.setState({ ranking: response}) })
     SDK.getListStage(id, function(response) { self.setState({ container: response }) })
   }
 
@@ -85,7 +86,7 @@ class Torneo extends React.Component {
             </CardBody>
           </Card>
         </GridItem>
-        <CustomTable title={tournament.name} color={'danger'} />
+        <CustomTable title={tournament.name} color={'danger'} data={this.state.ranking} />
       </GridContainer>
     )
   }
