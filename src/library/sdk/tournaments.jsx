@@ -32,6 +32,12 @@ const tournaments = {
     })
   },
 
+  getBetsOfMatch: function(tournament, stage, match, callback) {
+    $.get(config.api + '/bets_of_match', { tournament_id: tournament, stage, match_id: match}, function(response) {
+      callback(response)
+    })
+  },
+
   signin: function(data, callback) {
     $.ajax({
       url: config.api + '/sign_in',
