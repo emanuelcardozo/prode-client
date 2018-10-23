@@ -20,6 +20,20 @@ const tournaments = {
     })
   },
 
+  signin: function(data, callback) {
+    $.ajax({
+      url: config.api + '/sign_in',
+      method: 'GET',
+      data: data,
+      success: function () {
+        callback(data)
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.log(textStatus , errorThrown)
+      }
+    })
+  },
+
   setBet: function(params) {
     $.ajax({
       method: 'POST',

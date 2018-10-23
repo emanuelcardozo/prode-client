@@ -1,10 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import SDK from 'library/SDK'
 import FacebookLogin from 'react-facebook-login'
 
 class Login extends React.Component {
 
-  facebookResponse(response) { this.props.setUser(response) }
+  facebookResponse(response) {
+    const self = this
+    SDK.signin(response, function(user) { self.props.setUser(user) })
+  }
 
   render() {
     return (
