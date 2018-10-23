@@ -35,7 +35,7 @@ class Torneos extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <h4 className={classes.cardTitle}>{tournament.name}</h4>
-                  <p>Fecha {tournament.dateMatch}</p>
+                  <p>{tournament.current_stage}</p>
                 </CardBody>
                 <CardFooter chart>
                   <span></span>
