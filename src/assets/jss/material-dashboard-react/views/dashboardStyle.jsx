@@ -85,9 +85,9 @@ const dashboardStyle = {
     position: 'relative',
   },
   cover: {
-    width: '70px',
-    height: '70px',
-    margin: '10px'
+    width: '80px',
+    height: '80px',
+    margin: '20px 10px'
   },
   line: {
     width: '100%',

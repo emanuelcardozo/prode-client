@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import InputGoals from './InputGoals'
 import Card from 'components/Card/Card'
 import Grid from '@material-ui/core/Grid'
+import List from '@material-ui/icons/Star'
 import Paper from '@material-ui/core/Paper'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
@@ -19,6 +20,15 @@ class Matches extends React.Component {
   isZero(number) { return number === undefined ? '' : number }
 
   getColor(goals, bets) { return goals === bets ? 'green' : 'red' }
+
+  starColor(points) {
+    switch (points) {
+    case 1: return '#cd7f32'
+    case 2: return '#e5e4e2'
+    case 3: return 'gold'
+    default: return ''
+    }
+  }
 
   sendBet(index) {
     const { userId, match_id, accessToken } = this.props
@@ -48,13 +58,20 @@ class Matches extends React.Component {
                         <h4 className={classes.cardTitle}><strong>{match.home.name}</strong></h4>
                       </Paper>
                     </Grid>
-                    <Grid item xs style={{ fontSize: '20px' }}>
+                    <Grid item xs>
                       {state ?
-                        <h3 className={classes.betsGoals}>
-                          <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
-                          -
-                          <span style={{ color: this.getColor(match.away.goals, match.bet_away) }}>{this.isZero(match.bet_away)}</span>
-                        </h3> :
+                        <div>
+                          <h3 className={classes.betsGoals} style={{ margin: '0px' }}>
+                            <span>{this.isZero(match.home.goals)}</span> - <span>{this.isZero(match.away.goals)}</span>
+                          </h3>
+                          <List style={{ color: this.starColor(match.points)}}/>
+                          <p style={{ margin: '0px', fontSize: '12px' }}>Predicción </p>
+                          <h5 style={{ margin: '0px', letterSpacing: '2px' }}>
+                            <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
+                             -
+                            <span style={{ color: this.getColor(match.away.goals, match.bet_away) }}>{this.isZero(match.bet_away)}</span>
+                          </h5>
+                        </div>:
                         <Paper className={classes.betPaperContainer}>
                           <InputGoals
                             classes={classes}
@@ -95,10 +112,9 @@ class Matches extends React.Component {
                         <span>Fecha: {date} {match.hour} </span><br/>
                         <span><strong>Predicción: {match.home.name} {this.isZero(match.bet_home)} - {this.isZero(match.bet_away)} {match.away.name}</strong></span>
                       </div> :
-                      <span>Resultado: {match.home.name} {match.home.goals} - {match.away.goals} {match.away.name}</span>
+                      <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} idMatch={match.id} accessToken={accessToken} />
                     }
                   </div>
-                  {state && <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} idMatch={match.id} accessToken={accessToken} />}
                 </CardFooter>
               </Card>
             </GridItem>
@@ -117,6 +133,7 @@ Matches.propTypes = {
   match_id: PropTypes.string,
   setBet: PropTypes.func,
   userId: PropTypes.string,
+  accessToken: PropTypes.string,
   setMatchBet: PropTypes.func
 }
 
