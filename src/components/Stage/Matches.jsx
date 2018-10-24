@@ -30,7 +30,7 @@ class Matches extends React.Component {
   }
 
   render() {
-    const { matches, classes, idToS, userId } = this.props
+    const { matches, classes, idTournament, idStage,  userId } = this.props
 
     return(
       <GridContainer>
@@ -96,7 +96,7 @@ class Matches extends React.Component {
                       <span>Resultado: {match.home.name} {match.home.goals} - {match.away.goals} {match.away.name}</span>
                     }
                   </div>
-                  {state && <Bets home={match.home} away={match.away} idToS={idToS} idMatch={index + 1} />}
+                  {state && <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} idMatch={match.id} />}
                 </CardFooter>
               </Card>
             </GridItem>
@@ -110,7 +110,8 @@ class Matches extends React.Component {
 Matches.propTypes = {
   classes: PropTypes.object,
   matches: PropTypes.array,
-  idToS: PropTypes.string,
+  idStage: PropTypes.string,
+  idTournament: PropTypes.string,
   match_id: PropTypes.string,
   setBet: PropTypes.func,
   userId: PropTypes.string,

@@ -76,7 +76,8 @@ class Torneo extends React.Component {
             </CardHeader>
             <CardBody>
               <Matches
-                idToS={id}
+                idTournament={id}
+                idStage={stage}
                 idDate={'0'}
                 matches={bets.stage}
                 setMatchBet={this.props.setMatchBet}

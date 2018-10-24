@@ -1,4 +1,5 @@
 import React from 'react'
+import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
 import Card from 'components/Card/Card'
 import Table from 'components/Table/Table'
@@ -10,8 +11,6 @@ import GridItem from 'components/Grid/GridItem'
 import GridContainer from 'components/Grid/GridContainer'
 import DialogContent from '@material-ui/core/DialogContent'
 import withStyles from '@material-ui/core/styles/withStyles'
-
-import { betsMatch } from 'variables/generales'
 
 const styles = {
   titleContairner: {
@@ -26,7 +25,7 @@ const styles = {
 class Bets extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { open: false }
+    this.state = { open: false, data: [] }
 
     this.getRows = this.getRows.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -37,17 +36,22 @@ class Bets extends React.Component {
 
   handleClose() { this.setState({ open: false }) }
 
-  getRows() {
-    if(betsMatch) {
-      return betsMatch.bets.map( bet => {
-        return [bet.name, bet.local.bet.toString(), '-', bet.visitant.bet.toString()]
-      })
+  componentDidUpdate(prevProps, prevState) {
+    if(!prevState.open && this.state.open) {
+      const self = this
+      const { idTournament, idStage, idMatch } = self.props
+      SDK.getBetsOfMatch(idTournament, idStage, idMatch, function(response) { self.setState({ data: self.getRows(response)}) })
     }
-    return [['No', 'hay', 'datos', 'disponibles']]
+  }
+
+  getRows(data) {
+    return data.map( bet => {
+      return [ bet.user_name, bet.home_goals.toString(), '-', bet.away_goals.toString() ]
+    })
   }
 
   render(){
-    const { classes, home, away, idToS } = this.props
+    const { classes, home, away } = this.props
 
     return (
       <GridContainer>
@@ -67,7 +71,7 @@ class Bets extends React.Component {
                   {this.state.open &&
                     <Table
                       tableHead={['Nombre', home.name, '', away.name]}
-                      tableData={this.getRows(idToS)}
+                      tableData={this.state.data}
                     />}
                 </CardBody>
               </Card>
@@ -84,7 +88,9 @@ Bets.propTypes = {
   setBet: PropTypes.func,
   home: PropTypes.object,
   away: PropTypes.object,
-  idToS: PropTypes.string,
+  idTournament: PropTypes.string,
+  idStage: PropTypes.string,
+  idMatch: PropTypes.string
 }
 
 export default withStyles(styles)(Bets)
