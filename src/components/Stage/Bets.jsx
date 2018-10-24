@@ -39,8 +39,8 @@ class Bets extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if(!prevState.open && this.state.open) {
       const self = this
-      const { idTournament, idStage, idMatch } = self.props
-      SDK.getBetsOfMatch(idTournament, idStage, idMatch, function(response) { self.setState({ data: self.getRows(response)}) })
+      const { idTournament, idStage, idMatch, accessToken } = self.props
+      SDK.getBetsOfMatch(idTournament, idStage, idMatch, accessToken, function(response) { self.setState({ data: self.getRows(response)}) })
     }
   }
 

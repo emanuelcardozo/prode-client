@@ -21,16 +21,16 @@ class Matches extends React.Component {
   getColor(goals, bets) { return goals === bets ? 'green' : 'red' }
 
   sendBet(index) {
-    const { userId, match_id } = this.props
+    const { userId, match_id, accessToken } = this.props
     const home_goals = document.getElementById('local' + index).value
     const away_goals = document.getElementById('visitant' + index).value
-    const params = { home_goals, away_goals, match_id, user_id: userId, index }
+    const params = { home_goals, away_goals, match_id, user_id: userId, index, accessToken }
     this.props.setMatchBet(params)
     SDK.setBet(params)
   }
 
   render() {
-    const { matches, classes, idTournament, idStage,  userId } = this.props
+    const { matches, classes, idTournament, idStage,  userId, accessToken } = this.props
 
     return(
       <GridContainer>
@@ -63,6 +63,7 @@ class Matches extends React.Component {
                             match_id={match.id}
                             sendBet={this.sendBet}
                             setMatchBet={this.props.setMatchBet}
+                            accessToken={accessToken}
                             matches={matches}
                             userId={userId} />
                           <h2 style={{ alignSelf: 'center' }}> - </h2>
@@ -72,6 +73,7 @@ class Matches extends React.Component {
                             type={'visitant'}
                             match_id={match.id}
                             sendBet={this.sendBet}
+                            accessToken={accessToken}
                             setMatchBet={this.props.setMatchBet}
                             matches={matches}
                             userId={userId} />
@@ -96,7 +98,7 @@ class Matches extends React.Component {
                       <span>Resultado: {match.home.name} {match.home.goals} - {match.away.goals} {match.away.name}</span>
                     }
                   </div>
-                  {state && <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} idMatch={match.id} />}
+                  {state && <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} idMatch={match.id} accessToken={accessToken} />}
                 </CardFooter>
               </Card>
             </GridItem>

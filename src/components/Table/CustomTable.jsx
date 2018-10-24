@@ -12,19 +12,19 @@ class CustomTable extends React.Component {
     this.state = { rows: [] }
 
     const self = this
-    const { idTournament, idStage } = self.props
+    const { idTournament, idStage, accessToken } = self.props
     if(idStage) {
-      SDK.getRankingStage(idTournament,idStage, function(response) { self.setState({ rows: self.getRows(response)}) })
+      SDK.getRankingStage(idTournament,idStage, accessToken, function(response) { self.setState({ rows: self.getRows(response)}) })
     } else {
-      SDK.getRankingTournament(idTournament, function(response) { self.setState({ rows: self.getRows(response)}) })
+      SDK.getRankingTournament(idTournament, accessToken ,function(response) { self.setState({ rows: self.getRows(response)}) })
     }
   }
 
   componentDidUpdate(nextProps) {
     if(nextProps.idStage !== this.props.idStage) {
       const self = this
-      const { idTournament, idStage } = self.props
-      SDK.getRankingStage(idTournament,idStage, function(response) { self.setState({ rows: self.getRows(response)}) })
+      const { idTournament, idStage, accessToken } = self.props
+      SDK.getRankingStage(idTournament,idStage, accessToken, function(response) { self.setState({ rows: self.getRows(response)}) })
     }
   }
 

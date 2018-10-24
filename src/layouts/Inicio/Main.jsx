@@ -30,17 +30,19 @@ class Main extends React.Component {
   componentWillUnmount() { window.removeEventListener('resize', this.resizeFunction) }
 
   componentDidMount() {
-    const self = this
     if (navigator.platform.indexOf('Win') > -1) {
       const container = document.getElementById('mainPanel')
       new PerfectScrollbar(container)
     }
     window.addEventListener('resize', this.resizeFunction)
-
-    SDK.getTournaments((response) => { self.props.setTournaments(response) })
   }
 
   componentDidUpdate(e) {
+    const self = this
+
+    if(!e.user.id && this.props.user.id)
+      SDK.getTournaments( self.props.user.accessToken, (response) => { self.props.setTournaments(response) })
+
     if (e.history.location.pathname !== e.location.pathname) {
       const container = document.getElementById('mainPanel')
       container.scrollTop = 0

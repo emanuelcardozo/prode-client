@@ -22,7 +22,7 @@ class Torneo extends React.Component {
     const { accessToken } = self.props.user
 
     SDK.getTournamentStage(id, stage, accessToken, function(response) { self.props.setStage(response) })
-    SDK.getListStage(id, function(response) { self.setState({ container: response }) })
+    SDK.getListStage(id, accessToken, function(response) { self.setState({ container: response }) })
   }
 
   componentDidUpdate(nextProps) {
@@ -58,7 +58,8 @@ class Torneo extends React.Component {
   }
 
   render(){
-    const { classes, bets } = this.props
+    const { classes, bets, user } = this.props
+    console.log(user);
     const { id, stage } = this.props.computedMatch.params
     const tournament = bets.tournaments[id]
 
@@ -81,8 +82,9 @@ class Torneo extends React.Component {
                 idDate={'0'}
                 matches={bets.stage}
                 setMatchBet={this.props.setMatchBet}
-                userId={this.props.user.id}
-                state={false} />
+                userId={user.id}
+                state={false}
+                accessToken={user.accessToken} />
             </CardBody>
           </Card>
         </GridItem>
@@ -92,13 +94,15 @@ class Torneo extends React.Component {
             subtitle={'Ranking de la Fecha'}
             color={'success'}
             idTournament={id}
-            idStage={stage} />
+            idStage={stage}
+            accessToken={user.accessToken} />
           <br/>
           <CustomTable
             title={tournament.name}
             subtitle={'Ranking del Torneo'}
             color={'danger'}
-            idTournament={id} />
+            idTournament={id}
+            accessToken={user.accessToken} />
         </GridItem>
       </GridContainer>
     )
