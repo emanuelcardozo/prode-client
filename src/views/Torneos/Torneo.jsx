@@ -59,7 +59,6 @@ class Torneo extends React.Component {
 
   render(){
     const { classes, bets, user } = this.props
-    console.log(user);
     const { id, stage } = this.props.computedMatch.params
     const tournament = bets.tournaments[id]
 
