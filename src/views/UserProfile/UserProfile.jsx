@@ -10,9 +10,9 @@ import SnackbarContent from 'components/Snackbar/SnackbarContent.jsx'
 
 import Email from '@material-ui/icons/Email'
 import Account from '@material-ui/icons/AccountCircle'
-import Grade from '@material-ui/icons/Grade'
-import Money from '@material-ui/icons/MonetizationOn'
-import AddMoney from '@material-ui/icons/AddShoppingCart'
+// import Grade from '@material-ui/icons/Grade'
+// import Money from '@material-ui/icons/MonetizationOn'
+// import AddMoney from '@material-ui/icons/AddShoppingCart'
 
 const styles = {
   cardCategoryWhite: {
@@ -33,10 +33,6 @@ const styles = {
   }
 }
 
-function addMoney() {
-  // console.log('agregar balones de oro')
-}
-
 function UserProfile(props) {
   const { user } = props
 
@@ -54,7 +50,7 @@ function UserProfile(props) {
                 icon={Account}
               />
               <SnackbarContent message={'E-mail: ' + user.email} icon={Email} />
-              <SnackbarContent
+              {/*<SnackbarContent
                 message={'Ranking general: ' + user.ranking}
                 icon={Grade}
               />
@@ -62,9 +58,9 @@ function UserProfile(props) {
                 message={'Balones de oro: ' + user.money}
                 icon={Money}
               />
-              <div onClick={addMoney} style={{ cursor: 'pointer' }}>
+              <div style={{ cursor: 'pointer' }}>
                 <SnackbarContent message={'Agregar balones'} icon={AddMoney} />
-              </div>
+              </div>*/}
             </CardBody>
           </Card>
         </GridItem>

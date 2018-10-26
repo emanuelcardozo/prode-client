@@ -1,21 +1,21 @@
-import Ayuda from 'views/Ayuda/Ayuda'
-import Timba from 'views/Timba/Timba'
+// import Ayuda from 'views/Ayuda/Ayuda'
+// import Timba from 'views/Timba/Timba'
 // import Fechas from 'views/Fechas/Fechas'
 import Torneos from 'views/Torneos/Torneos'
-import Partido from 'views/Eventos/Partido'
+// import Partido from 'views/Eventos/Partido'
 import UserProfile from 'views/UserProfile/UserProfile'
 
-import Stage from 'views/Fechas/Stage'
+// import Stage from 'views/Fechas/Stage'
 import Torneo from 'views/Torneos/Torneo'
 
 const dashboardRoutes = [
-  {
-    path: '/jugando',
-    sidebarName: 'Jugando',
-    navbarName: 'Jugando',
-    icon: 'attach_money',
-    component: Timba
-  },
+  // {
+  //   path: '/jugando',
+  //   sidebarName: 'Jugando',
+  //   navbarName: 'Jugando',
+  //   icon: 'attach_money',
+  //   component: Timba
+  // },
   {
     path: '/torneos',
     sidebarName: 'Torneos',
@@ -30,20 +30,20 @@ const dashboardRoutes = [
   //   icon: 'calendar_today',
   //   component: Fechas
   // },
-  {
-    path: '/eventos',
-    sidebarName: 'Eventos',
-    navbarName: 'Próximo evento',
-    icon: 'dashboard',
-    component: Partido
-  },
-  {
-    path: '/ayuda',
-    sidebarName: 'Ayuda',
-    navbarName: 'Ayuda',
-    icon: 'help_outline',
-    component: Ayuda
-  },
+  // {
+  //   path: '/eventos',
+  //   sidebarName: 'Eventos',
+  //   navbarName: 'Próximo evento',
+  //   icon: 'dashboard',
+  //   component: Partido
+  // },
+  // {
+  //   path: '/ayuda',
+  //   sidebarName: 'Ayuda',
+  //   navbarName: 'Ayuda',
+  //   icon: 'help_outline',
+  //   component: Ayuda
+  // },
   {
     path: '/usuario',
     sidebarName: 'Usuario',
@@ -56,11 +56,11 @@ const dashboardRoutes = [
     notDisplay: true,
     component: Torneo
   },
-  {
-    path: '/fecha/:id',
-    notDisplay: true,
-    component: Stage
-  },
+  // {
+  //   path: '/fecha/:id',
+  //   notDisplay: true,
+  //   component: Stage
+  // },
   { redirect: true, path: '/', to: '/torneos', navbarName: '' }
 ]
 

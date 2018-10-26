@@ -23,10 +23,10 @@ class Matches extends React.Component {
 
   starColor(points) {
     switch (points) {
-    case 1: return '#cd7f32'
-    case 2: return '#e5e4e2'
+    case 1: return '#e5e4e2'
+    case 2: return '#cd7f32'
     case 3: return 'gold'
-    default: return ''
+    default: return 'white'
     }
   }
 
@@ -64,8 +64,7 @@ class Matches extends React.Component {
                           <h3 className={classes.betsGoals} style={{ margin: '0px' }}>
                             <span>{this.isZero(match.home.goals)}</span> - <span>{this.isZero(match.away.goals)}</span>
                           </h3>
-                          <List style={{ color: this.starColor(match.points)}}/>
-                          <p style={{ margin: '0px', fontSize: '12px' }}>Predicción </p>
+                          <List style={{ color: this.starColor(match.points), width: '30px', height: '30px' }}/>
                           <h5 style={{ margin: '0px', letterSpacing: '2px' }}>
                             <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
                              -
