@@ -22,6 +22,7 @@
     "react-dom": "16.4.1",
     "react-facebook-login": "^4.1.0",
     "react-google-maps": "9.4.5",
+    "react-https-redirect": "^1.0.11",
     "react-redux": "^5.0.7",
     "react-router-dom": "4.3.1",
     "react-router-redux": "^4.0.8",
