@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
@@ -11,14 +10,14 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Icon from '@material-ui/core/Icon'
-
+import Avatar from '@material-ui/core/Avatar'
 import sidebarStyle from 'assets/jss/material-dashboard-react/components/sidebarStyle.jsx'
 
 const Sidebar = ({ ...props }) => {
   function activeRoute(routeName) {
     return props.location.pathname.indexOf(routeName) > -1 ? true : false
   }
-  const { classes, color, logo, image, logoText, routes } = props
+  const { classes, color, logo, image, logoText, routes, user } = props
   var links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
@@ -50,7 +49,7 @@ const Sidebar = ({ ...props }) => {
                 {typeof prop.icon === 'string' ? (
                   <Icon>{prop.icon}</Icon>
                 ) : (
-                  <prop.icon />
+                  <Avatar alt='' src={user.picture.data.url} />
                 )}
               </ListItemIcon>
               <ListItemText
@@ -87,7 +86,7 @@ const Sidebar = ({ ...props }) => {
           onClose={props.handleDrawerToggle}
           ModalProps={{ keepMounted: true }}
         >
-          {brand}
+          { brand }
 
           <div className={classes.sidebarWrapper}> {links} </div>
 
@@ -131,6 +130,7 @@ Sidebar.propTypes = {
   logoText: PropTypes.string,
   routes: PropTypes.array,
   open: PropTypes.bool,
+  user: PropTypes.object,
   handleDrawerToggle:PropTypes.func
 }
 

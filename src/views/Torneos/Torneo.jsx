@@ -89,16 +89,14 @@ class Torneo extends React.Component {
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
           <CustomTable
-            title={tournament.name}
-            subtitle={'Ranking de la Fecha'}
+            title={'Ranking de la Fecha'}
             color={'success'}
             idTournament={id}
             idStage={stage}
             accessToken={user.accessToken} />
           <br/>
           <CustomTable
-            title={tournament.name}
-            subtitle={'Ranking del Torneo'}
+            title={'Ranking del Torneo'}
             color={'danger'}
             idTournament={id}
             accessToken={user.accessToken} />
