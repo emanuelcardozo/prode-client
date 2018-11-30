@@ -64,7 +64,8 @@ class Main extends React.Component {
           image={image}
           handleDrawerToggle={this.handleDrawerToggle}
           open={this.state.mobileOpen}
-          color='green'
+          color='blue'
+          user={this.props.user}
           {...rest}
         />
 

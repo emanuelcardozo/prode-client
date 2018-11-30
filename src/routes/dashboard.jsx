@@ -48,7 +48,7 @@ const dashboardRoutes = [
     path: '/usuario',
     sidebarName: 'Usuario',
     navbarName: 'Perfil de usuario',
-    icon: 'account_circle',
+    icon: null,
     component: UserProfile
   },
   {
