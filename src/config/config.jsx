@@ -1,6 +1,6 @@
 const config = {
   development: {
-    api: 'https://prodevolution-api.herokuapp.com',
+    api: 'http://localhost:3001',
   },
   test: {
     raven: 'https://0665e172df0442888b2dde9a9630af11@sentry.io/1306597'
