@@ -174,7 +174,7 @@ output {
 label {
     font-size: 14px;
     line-height: 1.42857;
-    color: #AAAAAA;
+    color: black;
     font-weight: 400;
 }
 
@@ -227,4 +227,45 @@ footer ul li a:hover {
         z-index: 9999;
         overflow-x: hidden;
     }
+}
+
+.btn-login{
+    background-color: #00acc1;
+    color: white;
+}
+
+.login-block{
+  margin: 5% 10%;
+}
+
+/********** Login Page **********/
+
+.site-wrapper {
+  width: 100%;
+  min-height: 100%;
+  height: auto !important;
+  position: fixed;
+  top:0;
+  left:0;
+  background-image: url("http://www.cvl.org.ar/wp-content/uploads/2014/08/photodune-1344690-crowd-on-the-stadium-m.jpg");
+  background-position: center;
+}
+
+.center {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+}
+
+.footer-center {
+  text-align: center;
+  bottom: 6%;
+  position: absolute;
+  left: 46%;
+}
+
+.cover-heading, .lead {
+  color: white
 }

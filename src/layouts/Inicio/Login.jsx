@@ -12,15 +12,24 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <FacebookLogin
-          autoLoad={true}
-          icon='fa-facebook'
-          appId='711138055913158'
-          textButton='Login con Facebook'
-          fields='name, email, picture, id'
-          callback={this.facebookResponse.bind(this)}
-        />
+      <div className="site-wrapper">
+        <div className="center">
+          <div className="text-center">
+            <img src="/static/media/balon.b77c228e.png" alt="logo" style={{'width':'10%'}}/>
+            <h1 className="cover-heading">ProdEvolution</h1>
+            <p className="lead">Compite con tus amigos en la apasionante Superliga Argentina, suma puntos y convertite en campeón.</p>
+            <FacebookLogin
+              autoLoad={true}
+              appId='711138055913158'
+              textButton='   Inicio con Facebook'
+              fields='name, email, picture, id'
+              cssClass="btn btn-login"
+              icon="fa-facebook"
+              callback={this.facebookResponse.bind(this)}
+            />
+          </div>
+        </div>
+        <p className="footer-center">by Fundamentalistas.</p>
       </div>
     )
   }
