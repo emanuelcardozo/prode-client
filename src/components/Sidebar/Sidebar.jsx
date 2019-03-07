@@ -9,7 +9,6 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import Icon from '@material-ui/core/Icon'
 import Avatar from '@material-ui/core/Avatar'
 import sidebarStyle from 'assets/jss/material-dashboard-react/components/sidebarStyle.jsx'
 
@@ -47,7 +46,7 @@ const Sidebar = ({ ...props }) => {
             <ListItem button className={classes.itemLink + listItemClasses}>
               <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
                 {typeof prop.icon === 'string' ? (
-                  <Icon>{prop.icon}</Icon>
+                  <i className={prop.icon}></i>
                 ) : (
                   <Avatar alt='' src={user.picture.data.url} />
                 )}
@@ -64,9 +63,25 @@ const Sidebar = ({ ...props }) => {
     </List>
   )
 
+  var linksResponsive = (
+    <List style={{'display': 'flex'}}>
+      {routes.map((prop, key) => {
+        if (prop.redirect || prop.notDisplay) return null
+        return (
+          <NavLink to={prop.path} key={key}>
+            <div className={classes.navLinkResponsive}>
+              <i className={prop.icon}></i>
+              <p>{prop.sidebarName}</p>
+            </div>
+          </NavLink>
+        )
+      })}
+    </List>
+  )
+
   var brand = (
     <div className={classes.logo} onClick={ (e)=>{ e.preventDefault() }}>
-      <a href='' className={classes.logoLink}>
+      <a href={classes.logoLink} className={classes.logoLink}>
         <div className={classes.logoImage}>
           <img src={logo} alt='logo' className={classes.img} />
         </div>
@@ -78,25 +93,7 @@ const Sidebar = ({ ...props }) => {
   return (
     <div>
       <Hidden mdUp implementation='css'>
-        <Drawer
-          variant='temporary'
-          anchor='right'
-          open={props.open}
-          classes={{ paper: classes.drawerPaper }}
-          onClose={props.handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
-        >
-          { brand }
-
-          <div className={classes.sidebarWrapper}> {links} </div>
-
-          {image !== undefined ? (
-            <div
-              className={classes.background}
-              style={{ backgroundImage: 'url(' + image + ')' }}
-            />
-          ) : null}
-        </Drawer>
+        <div className={classes.tabContent}>{linksResponsive}</div>
       </Hidden>
       <Hidden smDown implementation='css'>
         <Drawer

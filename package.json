@@ -30,12 +30,12 @@
     "react-router-dom": "4.3.1",
     "react-router-redux": "^4.0.8",
     "react-router-with-props": "^0.1.3",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^2.1.8",
     "react-swipeable-views": "0.12.15",
     "redux": "^4.0.0"
   },
   "scripts": {
-    "start": "NODE_PATH=./src react-scripts start",
+    "start": "HTTPS=true NODE_PATH=./src react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -44,14 +44,6 @@
     "build-package-css": "node-sass-chokidar src/assets/scss/material-kit-react.scss dist/material-kit-react.css",
     "build-package": "babel src --out-dir dist"
   },
-  "optionalDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-react": "^7.10.0",
-    "prettier": "^1.13.7"
-  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-import-rename": "^1.0.1",
@@ -59,5 +51,11 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-es2015": "^6.24.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

@@ -33,11 +33,6 @@ class Header extends React.Component {
               {this.makeBrand()}
             </Button>
           </div>
-          <Hidden mdUp implementation='css'>
-            <IconButton color='inherit' aria-label='open drawer' onClick={this.props.handleDrawerToggle}>
-              <Menu />
-            </IconButton>
-          </Hidden>
         </Toolbar>
       </AppBar>
     )
