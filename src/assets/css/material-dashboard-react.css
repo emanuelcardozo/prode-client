@@ -269,3 +269,7 @@ footer ul li a:hover {
 .cover-heading, .lead {
   color: white
 }
+
+.TabIndicator-colorSecondary-0422, .TabIndicator-colorSecondary-0972 {
+  background-color: white!important;
+}

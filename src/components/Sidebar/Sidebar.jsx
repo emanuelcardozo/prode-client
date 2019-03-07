@@ -9,7 +9,6 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import Icon from '@material-ui/core/Icon'
 import Avatar from '@material-ui/core/Avatar'
 import sidebarStyle from 'assets/jss/material-dashboard-react/components/sidebarStyle.jsx'
 
@@ -47,7 +46,7 @@ const Sidebar = ({ ...props }) => {
             <ListItem button className={classes.itemLink + listItemClasses}>
               <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
                 {typeof prop.icon === 'string' ? (
-                  <Icon>{prop.icon}</Icon>
+                  <i className={prop.icon}></i>
                 ) : (
                   <Avatar alt='' src={user.picture.data.url} />
                 )}
@@ -80,7 +79,7 @@ const Sidebar = ({ ...props }) => {
       <Hidden mdUp implementation='css'>
         <Drawer
           variant='temporary'
-          anchor='right'
+          anchor='bottom'
           open={props.open}
           classes={{ paper: classes.drawerPaper }}
           onClose={props.handleDrawerToggle}

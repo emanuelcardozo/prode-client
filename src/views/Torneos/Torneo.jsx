@@ -6,16 +6,19 @@ import Avatar from '@material-ui/core/Avatar'
 import Matches from 'components/Stage/Matches'
 import GridItem from 'components/Grid/GridItem'
 import CardBody from 'components/Card/CardBody'
-import CardHeader from 'components/Card/CardHeader'
 import CustomTable from 'components/Table/CustomTable'
 import GridContainer from 'components/Grid/GridContainer'
 import withStyles from '@material-ui/core/styles/withStyles'
 import dashboardStyle from 'assets/jss/material-dashboard-react/views/dashboardStyle'
 
+import AppBar from '@material-ui/core/AppBar'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+
 class Torneo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { container: [], ranking: [] }
+    this.state = { container: [], ranking: [], value: 0 }
 
     const self = this
     const { id, stage } = self.props.computedMatch.params
@@ -57,50 +60,55 @@ class Torneo extends React.Component {
     return stages
   }
 
+  handleChange = (event, value) => {
+   this.setState({ value })
+  }
+
   render(){
-    const { classes, bets, user } = this.props
+    const { bets, user } = this.props
     const { id, stage } = this.props.computedMatch.params
     const tournament = bets.tournaments[id]
+    const { value } = this.state
 
     if(!tournament || bets.stage.length === 0) return null
 
     return (
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
-          <Card>
-            <CardHeader className={classes.tournamentContainer} style={{ backgroundImage: `url(${tournament.img})` }}>
-              <p className={classes.tournamentTitle}>{tournament.name}</p>
-              <div className={classes.stagesConteiner}>
-                { this.listStages() }
-              </div>
-            </CardHeader>
-            <CardBody>
-              <Matches
-                idTournament={id}
-                idStage={stage}
-                idDate={'0'}
-                matches={bets.stage}
-                setMatchBet={this.props.setMatchBet}
-                userId={user.id}
-                state={false}
-                accessToken={user.accessToken} />
-            </CardBody>
-          </Card>
+      <GridContainer style={{'justifyContent': 'center'}}>
+        <GridItem xs={12} sm={12} md={8}>
+          <AppBar position="static" style={{'backgroundColor': '#00acc1'}}>
+            <Tabs
+                value={value}
+                onChange={this.handleChange}
+                centered={true}
+              >
+              <Tab label="Fecha" icon={<i className="far fa-calendar-alt"></i>} />
+              <Tab label="Posiciones" icon={<i className="fas fa-list-ol"></i>} />
+            </Tabs>
+          </AppBar>
         </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
-          <CustomTable
-            title={'Ranking de la Fecha'}
-            color={'success'}
-            idTournament={id}
-            idStage={stage}
-            accessToken={user.accessToken} />
-          <br/>
-          <CustomTable
-            title={'Ranking del Torneo'}
-            color={'danger'}
-            idTournament={id}
-            accessToken={user.accessToken} />
-        </GridItem>
+        {value === 0 &&
+          <GridItem xs={12} sm={12} md={8}>
+            <Card>
+              <CardBody>
+                <Matches
+                  idTournament={id}
+                  idStage={stage}
+                  idDate={'0'}
+                  matches={bets.stage}
+                  setMatchBet={this.props.setMatchBet}
+                  userId={user.id}
+                  state={false}
+                  accessToken={user.accessToken} />
+              </CardBody>
+            </Card>
+          </GridItem>}
+        {value === 1 &&
+          <GridItem xs={12} sm={12} md={8}>
+            <CustomTable
+              idTournament={id}
+              idStage={stage}
+              accessToken={user.accessToken} />
+          </GridItem>}
       </GridContainer>
     )
   }
