@@ -63,9 +63,25 @@ const Sidebar = ({ ...props }) => {
     </List>
   )
 
+  var linksResponsive = (
+    <List style={{'display': 'flex'}}>
+      {routes.map((prop, key) => {
+        if (prop.redirect || prop.notDisplay) return null
+        return (
+          <NavLink to={prop.path} key={key}>
+            <div className={classes.navLinkResponsive}>
+              <i className={prop.icon}></i>
+              <p>{prop.sidebarName}</p>
+            </div>
+          </NavLink>
+        )
+      })}
+    </List>
+  )
+
   var brand = (
     <div className={classes.logo} onClick={ (e)=>{ e.preventDefault() }}>
-      <a href='' className={classes.logoLink}>
+      <a href={classes.logoLink} className={classes.logoLink}>
         <div className={classes.logoImage}>
           <img src={logo} alt='logo' className={classes.img} />
         </div>
@@ -77,25 +93,7 @@ const Sidebar = ({ ...props }) => {
   return (
     <div>
       <Hidden mdUp implementation='css'>
-        <Drawer
-          variant='temporary'
-          anchor='bottom'
-          open={props.open}
-          classes={{ paper: classes.drawerPaper }}
-          onClose={props.handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
-        >
-          { brand }
-
-          <div className={classes.sidebarWrapper}> {links} </div>
-
-          {image !== undefined ? (
-            <div
-              className={classes.background}
-              style={{ backgroundImage: 'url(' + image + ')' }}
-            />
-          ) : null}
-        </Drawer>
+        <div className={classes.tabContent}>{linksResponsive}</div>
       </Hidden>
       <Hidden smDown implementation='css'>
         <Drawer

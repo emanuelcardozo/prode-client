@@ -222,6 +222,20 @@ const sidebarStyle = theme => ({
       width: "100%",
       bottom: "13px"
     }
+  },
+  tabContent: {
+    display: 'flex',
+    bottom: '0px',
+    position: 'absolute',
+    zIndex: '999',
+    width: '100%',
+    justifyContent: 'center',
+    backgroundColor: 'darkgrey'
+  },
+  navLinkResponsive: {
+    textAlign: 'center',
+    margin: '0px 15px',
+    color: 'black'
   }
 });
 

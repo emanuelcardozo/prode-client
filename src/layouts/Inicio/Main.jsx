@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Switch, Redirect } from 'react-router-dom'
 import { PropsRoute } from 'react-router-with-props'
-import Header from 'components/Header/Header.jsx'
 import Sidebar from 'components/Sidebar/Sidebar.jsx'
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
@@ -70,14 +69,6 @@ class Main extends React.Component {
         />
 
         <div className={classes.mainPanel} id='mainPanel'>
-
-          <Header
-            routes={dashboardRoutes}
-            setUser={this.props.setUser}
-            handleDrawerToggle={this.handleDrawerToggle}
-            {...rest}
-          />
-
           <div className={classes.content}>
             <div className={classes.container}>
               {<Switch>
@@ -89,7 +80,6 @@ class Main extends React.Component {
               </Switch>}
             </div>
           </div>
-
         </div>
       </div>
     )
