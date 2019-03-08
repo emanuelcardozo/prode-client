@@ -5,7 +5,7 @@ import {
   defaultFont,
   primaryColor,
   primaryBoxShadow,
-  infoColor,
+  // infoColor,
   successColor,
   warningColor,
   dangerColor
@@ -169,14 +169,16 @@ const sidebarStyle = theme => ({
     }
   },
   blue: {
-    backgroundColor: infoColor,
-    boxShadow:
-      "0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)",
-    "&:hover": {
-      backgroundColor: infoColor,
-      boxShadow:
-        "#1D7CF2"
-    }
+    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+    boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+    // backgroundColor: infoColor,
+    // boxShadow:
+    //   "0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)",
+    // "&:hover": {
+    //   backgroundColor: infoColor,
+    //   boxShadow:
+    //     "#1D7CF2"
+    // }
   },
   green: {
     backgroundColor: successColor,

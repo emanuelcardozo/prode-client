@@ -1,6 +1,6 @@
 import { successColor } from 'assets/jss/material-dashboard-react.jsx'
 
-const dashboardStyle = {
+const dashboardStyle = theme => ({
   successText: {
     color: successColor
   },
@@ -109,6 +109,7 @@ const dashboardStyle = {
   },
   inputField: {
     height: '30%',
+    minWidth: '15px',
     margin: '0px 30px',
     alignItems: 'center',
     textAlignLast: 'end',
@@ -123,14 +124,12 @@ const dashboardStyle = {
     height: '40px'
   },
   button: {
-    backgroundColor: 'green',
+    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+    boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
     color: 'white',
-    width: '70px',
+    width: '90px',
     height: '40px',
-    borderRadius: '25px',
-    '&:hover': {
-      color: 'black'
-    }
+    borderRadius: '10px'
   },
   inputRadio: {
     display: 'inline-block',
@@ -186,7 +185,33 @@ const dashboardStyle = {
     minWidth: '220px',
     fontSize: '2.825em',
     letterSpacing: '10px'
+  },
+  commonDiv: {
+    width: 'fit-content',
+    margin: '0px'
+  },
+  [theme.breakpoints.down("sm")]: {
+    cover: {
+      width: '50px',
+      height: '50px',
+      margin: '20px 0px'
+    },
+    cardTitle: {
+      fontSize: '12px'
+    },
+    buttonStep: {
+      width: '25px'
+    },
+    inputField: {
+      margin: '0px 15px'
+    },
+    betsGoals: {
+      margin: '0px',
+      minWidth: '100px',
+      fontSize: '25px',
+      textAlign: 'center'
+    }
   }
-}
+})
 
 export default dashboardStyle

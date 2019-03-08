@@ -75,13 +75,13 @@ class Torneo extends React.Component {
     return (
       <GridContainer style={{'justifyContent': 'center'}}>
         <GridItem xs={12} sm={12} md={8}>
-          <AppBar position="static" style={{'backgroundColor': '#00acc1'}}>
+          <AppBar position="static" style={{'background': 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)', 'boxShadow': '0 3px 5px 2px rgba(33, 203, 243, .3)'}}>
             <Tabs
                 value={value}
                 onChange={this.handleChange}
                 centered={true}
               >
-              <Tab label="Fecha" icon={<i className="far fa-calendar-alt"></i>} />
+              <Tab label="Partidos" icon={<i className="far fa-calendar-alt"></i>} />
               <Tab label="Posiciones" icon={<i className="fas fa-list-ol"></i>} />
             </Tabs>
           </AppBar>
