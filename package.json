@@ -36,6 +36,10 @@
   },
   "scripts": {
     "start": "NODE_PATH=./src react-scripts start",
+<<<<<<< HEAD
+=======
+    "local": "HTTPS=true NODE_PATH=./src react-scripts start",
+>>>>>>> abf4f1a14dd36c3c2a436cc447735b0c5b4bc0ed
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
