@@ -41,7 +41,6 @@ class Matches extends React.Component {
 
   render() {
     const { matches, classes, idTournament, idStage,  userId, accessToken } = this.props
-    console.log(matches);
     return(
       <GridContainer>
         {matches.map((match, index) => {
