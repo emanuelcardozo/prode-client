@@ -22,17 +22,9 @@ const Sidebar = ({ ...props }) => {
       {routes.map((prop, key) => {
         if (prop.redirect || prop.notDisplay) return null
         var activePro = ' '
-        var listItemClasses
-        if (prop.path === '/usuario') {
-          activePro = classes.activePro + ' '
-          listItemClasses = classNames({
-            [' ' + classes[color]]: true
-          })
-        } else {
-          listItemClasses = classNames({
-            [' ' + classes[color]]: activeRoute(prop.path)
-          })
-        }
+        const listItemClasses = classNames({
+          [' ' + classes[color]]: activeRoute(prop.path)
+        })
         const whiteFontClasses = classNames({
           [' ' + classes.whiteFont]: activeRoute(prop.path)
         })
@@ -67,11 +59,12 @@ const Sidebar = ({ ...props }) => {
     <List style={{'display': 'flex'}}>
       {routes.map((prop, key) => {
         if (prop.redirect || prop.notDisplay) return null
+        const stile = key !== 3 ? {'borderRight': 'dimgrey', 'borderRightWidth': '2px', 'borderRightStyle': 'solid'} : {}
         return (
-          <NavLink to={prop.path} key={key}>
+          <NavLink to={prop.path} key={key} style={stile}>
             <div className={classes.navLinkResponsive}>
               <i className={prop.icon}></i>
-              <p>{prop.sidebarName}</p>
+              <p style={{'margin': '0px'}}>{prop.sidebarName}</p>
             </div>
           </NavLink>
         )
@@ -80,7 +73,7 @@ const Sidebar = ({ ...props }) => {
   )
 
   var brand = (
-    <div className={classes.logo} onClick={ (e)=>{ e.preventDefault() }}>
+    <div className={classes.logo} onClick={(e)=>{ e.preventDefault() }}>
       <a href={classes.logoLink} className={classes.logoLink}>
         <div className={classes.logoImage}>
           <img src={logo} alt='logo' className={classes.img} />

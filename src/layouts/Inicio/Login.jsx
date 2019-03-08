@@ -17,7 +17,7 @@ class Login extends React.Component {
           <div className="text-center">
             <img src="/static/media/balon.b77c228e.png" alt="logo" style={{'width':'10%'}}/>
             <h1 className="cover-heading">ProdEvolution</h1>
-            <p className="lead">Compite con tus amigos en la apasionante Superliga Argentina, suma puntos y convertite en campeón.</p>
+            <p className="lead">Competí con tus amigos en la apasionante Superliga Argentina, suma puntos y convertite en el campeón de la fecha.<br/>Podes ganar importantes premios.</p>
             <FacebookLogin
               autoLoad={true}
               appId='711138055913158'

@@ -28,18 +28,18 @@ class Torneos extends React.Component {
         {tournaments.map((tournament, index) => {
           if(!tournament) return null
           return (
-            <GridItem xs={12} sm={12} md={4} key={index}>
+            <GridItem xs={12} sm={8} md={4} key={index}>
               <Card chart>
                 <CardHeader color='grey'>
                   <img src={tournament.img} alt='...' style={{ width: '100%' }}/>
                 </CardHeader>
                 <CardBody>
-                  <h4 className={classes.cardTitle}>{tournament.name}</h4>
+                  <h4 className={classes.cardTitle}><strong>{tournament.name}</strong></h4>
                   <p>{tournament.current_stage}</p>
                 </CardBody>
                 <CardFooter chart>
                   <span></span>
-                  <Button variant="contained" size="small" className={classes.button} onClick={this.viewTournament.bind(this, 'torneo', index)}>
+                  <Button variant="contained" size="large" className={classes.button} onClick={this.viewTournament.bind(this, 'torneo', index)}>
                     Jugar
                   </Button>
                 </CardFooter>

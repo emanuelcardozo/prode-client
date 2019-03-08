@@ -12,7 +12,7 @@ import GridContainer from 'components/Grid/GridContainer'
 import DialogContent from '@material-ui/core/DialogContent'
 import withStyles from '@material-ui/core/styles/withStyles'
 
-const styles = {
+const styles = theme => ({
   titleContairner: {
     textAlign: 'center',
     marginTop: '10px'
@@ -20,7 +20,7 @@ const styles = {
   versus: {
     marginLeft: '0px 15px'
   }
-}
+})
 
 class Bets extends React.Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class Bets extends React.Component {
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose} scroll={'paper'}>
           <DialogContent>
-            <GridItem xs={12} sm={12} md={12}>
+            <GridItem>
               <Card>
                 <div className={classes.titleContairner}>
                   <img src={home.logo.large} alt='...' style={{ width: '15%' }} />

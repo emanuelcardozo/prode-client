@@ -18,7 +18,7 @@ const dashboardRoutes = [
   // },
   {
     path: '/torneos',
-    sidebarName: 'Campeonato',
+    sidebarName: 'Torneos',
     navbarName: 'Lista de Torneos',
     icon: 'fas fa-trophy',
     component: Torneos

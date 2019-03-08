@@ -41,28 +41,28 @@ class Matches extends React.Component {
 
   render() {
     const { matches, classes, idTournament, idStage,  userId, accessToken } = this.props
-
+    console.log(matches);
     return(
       <GridContainer>
         {matches.map((match, index) => {
           const state = match.state === 'Finished' || match.state === 'Playing'
           const date = match.date || match.hour ? match.date : 'Pendiente'
           return (
-            <GridItem xs={12} sm={12} md={12} key={index}>
+            <GridItem xs={12} sm={12} md={12} key={index} id='grid'>
               <Card chart>
-                <CardBody>
-                  <Grid container spacing={24} direction="row" align="center">
-                    <Grid item xs>
+                <CardBody style={{ padding: '0.9375rem 0px' }}>
+                  <Grid container direction="row" align="center">
+                    <Grid item xs={4}>
                       <Paper xs={3} className={classes.paperContainer}>
                         <CardMedia className={classes.cover} image={match.home.logo.large} />
                         <h4 className={classes.cardTitle}><strong>{match.home.name}</strong></h4>
                       </Paper>
                     </Grid>
-                    <Grid item xs>
+                    <Grid item xs={4}>
                       {state ?
                         <div>
                           <h3 className={classes.betsGoals} style={{ margin: '0px' }}>
-                            <span>{this.isZero(match.home.goals)}</span> - <span>{this.isZero(match.away.goals)}</span>
+                            <span>{this.isZero(match.home.goals)}</span>-<span>{this.isZero(match.away.goals)}</span>
                           </h3>
                           <List style={{ color: this.starColor(match.points), width: '30px', height: '30px' }}/>
                           <h5 style={{ margin: '0px', letterSpacing: '2px' }}>
@@ -96,7 +96,7 @@ class Matches extends React.Component {
                         </Paper>
                       }
                     </Grid>
-                    <Grid item xs>
+                    <Grid item xs={4}>
                       <Paper className={classes.paperContainer}>
                         <CardMedia className={classes.cover} image={match.away.logo.large} />
                         <h4 className={classes.cardTitle}><strong>{match.away.name}</strong></h4>
@@ -108,8 +108,7 @@ class Matches extends React.Component {
                   <div>
                     {!state ?
                       <div>
-                        <span>Fecha: {date} {match.hour} </span><br/>
-                        <span><strong>Predicción: {match.home.name} {this.isZero(match.bet_home)} - {this.isZero(match.bet_away)} {match.away.name}</strong></span>
+                        <span>Fecha: {date} {match.hour}</span>
                       </div> :
                       <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} idMatch={match.id} accessToken={accessToken} />
                     }

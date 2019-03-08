@@ -12,33 +12,37 @@ class InputGoals extends React.Component {
   handleChange(op) {
     const { index, type } = this.props
     const num = document.getElementById(type + index)
-    num.focus()
 
     if(op === '+')
       num.stepUp()
     else
       num.stepDown()
 
+    num.disabled = false
+    num.focus()
     num.blur()
+    num.disabled = true
   }
 
   render(){
-    const { classes, index, type } = this.props
+    const { classes, index, type, matches } = this.props
+    var side = type === 'local' ? matches[index].bet_home : matches[index].bet_away
 
     return(
-      <div>
-        <div>
+      <div className={classes.commonDiv}>
+        <div className={classes.commonDiv}>
           <Add onClick={this.handleChange.bind(this, '+')} className={classes.buttonStep} />
         </div>
         <Input
           id={type + index}
           type='number'
-          defaultValue={0}
-          inputProps={{ min: '0', max: '10' }}
+          disabled
+          defaultValue={side}
+          inputProps={{ min: '0', max: '9' }}
           className={classes.inputField}
           onBlur={ _.debounce(this.props.sendBet.bind(this, index), 2000) }
         />
-        <div>
+        <div className={classes.commonDiv}>
           <Remove onClick={this.handleChange.bind(this, '-')} className={classes.buttonStep} />
         </div>
       </div>
