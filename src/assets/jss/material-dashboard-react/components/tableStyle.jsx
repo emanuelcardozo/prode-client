@@ -51,6 +51,15 @@ const tableStyle = theme => ({
     padding: '12px 8px',
     verticalAlign: 'middle'
   },
+  firstCell: {
+    ...defaultFont,
+    textAlign: 'center',
+    lineHeight: '1.42857143',
+    padding: '12px 8px',
+    color: 'black',
+    fontWeight: '500',
+    verticalAlign: 'middle'
+  },
   tableResponsive: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,

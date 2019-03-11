@@ -7,7 +7,8 @@ class Login extends React.Component {
 
   facebookResponse(response) {
     const self = this
-    SDK.signin(response, function(user) { self.props.setUser(user) })
+    SDK.signin(response, function(user) {
+      self.props.setUser(user) })
   }
 
   render() {
@@ -22,7 +23,7 @@ class Login extends React.Component {
               autoLoad={true}
               appId='711138055913158'
               textButton='   Inicio con Facebook'
-              fields='name, email, picture, id'
+              fields='name, email, picture.type(large), id'
               cssClass="btn btn-login"
               icon="fa-facebook"
               callback={this.facebookResponse.bind(this)}

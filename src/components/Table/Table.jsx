@@ -31,11 +31,12 @@ function CustomTable({ ...props }) {
         ) : null}
         <TableBody>
           {tableData.map((prop, key) => {
+            var cell = key
             return (
               <TableRow key={key}>
                 {prop.map((prop, key) => {
                   return (
-                    <TableCell className={classes.tableCell} key={key}>
+                    <TableCell className={cell === 0 ? classes.firstCell : classes.tableCell} key={key}>
                       {prop}
                     </TableCell>
                   )
