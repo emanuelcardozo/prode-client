@@ -64,7 +64,7 @@ class Matches extends React.Component {
                             <span>{this.isZero(match.home.goals)}</span>-<span>{this.isZero(match.away.goals)}</span>
                           </h3>
                           <List style={{ color: this.starColor(match.points), width: '30px', height: '30px' }}/>
-                          <h5 style={{ margin: '0px', letterSpacing: '2px' }}>
+                          <h5 className={classes.resultGoals}>
                             <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
                              -
                             <span style={{ color: this.getColor(match.away.goals, match.bet_away) }}>{this.isZero(match.bet_away)}</span>
@@ -81,7 +81,7 @@ class Matches extends React.Component {
                             accessToken={accessToken}
                             matches={matches}
                             userId={userId} />
-                          <h2 style={{ alignSelf: 'center' }}> - </h2>
+                          <h2 style={{ alignSelf: 'center', margin: '0px' }}> - </h2>
                           <InputGoals
                             classes={classes}
                             index={index}

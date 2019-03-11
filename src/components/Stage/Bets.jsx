@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
 import GridContainer from 'components/Grid/GridContainer'
-import DialogContent from '@material-ui/core/DialogContent'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 const styles = theme => ({
@@ -42,11 +41,16 @@ class Bets extends React.Component {
       const { idTournament, idStage, idMatch, accessToken } = self.props
       SDK.getBetsOfMatch(idTournament, idStage, idMatch, accessToken, function(response) { self.setState({ data: self.getRows(response)}) })
     }
+
+    if(prevState.open) {
+      document.getElementById('dialogrid').parentElement.style.margin = '0px'
+    }
   }
 
   getRows(data) {
     return data.map( bet => {
-      return [ bet.user_name, bet.home_goals.toString(), '-', bet.away_goals.toString() ]
+      var name = bet.user_alias.length === 0 ? bet.user_name : bet.user_alias
+      return [ name, bet.home_goals.toString(), '-', bet.away_goals.toString() ]
     })
   }
 
@@ -59,24 +63,22 @@ class Bets extends React.Component {
           <List />
         </Button>
         <Dialog open={this.state.open} onClose={this.handleClose} scroll={'paper'}>
-          <DialogContent>
-            <GridItem>
-              <Card>
-                <div className={classes.titleContairner}>
-                  <img src={home.logo.large} alt='...' style={{ width: '15%' }} />
-                  <strong className={classes.versus}> VS </strong>
-                  <img src={away.logo.large} alt='...' style={{ width: '15%' }} />
-                </div>
-                <CardBody>
-                  {this.state.open &&
-                    <Table
-                      tableHead={['Nombre', home.name, '', away.name]}
-                      tableData={this.state.data}
-                    />}
-                </CardBody>
-              </Card>
-            </GridItem>
-          </DialogContent>
+          <GridItem id='dialogrid'>
+            <Card>
+              <div className={classes.titleContairner}>
+                <img src={home.logo.large} alt='...' style={{ width: '15%' }} />
+                <strong className={classes.versus}> VS </strong>
+                <img src={away.logo.large} alt='...' style={{ width: '15%' }} />
+              </div>
+              <CardBody>
+                {this.state.open &&
+                  <Table
+                    tableHead={['Nombre', home.name, '', away.name]}
+                    tableData={this.state.data}
+                  />}
+              </CardBody>
+            </Card>
+          </GridItem>
         </Dialog>
       </GridContainer>
     )

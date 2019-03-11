@@ -1,5 +1,4 @@
 import {
-  defaultFont,
   primaryBoxShadow,
   infoBoxShadow,
   successBoxShadow,
@@ -10,18 +9,12 @@ import {
 
 const snackbarContentStyle = {
   root: {
-    ...defaultFont,
-    flexWrap: 'unset',
     position: 'relative',
     padding: '20px 15px',
-    lineHeight: '20px',
     marginBottom: '20px',
-    fontSize: '14px',
     backgroundColor: 'white',
     color: '#555555',
-    borderRadius: '3px',
-    boxShadow:
-      '0 12px 20px -10px rgba(255, 255, 255, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 255, 255, 0.2)'
+    maxWidth: '100%'
   },
   top20: {
     top: '20px'
@@ -73,8 +66,8 @@ const snackbarContentStyle = {
     height: '11px'
   },
   iconButton: {
-    width: '24px',
-    height: '24px'
+    width: '20px',
+    height: '20px'
   },
   icon: {
     display: 'block',

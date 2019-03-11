@@ -110,15 +110,15 @@ const dashboardStyle = theme => ({
   inputField: {
     height: '30%',
     minWidth: '15px',
+    color: 'black !important',
+    fontWeight: '500',
     margin: '0px 30px',
-    alignItems: 'center',
-    textAlignLast: 'end',
     '&:before, &:after': {
       content: 'none'
     }
   },
   buttonStep: {
-    color: 'green',
+    color: '#2196F3',
     cursor: 'pointer',
     width: '40px',
     height: '40px'
@@ -184,7 +184,13 @@ const dashboardStyle = theme => ({
   betsGoals: {
     minWidth: '220px',
     fontSize: '2.825em',
+    fontWeight: '350',
     letterSpacing: '10px'
+  },
+  resultGoals: {
+    margin: '0px',
+    letterSpacing: '2px',
+    fontWeight: '500'
   },
   commonDiv: {
     width: 'fit-content',

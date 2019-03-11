@@ -31,7 +31,8 @@ class CustomTable extends React.Component {
   getRows(data) {
     var rows = []
     data.forEach((d, i) => {
-      rows.push([(i + 1).toString(), d.name, d.points.toString()])
+      var name = d.alias.length === 0 ? d.name : d.alias
+      rows.push([(i + 1).toString(), name, d.points.toString()])
     })
     return rows
   }

@@ -1,5 +1,6 @@
 //------------ USER ------------
 export const setUser = user => { return { type: 'SET_USER', user } }
+export const setAlias = user => { return { type: 'SET_ALIAS', user } }
 
 //------- TOURNAMENTS ----------
 export const setTournaments = tournaments => { return { type: 'SET_TOURNAMENTS', tournaments } }
