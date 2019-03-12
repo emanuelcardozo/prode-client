@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import InputGoals from './InputGoals'
 import Card from 'components/Card/Card'
 import Grid from '@material-ui/core/Grid'
-import List from '@material-ui/icons/Star'
+import Star from '@material-ui/icons/Star'
 import Paper from '@material-ui/core/Paper'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
@@ -63,7 +63,7 @@ class Matches extends React.Component {
                           <h3 className={classes.betsGoals} style={{ margin: '0px' }}>
                             <span>{this.isZero(match.home.goals)}</span>-<span>{this.isZero(match.away.goals)}</span>
                           </h3>
-                          <List style={{ color: this.starColor(match.points), width: '30px', height: '30px' }}/>
+                          <Star style={{ color: this.starColor(match.points), width: '30px', height: '30px' }}/>
                           <h5 className={classes.resultGoals}>
                             <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
                              -

@@ -206,7 +206,7 @@ const dashboardStyle = theme => ({
       fontSize: '12px'
     },
     buttonStep: {
-      width: '25px'
+      width: '30px'
     },
     inputField: {
       margin: '0px 15px'

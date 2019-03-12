@@ -23,7 +23,8 @@ const appStyle = theme => ({
   },
   content: {
     padding: "15px",
-    minHeight: "calc(100vh - 80px)"
+    minHeight: "calc(100vh - 80px)",
+    marginBottom: '40px'
   },
   map: {
     marginTop: "70px"

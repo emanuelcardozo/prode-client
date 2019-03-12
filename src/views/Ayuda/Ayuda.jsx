@@ -5,11 +5,38 @@ import CardBody from 'components/Card/CardBody'
 import CardHeader from 'components/Card/CardHeader'
 import withStyles from '@material-ui/core/styles/withStyles'
 
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+
+import Puntajes from './Puntajes'
+import Resultados from './Resultados'
+
 const style = {
+  root: {
+   border: '1px solid rgba(0,0,0,.125)',
+   boxShadow: 'none',
+   '&:not(:last-child)': {
+     borderBottom: 0,
+   },
+   '&:before': {
+      display: 'none',
+    },
+  },
+  expanded: {
+   margin: 'auto',
+  },
   typo: {
     paddingLeft: '25%',
     marginBottom: '40px',
     position: 'relative'
+  },
+  titleContainer: {
+    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+    boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)'
+  },
+  rulesTitles: {
+    color: '#2196F3'
   },
   note: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -41,26 +68,70 @@ const style = {
     textDecoration: 'none'
   }
 }
-function Ayuda(props) {
-  const { classes } = props
-  return (
-    <Card>
-      <CardHeader color='primary'>
-        <h4 className={classes.cardTitleWhite}>Como juagar al ProdEvolution</h4>
-        <p className={classes.cardCategoryWhite}>y desafiar a tus amigos</p>
-      </CardHeader>
-      <CardBody>
-        <div className={classes.typo}>
-          <div className={classes.note}>Paso 1</div>
-          <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-        </div>
-        <div className={classes.typo}>
-          <div className={classes.note}>Paso 2</div>
-          <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
-        </div>
-      </CardBody>
-    </Card>
-  )
+
+class Ayuda extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { expanded: '' }
+  }
+
+  handleChange = panel => (event, expanded) => {
+     this.setState({
+       expanded: expanded ? panel : false,
+     });
+   }
+
+  render() {
+    const { classes } = this.props
+    const { expanded } = this.state
+
+    return (
+      <Card>
+        <CardHeader className={classes.titleContainer}>
+          <h4 className={classes.cardTitleWhite}>Como juagar al ProdEvolution</h4>
+          <p className={classes.cardCategoryWhite}>Reglas y puntajes</p>
+        </CardHeader>
+        <CardBody>
+          <ExpansionPanel
+          square
+          expanded={expanded === 'panel1'}
+          onChange={this.handleChange('panel1')}
+          >
+            <ExpansionPanelSummary>
+              <p className={classes.rulesTitles}>+ Puntaje.</p>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Puntajes />
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <ExpansionPanel
+          square
+          expanded={expanded === 'panel2'}
+          onChange={this.handleChange('panel2')}
+          >
+            <ExpansionPanelSummary>
+              <p className={classes.rulesTitles}>+ Resultados.</p>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Resultados />
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          {/*<ExpansionPanel
+          square
+          expanded={expanded === 'panel3'}
+          onChange={this.handleChange('panel3')}
+          >
+            <ExpansionPanelSummary>
+              <p className={classes.rulesTitles}>+ Posiciones y alias.</p>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <loquesea />
+            </ExpansionPanelDetails>
+          </ExpansionPanel>*/}
+        </CardBody>
+      </Card>
+    )
+  }
 }
 
 Ayuda.propTypes = {

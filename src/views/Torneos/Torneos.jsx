@@ -35,7 +35,7 @@ class Torneos extends React.Component {
                 </CardHeader>
                 <CardBody>
                   <h4 className={classes.cardTitle}><strong>{tournament.name}</strong></h4>
-                  <p>{tournament.current_stage}</p>
+                  <p>{tournament.current_stage.replace("Matchday", "Jornada").replace("of", "de")}</p>
                 </CardBody>
                 <CardFooter chart>
                   <span></span>
