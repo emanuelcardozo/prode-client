@@ -2,7 +2,6 @@ import React from 'react'
 import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
 import Card from 'components/Card/Card'
-import Avatar from '@material-ui/core/Avatar'
 import Matches from 'components/Stage/Matches'
 import GridItem from 'components/Grid/GridItem'
 import CardBody from 'components/Card/CardBody'
@@ -25,7 +24,7 @@ class Torneo extends React.Component {
     const { accessToken } = self.props.user
 
     SDK.getTournamentStage(id, stage, accessToken, function(response) { self.props.setStage(response) })
-    SDK.getListStage(id, accessToken, function(response) { self.setState({ container: response }) })
+    //SDK.getListStage(id, accessToken, function(response) { self.setState({ container: response }) })
   }
 
   componentDidUpdate(nextProps) {
@@ -41,28 +40,7 @@ class Torneo extends React.Component {
     }
   }
 
-  newStage(tournamentId, numStage) { this.props.history.push('/torneo/' + tournamentId + '/' + numStage ) }
-
-  listStages() {
-    const { classes, computedMatch } = this.props
-    const { container } = this.state
-    const { id } = computedMatch.params
-
-    var stages = []
-    container.forEach((stage, index) => {
-      const color = stage ? '#d23232' : 'green'
-      stages.push(
-        <Avatar className={classes.stage} style={{ backgroundColor: color }} key={index} onClick={this.newStage.bind(this, id, index+1)}>
-          <strong>{index+1}</strong>
-        </Avatar>
-      )
-    })
-    return stages
-  }
-
-  handleChange = (event, value) => {
-   this.setState({ value })
-  }
+  handleChange = (event, value) => { this.setState({ value }) }
 
   render(){
     const { bets, user } = this.props

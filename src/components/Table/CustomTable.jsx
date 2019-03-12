@@ -15,8 +15,8 @@ class CustomTable extends React.Component {
     const { idTournament, idStage, accessToken } = self.props
     if(idStage) {
       SDK.getRankingStage(idTournament,idStage, accessToken, function(response) { self.setState({ rows: self.getRows(response)}) })
-    } else {
-      SDK.getRankingTournament(idTournament, accessToken ,function(response) { self.setState({ rows: self.getRows(response)}) })
+    // } else {
+      // SDK.getRankingTournament(idTournament, accessToken ,function(response) { self.setState({ rows: self.getRows(response)}) })
     }
   }
 

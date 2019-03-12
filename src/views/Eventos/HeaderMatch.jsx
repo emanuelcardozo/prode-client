@@ -17,12 +17,12 @@ class HeaderMatch extends React.Component {
           <p>{date}</p>
         </div>
         <div className={classes.headerTeams}>
-          <div style={{marginRight: '70px'}}>
+          <div className={classes.imgHome}>
             <img src={home.img} alt='...' />
             <p><strong>{home.name}</strong></p>
           </div>
           <div className={classes.headerGoals}>vs</div>
-          <div style={{marginLeft: '70px'}}>
+          <div className={classes.imgAway}>
             <img src={away.img} alt='...' />
             <p><strong>{away.name}</strong></p>
           </div>

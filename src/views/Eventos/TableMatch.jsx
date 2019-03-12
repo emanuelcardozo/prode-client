@@ -50,7 +50,7 @@ class TableMatch extends React.Component {
 
     return (
       <Table>
-        <TableHead>
+        <TableHead className={classes.tableHead}>
           <TableRow>
             <TableCell className={classes.tableCell}><img src={home.img} alt='...' style={{ width: '20%' }}/></TableCell>
             <TableCell className={classes.tableCell}>EQUIPOS</TableCell>

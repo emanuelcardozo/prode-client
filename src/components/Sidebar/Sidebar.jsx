@@ -59,12 +59,15 @@ const Sidebar = ({ ...props }) => {
     <List style={{'display': 'flex'}}>
       {routes.map((prop, key) => {
         if (prop.redirect || prop.notDisplay) return null
+        const lightBlueFontClasses = classNames({
+          [' ' + classes.lightBlueFont]: activeRoute(prop.path)
+        })
         const stile = key !== 3 ? {'borderRight': 'dimgrey', 'borderRightWidth': '2px', 'borderRightStyle': 'solid'} : {}
         return (
           <NavLink to={prop.path} key={key} style={stile}>
             <div className={classes.navLinkResponsive}>
-              <i className={prop.icon}></i>
-              <p style={{'margin': '0px'}}>{prop.sidebarName}</p>
+              <i className={prop.icon + lightBlueFontClasses}></i>
+              <p style={{'margin': '0px'}} className={lightBlueFontClasses}>{prop.sidebarName}</p>
             </div>
           </NavLink>
         )

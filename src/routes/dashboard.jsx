@@ -38,7 +38,7 @@ const dashboardRoutes = [
     component: Partido
   },
   {
-    path: '/ayuda',
+    path: '/reglas',
     sidebarName: 'Reglas',
     navbarName: 'Ayuda',
     icon: 'fas fa-scroll',

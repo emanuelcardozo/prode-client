@@ -138,7 +138,8 @@ const dashboardStyle = theme => ({
     cursor: 'pointer'
   },
   tableCell: {
-    textAlign: 'center'
+    textAlign: 'center',
+    padding: '4px 20px 4px 20px'
   },
   selectOptions: {
     cursor: 'pointer',
@@ -196,6 +197,12 @@ const dashboardStyle = theme => ({
     width: 'fit-content',
     margin: '0px'
   },
+  imgAway: {
+    marginLeft: '70px'
+  },
+  imgHome: {
+    marginRight: '70px'
+  },
   [theme.breakpoints.down("sm")]: {
     cover: {
       width: '50px',
@@ -216,6 +223,15 @@ const dashboardStyle = theme => ({
       minWidth: '100px',
       fontSize: '25px',
       textAlign: 'center'
+    },
+    imgAway: {
+      margin: '10px'
+    },
+    imgHome: {
+      margin: '10px'
+    },
+    tableHead: {
+      display: 'none'
     }
   }
 })

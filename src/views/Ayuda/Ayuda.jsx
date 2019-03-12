@@ -97,7 +97,7 @@ class Ayuda extends React.Component {
           expanded={expanded === 'panel1'}
           onChange={this.handleChange('panel1')}
           >
-            <ExpansionPanelSummary>
+            <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
               <p className={classes.rulesTitles}>+ Puntaje.</p>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
@@ -109,7 +109,7 @@ class Ayuda extends React.Component {
           expanded={expanded === 'panel2'}
           onChange={this.handleChange('panel2')}
           >
-            <ExpansionPanelSummary>
+            <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
               <p className={classes.rulesTitles}>+ Resultados.</p>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
