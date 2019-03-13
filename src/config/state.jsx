@@ -6,6 +6,7 @@ const state = {
     stage: [],
     match: {}
   },
+  match: {}
 }
 
 export default state

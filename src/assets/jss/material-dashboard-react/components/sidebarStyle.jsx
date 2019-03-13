@@ -160,6 +160,9 @@ const sidebarStyle = theme => ({
   whiteFont: {
     color: "#FFFFFF"
   },
+  lightBlueFont: {
+    color: '#2196F3'
+  },
   purple: {
     backgroundColor: primaryColor,
     ...primaryBoxShadow,
@@ -232,7 +235,7 @@ const sidebarStyle = theme => ({
     zIndex: '999',
     width: '100%',
     justifyContent: 'center',
-    backgroundColor: 'darkgrey'
+    backgroundColor: 'lightgray'
   },
   navLinkResponsive: {
     textAlign: 'center',

@@ -23,7 +23,11 @@ const appStyle = theme => ({
   },
   content: {
     padding: "15px",
-    minHeight: "calc(100vh - 80px)"
+    minHeight: "calc(100vh - 80px)",
+    [theme.breakpoints.down("md")]: {
+      marginBottom: '60px',
+      padding: "0px 15px"
+    }
   },
   map: {
     marginTop: "70px"

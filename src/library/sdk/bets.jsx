@@ -14,6 +14,14 @@ const bets = {
       data: params,
       url: config.api + '/bets'
     })
+  },
+
+  setMatchBet: function(params) {
+    $.ajax({
+      method: 'POST',
+      data: params,
+      url: config.api + '/bet_matches'
+    })
   }
 }
 

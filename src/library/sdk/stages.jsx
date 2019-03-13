@@ -18,6 +18,12 @@ const stages = {
     $.get(config.api + '/tournaments/' + tournament + '/stages/'+ stage +'/points' , { accessToken }, function(response) {
       callback(response)
     })
+  },
+
+  getRankingMainMatch: function(id, accessToken, callback) {
+    $.get(config.api + '/match/' + id + '/points', { accessToken }, function(response) {
+      callback(response)
+    })
   }
 }
 
