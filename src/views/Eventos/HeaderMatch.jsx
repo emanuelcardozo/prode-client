@@ -18,17 +18,17 @@ class HeaderMatch extends React.Component {
         </div>
         <div className={classes.headerTeams}>
           <div className={classes.imgHome}>
-            <img src={home.img} alt='...' />
+            <img src={home.logo.large} alt='...' />
             <p><strong>{home.name}</strong></p>
           </div>
           <div className={classes.headerGoals}>vs</div>
           <div className={classes.imgAway}>
-            <img src={away.img} alt='...' />
+            <img src={away.logo.large} alt='...' />
             <p><strong>{away.name}</strong></p>
           </div>
         </div>
         <div className={classes.headerTeams} >
-          <p>{stage} - Estadio {stadium}</p>
+          <p>{stage} - {stadium}</p>
         </div>
       </CardHeader>
     )
@@ -36,7 +36,7 @@ class HeaderMatch extends React.Component {
 }
 
 HeaderMatch.propTypes = {
-  eventMacth: PropTypes.object,
+  match: PropTypes.object,
   classes: PropTypes.object
 }
 

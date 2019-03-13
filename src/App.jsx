@@ -8,7 +8,8 @@ const mapStateToProps = state => {
   return {
     user: state.user,
     tournaments: state.tournaments,
-    bets: state.bets
+    bets: state.bets,
+    match: state.match
   }
 }
 

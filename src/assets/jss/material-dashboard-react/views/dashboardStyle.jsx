@@ -159,7 +159,7 @@ const dashboardStyle = theme => ({
     justifyContent: 'center'
   },
   headerGoals: {
-    fontSize: '90px',
+    fontSize: '70px',
     alignSelf: 'center',
     marginBottom: '30px'
   },
@@ -232,6 +232,9 @@ const dashboardStyle = theme => ({
     },
     tableHead: {
       display: 'none'
+    },
+    card: {
+      marginTop: '0px'
     }
   }
 })

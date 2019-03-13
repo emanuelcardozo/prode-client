@@ -27,23 +27,10 @@ class Torneo extends React.Component {
     //SDK.getListStage(id, accessToken, function(response) { self.setState({ container: response }) })
   }
 
-  componentDidUpdate(nextProps) {
-    const { stage, id } = this.props.computedMatch.params
-    const nextParams = nextProps.computedMatch.params
-
-    if(stage !== nextParams.stage || id !== nextParams.id) {
-      const self = this
-      const { id, stage } = self.props.computedMatch.params
-      const { accessToken } = self.props.user
-
-      SDK.getTournamentStage(id, stage, accessToken, function(response) { self.props.setStage(response) })
-    }
-  }
-
   handleChange = (event, value) => { this.setState({ value }) }
 
   render(){
-    const { bets, user } = this.props
+    const { bets, user, classes } = this.props
     const { id, stage } = this.props.computedMatch.params
     const tournament = bets.tournaments[id]
     const { value } = this.state
@@ -66,7 +53,7 @@ class Torneo extends React.Component {
         </GridItem>
         {value === 0 &&
           <GridItem xs={12} sm={12} md={8}>
-            <Card>
+            <Card className={classes.card}>
               <CardBody>
                 <Matches
                   idTournament={id}

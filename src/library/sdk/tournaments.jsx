@@ -12,6 +12,12 @@ const tournaments = {
     $.get(config.api + '/tournaments/' + id + '/points', { accessToken } , function(response) {
       callback(response)
     })
+  },
+
+  getMainMatch: function(accessToken, callback) {
+    $.get(config.api + '/main_match', { accessToken }, function(response) {
+      callback(response)
+    })
   }
 }
 

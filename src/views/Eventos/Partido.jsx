@@ -1,4 +1,5 @@
 import React from 'react'
+import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
 import TableMatch from './TableMatch'
 import HeaderMatch from './HeaderMatch'
@@ -16,15 +17,18 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Button from '@material-ui/core/Button'
 
-import { eventMacth } from 'variables/generales'
-
 class Partido extends React.Component {
   constructor(props) {
     super(props)
     this.state = { value: 0 }
+    const self = this
+    const { accessToken } = props.user
+
+    SDK.getMainMatch(accessToken, function(response) { self.props.setMatch(response) })
   }
 
   betOnMatch() {
+    const { user, match } = this.props
     const goals = Array.from(document.getElementsByTagName('select'))
     const inputs = Array.from(document.getElementsByTagName('input'))
     const result = inputs.filter(word => word.checked)
@@ -38,18 +42,18 @@ class Partido extends React.Component {
       const sOnTarget = result[4].value
       const offside = result[5].value
 
-      console.log({ gHome, gAway, foul, yCard, lateral, corner, sOnTarget, offside });
-
-      this.props.setBetOnMatch({ gHome, gAway, foul, yCard, lateral, corner, sOnTarget, offside })
+      const params = { gHome, gAway, foul, yCard, lateral, corner, sOnTarget, offside, match_id: match.id, user_id: user.userID, accessToken: user.accessToken }
+      this.props.setBetOnMatch(params)
+      SDK.setMatchBet(params)
     }
   }
 
   handleChange = (event, value) => { this.setState({ value }) }
 
   render() {
-    const { classes, bets } = this.props
+    const { classes, bets, match, user } = this.props
     const { value } = this.state
-    //const { home, away } = eventMacth
+    if(!match.date) return null
 
     return (
       <GridContainer style={{'justifyContent': 'center'}}>
@@ -67,11 +71,11 @@ class Partido extends React.Component {
         </GridItem>
         {value === 0 &&
           <GridItem xs={12} sm={12} md={8}>
-            <Card chart>
-              <HeaderMatch eventMacth={eventMacth} />
+            <Card chart className={classes.card}>
+              <HeaderMatch eventMacth={match} />
               <hr className={classes.line}/>
               <CardBody>
-                <TableMatch eventMacth={eventMacth} bets={bets.match}/>
+                <TableMatch eventMacth={match} bets={bets.match}/>
               </CardBody>
               <CardFooter>
                 <span></span>
@@ -84,7 +88,7 @@ class Partido extends React.Component {
           </GridItem>}
         {value === 1 &&
           <GridItem xs={12} sm={12} md={8}>
-            <CustomTable />
+            <CustomTable accessToken={user.accessToken} matchId={match.id} />
           </GridItem>}
       </GridContainer>
     )

@@ -31,7 +31,7 @@ const dashboardRoutes = [
   //   component: Fechas
   // },
   {
-    path: '/eventos',
+    path: '/partido',
     sidebarName: 'Partidos',
     navbarName: 'Próximo evento',
     icon: 'fas fa-futbol',
