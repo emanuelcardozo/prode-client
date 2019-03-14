@@ -13,6 +13,9 @@ import logo from 'assets/img/balon.png'
 import Login from './Login'
 import SDK from 'library/SDK'
 
+import ReactPlayer from 'react-player'
+import BladeRunner from 'assets/blade_runner.mp4'
+
 class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -70,6 +73,16 @@ class Main extends React.Component {
 
         <div className={classes.mainPanel} id='mainPanel'>
           <div className={classes.content}>
+
+            <div className={classes.player}>
+              <ReactPlayer
+                url={BladeRunner}
+                className='react-player'
+                loop={true}
+                playing
+              />
+            </div>
+
             <div className={classes.container}>
               {<Switch>
                 {dashboardRoutes.map((prop, key) => {

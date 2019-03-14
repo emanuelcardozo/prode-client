@@ -9,6 +9,9 @@ const appStyle = theme => ({
     top: "0",
     height: "100vh"
   },
+  player: {
+    display: "none"
+  },
   mainPanel: {
     [theme.breakpoints.up("md")]: {
       width: `calc(100% - ${drawerWidth}px)`
