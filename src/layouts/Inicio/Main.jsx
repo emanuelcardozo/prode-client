@@ -78,8 +78,8 @@ class Main extends React.Component {
               <ReactPlayer
                 url={BladeRunner}
                 className='react-player'
-                loop={true}
                 playing
+                loop
               />
             </div>
 

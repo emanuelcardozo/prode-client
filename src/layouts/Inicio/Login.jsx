@@ -11,6 +11,11 @@ class Login extends React.Component {
       self.props.setUser(user) })
   }
 
+  componentDidMount() {
+    const element = document.getElementById('logo')
+    element.click()
+  }
+
   render() {
     return (
       <div className="site-wrapper">
@@ -30,7 +35,7 @@ class Login extends React.Component {
             />
           </div>
         </div>
-        <p className="footer-center">by Fundamentalistas.</p>
+        <p className="footer-center" id='logo'>by Fundamentalistas.</p>
       </div>
     )
   }

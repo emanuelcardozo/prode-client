@@ -26,11 +26,14 @@ class InputGoals extends React.Component {
 
   render(){
     const { classes, index, type, matches } = this.props
-    var side = type === 'local' ? matches[index].bet_home : matches[index].bet_away
+    var home = matches[index].bet_home ? matches[index].bet_home : 0
+    var away = matches[index].bet_away ? matches[index].bet_away : 0
+    var side = type === 'local' ? home : away
+    var klass = matches[index].bet_home == null ? classes.inputField : classes.inputFieldBet
 
     return(
       <div className={classes.commonDiv}>
-        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '+')}>
+        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '+')} onTouchStart={this.handleChange.bind(this, '+')}>
           <Add className={classes.buttonStep} />
         </div>
         <Input
@@ -39,10 +42,10 @@ class InputGoals extends React.Component {
           disabled
           defaultValue={side}
           inputProps={{ min: '0', max: '9' }}
-          className={classes.inputField}
+          className={klass}
           onBlur={ _.debounce(this.props.sendBet.bind(this, index), 2000) }
         />
-        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '-')}>
+        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '-')} onTouchStart={this.handleChange.bind(this, '-')}>
           <Remove className={classes.buttonStep} />
         </div>
       </div>
@@ -52,6 +55,7 @@ class InputGoals extends React.Component {
 
 InputGoals.propTypes = {
   classes: PropTypes.object,
+  matches: PropTypes.array,
   index: PropTypes.number,
   sendBet: PropTypes.func,
   type: PropTypes.string

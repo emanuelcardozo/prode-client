@@ -107,11 +107,19 @@ const dashboardStyle = theme => ({
     width: '30px !important',
     height: '30px !important'
   },
+  inputFieldBet: {
+    color: 'black !important',
+    fontWeight: '500',
+    height: '30%',
+    minWidth: '15px',
+    margin: '0px 30px',
+    '&:before, &:after': {
+      content: 'none'
+    }
+  },
   inputField: {
     height: '30%',
     minWidth: '15px',
-    color: 'black !important',
-    fontWeight: '500',
     margin: '0px 30px',
     '&:before, &:after': {
       content: 'none'
@@ -195,7 +203,8 @@ const dashboardStyle = theme => ({
   },
   commonDiv: {
     width: 'fit-content',
-    margin: '0px'
+    margin: '0px',
+    zIndex: '99'
   },
   imgAway: {
     marginLeft: '70px'
