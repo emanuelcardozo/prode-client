@@ -88,7 +88,7 @@ class Partido extends React.Component {
           </GridItem>}
         {value === 1 &&
           <GridItem xs={12} sm={12} md={8}>
-            <CustomTable accessToken={user.accessToken} matchId={match.id} />
+            <CustomTable accessToken={user.accessToken} user_id={user.userID} matchId={match.id} />
           </GridItem>}
       </GridContainer>
     )

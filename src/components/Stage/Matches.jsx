@@ -109,7 +109,7 @@ class Matches extends React.Component {
                       <div>
                         <span>Fecha: {date} {match.hour}</span>
                       </div> :
-                      <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} idMatch={match.id} accessToken={accessToken} />
+                      <Bets home={match.home} away={match.away} idTournament={idTournament} idStage={idStage} user_id={userId} idMatch={match.id} accessToken={accessToken} />
                     }
                   </div>
                 </CardFooter>

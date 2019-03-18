@@ -72,6 +72,7 @@ class Torneo extends React.Component {
             <CustomTable
               idTournament={id}
               idStage={stage}
+              user_id={user.userID}
               accessToken={user.accessToken} />
           </GridItem>}
       </GridContainer>

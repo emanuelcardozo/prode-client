@@ -32,13 +32,13 @@ class CustomTable extends React.Component {
     var rows = []
     data.forEach((d, i) => {
       var name = d.alias.length === 0 ? d.name : d.alias
-      rows.push([(i + 1).toString(), name, d.points.toString()])
+      rows.push([(i + 1).toString(), name, d.points.toString(), d.facebook_id])
     })
     return rows
   }
 
   render() {
-    const { title, subtitle, color } = this.props
+    const { title, subtitle, color, user_id } = this.props
 
     return (
       <Card>
@@ -51,6 +51,7 @@ class CustomTable extends React.Component {
             tableHeaderColor={ color }
             tableHead={['Posición', 'Nombre', 'Pts']}
             tableData={this.state.rows}
+            user_id={user_id}
           />
         </CardBody>
       </Card>

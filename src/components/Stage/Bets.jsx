@@ -50,12 +50,12 @@ class Bets extends React.Component {
   getRows(data) {
     return data.map( bet => {
       var name = bet.user_alias.length === 0 ? bet.user_name : bet.user_alias
-      return [ name, bet.home_goals.toString(), '-', bet.away_goals.toString() ]
+      return [ name, bet.home_goals.toString(), '-', bet.away_goals.toString(), bet.facebook_id ]
     })
   }
 
   render(){
-    const { classes, home, away } = this.props
+    const { classes, home, away, user_id } = this.props
 
     return (
       <GridContainer>
@@ -75,6 +75,7 @@ class Bets extends React.Component {
                   <Table
                     tableHead={['Nombre', home.name, '', away.name]}
                     tableData={this.state.data}
+                    user_id={user_id}
                   />}
               </CardBody>
             </Card>

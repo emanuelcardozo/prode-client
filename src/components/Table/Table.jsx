@@ -31,12 +31,14 @@ function CustomTable({ ...props }) {
         ) : null}
         <TableBody>
           {tableData.map((prop, key) => {
-            var cell = key
+            const last = prop.length - 1
+            const id = prop[last]
             return (
               <TableRow key={key}>
                 {prop.map((prop, key) => {
+                  if(key === last) return null
                   return (
-                    <TableCell className={cell === 0 ? classes.firstCell : classes.tableCell} key={key}>
+                    <TableCell className={ props.user_id === id ? classes.firstCell : classes.tableCell} key={key}>
                       {prop}
                     </TableCell>
                   )
