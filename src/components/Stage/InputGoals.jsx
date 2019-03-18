@@ -33,7 +33,7 @@ class InputGoals extends React.Component {
 
     return(
       <div className={classes.commonDiv}>
-        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '+')} onTouchStart={this.handleChange.bind(this, '+')}>
+        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '+')}>
           <Add className={classes.buttonStep} />
         </div>
         <Input
@@ -45,7 +45,7 @@ class InputGoals extends React.Component {
           className={klass}
           onBlur={ _.debounce(this.props.sendBet.bind(this, index), 2000) }
         />
-        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '-')} onTouchStart={this.handleChange.bind(this, '-')}>
+        <div className={classes.commonDiv} onClick={this.handleChange.bind(this, '-')}>
           <Remove className={classes.buttonStep} />
         </div>
       </div>

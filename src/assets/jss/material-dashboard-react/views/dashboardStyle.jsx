@@ -109,15 +109,16 @@ const dashboardStyle = theme => ({
   },
   inputFieldBet: {
     color: 'black !important',
-    fontWeight: '500',
+    fontWeight: '400',
     height: '30%',
     minWidth: '15px',
-    margin: '0px 30px',
+    margin: '0px 25px',
     '&:before, &:after': {
       content: 'none'
     }
   },
   inputField: {
+    fontWeight: '400',
     height: '30%',
     minWidth: '15px',
     margin: '0px 30px',
