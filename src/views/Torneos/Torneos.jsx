@@ -16,6 +16,7 @@ class Torneos extends React.Component {
     const { tournaments } = this.props
     const tournament = { ...tournaments[index] }
     const stage = tournament.current_stage.split(' ', tournament.current_stage.length)[1]
+    document.getElementsByTagName('video')[0].play()
     this.props.setBet({ obj: tournament, type: 'tournaments'})
     this.props.history.push('/' + type + '/' + tournament.id + '/' + stage)
   }

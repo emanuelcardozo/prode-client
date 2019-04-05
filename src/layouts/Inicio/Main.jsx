@@ -19,7 +19,7 @@ import BladeRunner from 'assets/blade_runner.mp4'
 class Main extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { mobileOpen: false }
+    this.state = { mobileOpen: false, volume: "fa fa-volume-up", muted: false }
 
     this.resizeFunction = this.resizeFunction.bind(this)
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this)
@@ -39,6 +39,15 @@ class Main extends React.Component {
     window.addEventListener('resize', this.resizeFunction)
   }
 
+  toggleVolume() {
+    var player = document.getElementsByTagName('video')[0].muted
+    if(player) {
+      this.setState({ volume: "fa fa-volume-up", muted: false })
+    } else {
+      this.setState({ volume: "fa fa-volume-off", muted: true })
+    }
+  }
+
   componentDidUpdate(e) {
     const self = this
 
@@ -54,6 +63,7 @@ class Main extends React.Component {
 
   render() {
     const { classes, ...rest } = this.props
+    const { volume, muted } = this.state
 
     if(!this.props.user.id) return <Login {...this.props} />
 
@@ -74,13 +84,10 @@ class Main extends React.Component {
         <div className={classes.mainPanel} id='mainPanel'>
           <div className={classes.content}>
 
+            <div onClick={this.toggleVolume.bind(this)} style={{'margin': '15px'}}><i className={volume} /></div>
+
             <div className={classes.player}>
-              <ReactPlayer
-                url={BladeRunner}
-                className='react-player'
-                playing
-                loop
-              />
+              <ReactPlayer url={BladeRunner} className='react-player' loop muted={muted} />
             </div>
 
             <div className={classes.container}>
