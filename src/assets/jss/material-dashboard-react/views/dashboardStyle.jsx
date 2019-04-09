@@ -214,6 +214,10 @@ const dashboardStyle = theme => ({
   imgHome: {
     marginRight: '70px'
   },
+  imageTournament: {
+    width: '100%',
+    minHeight: '272px'
+  },
   [theme.breakpoints.down("sm")]: {
     cover: {
       width: '50px',
@@ -246,6 +250,9 @@ const dashboardStyle = theme => ({
     },
     card: {
       marginTop: '0px'
+    },
+    imageTournament: {
+      minHeight: 'auto'
     }
   }
 })

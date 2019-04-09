@@ -17,6 +17,7 @@ class Torneos extends React.Component {
     const tournament = { ...tournaments[index] }
     const stage = tournament.current_stage.split(' ', tournament.current_stage.length)[1]
     document.getElementsByTagName('video')[0].play()
+    document.getElementsByClassName('Main-player-2')[0].style.display = 'none'
     this.props.setBet({ obj: tournament, type: 'tournaments'})
     this.props.history.push('/' + type + '/' + tournament.id + '/' + stage)
   }
@@ -32,11 +33,11 @@ class Torneos extends React.Component {
             <GridItem xs={12} sm={8} md={4} key={index}>
               <Card chart>
                 <CardHeader color='grey'>
-                  <img src={tournament.img} alt='...' style={{ width: '100%' }}/>
+                  <img src={tournament.img} alt='...' className={classes.imageTournament} />
                 </CardHeader>
                 <CardBody>
                   <h4 className={classes.cardTitle}><strong>{tournament.name}</strong></h4>
-                  <p>{tournament.current_stage.replace("Matchday", "Jornada").replace("of", "de")}</p>
+                  <p>{tournament.current_stage}</p>
                 </CardBody>
                 <CardFooter chart>
                   <span></span>

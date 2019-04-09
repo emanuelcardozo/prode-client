@@ -11,11 +11,6 @@ class Login extends React.Component {
       self.props.setUser(user) })
   }
 
-  componentDidMount() {
-    const element = document.getElementById('logo')
-    element.click()
-  }
-
   render() {
     return (
       <div className="site-wrapper">
