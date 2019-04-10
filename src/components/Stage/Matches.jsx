@@ -52,7 +52,7 @@ class Matches extends React.Component {
                 <CardBody style={{ padding: '0.9375rem 0px' }}>
                   <Grid container direction="row" align="center">
                     <Grid item xs={4}>
-                      <Paper xs={3} className={classes.paperContainer}>
+                      <Paper className={classes.paperContainer}>
                         <CardMedia className={classes.cover} image={match.home.logo.large} />
                         <h4 className={classes.cardTitle}><strong>{match.home.name}</strong></h4>
                       </Paper>
@@ -81,7 +81,7 @@ class Matches extends React.Component {
                             accessToken={accessToken}
                             matches={matches}
                             userId={userId} />
-                          <h2 style={{ alignSelf: 'center', margin: '0px' }}> - </h2>
+                          <h2 style={{ alignSelf: 'center', margin: '0px 5px' }}> - </h2>
                           <InputGoals
                             classes={classes}
                             index={index}

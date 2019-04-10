@@ -13,7 +13,7 @@ import logo from 'assets/img/balon.png'
 import Login from './Login'
 import SDK from 'library/SDK'
 
-import ReactPlayer from 'react-player'
+import AudioPlayer from "react-h5-audio-player"
 import BladeRunner from 'assets/blade_runner.mp4'
 
 class Main extends React.Component {
@@ -40,11 +40,13 @@ class Main extends React.Component {
   }
 
   toggleVolume() {
-    var player = document.getElementsByTagName('video')[0].muted
-    if(player) {
-      this.setState({ volume: "fa fa-volume-up", muted: false })
+    const player = document.getElementsByTagName('audio')[0]
+    if(player.muted) {
+      this.setState({ volume: "fa fa-volume-up" })
+      player.muted = false
     } else {
-      this.setState({ volume: "fa fa-volume-off", muted: true })
+      this.setState({ volume: "fa fa-volume-off" })
+      player.muted = true
     }
   }
 
@@ -87,7 +89,7 @@ class Main extends React.Component {
             <div onClick={this.toggleVolume.bind(this)} style={{'margin': '15px'}}><i className={volume} /></div>
 
             <div className={classes.player}>
-              <ReactPlayer url={BladeRunner} className='react-player' loop muted={muted} />
+              <AudioPlayer src={BladeRunner} loop={true} muted={muted} />
             </div>
 
             <div className={classes.container}>

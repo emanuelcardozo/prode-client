@@ -36,7 +36,8 @@ const style = {
     boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)'
   },
   rulesTitles: {
-    color: '#2196F3'
+    color: '#2196F3',
+    margin: '0.5rem 0px'
   },
   note: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
@@ -88,7 +89,7 @@ class Ayuda extends React.Component {
     return (
       <Card>
         <CardHeader className={classes.titleContainer}>
-          <h4 className={classes.cardTitleWhite}>Como juagar al ProdEvolution</h4>
+          <h4 className={classes.cardTitleWhite}>Como jugar al ProdEvolution</h4>
           <p className={classes.cardCategoryWhite}>Reglas y puntajes</p>
         </CardHeader>
         <CardBody>
@@ -98,7 +99,7 @@ class Ayuda extends React.Component {
           onChange={this.handleChange('panel1')}
           >
             <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
-              <p className={classes.rulesTitles}>+ Puntaje.</p>
+              <p className={classes.rulesTitles}>+ Puntajes</p>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Puntajes />
@@ -110,7 +111,7 @@ class Ayuda extends React.Component {
           onChange={this.handleChange('panel2')}
           >
             <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
-              <p className={classes.rulesTitles}>+ Resultados.</p>
+              <p className={classes.rulesTitles}>+ Resultados</p>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Resultados />

@@ -206,7 +206,7 @@ const dashboardStyle = theme => ({
     width: 'fit-content',
     margin: '0px',
     zIndex: '99',
-    minWidth: '65px'
+    minWidth: '75px'
   },
   imgAway: {
     marginLeft: '70px'
@@ -238,6 +238,9 @@ const dashboardStyle = theme => ({
       minWidth: '100px',
       fontSize: '25px',
       textAlign: 'center'
+    },
+    commonDiv: {
+      minWidth: '50px'
     },
     imgAway: {
       margin: '10px'
