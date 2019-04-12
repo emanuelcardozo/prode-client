@@ -23,9 +23,9 @@ const snackbarContentStyle = {
     top: '40px'
   },
   info: {
-    backgroundColor: '#00d3ee',
+    background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
     color: '#ffffff',
-    ...infoBoxShadow
+    //...infoBoxShadow
   },
   success: {
     backgroundColor: '#5cb860',

@@ -13,3 +13,5 @@ export const setMatchBet = bet  => { return { type: 'SET_MATCH_BET', bet } }
 export const setBetOnMatch = bet  => { return { type: 'SET_BET_ON_MATCH', bet } }
 
 export const setMatch = match => { return { type: 'SET_MATCH', match } }
+
+export const setMessage = msg => { return { type: 'SET_MSG', msg } }

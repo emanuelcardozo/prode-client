@@ -44,7 +44,7 @@ class Partido extends React.Component {
 
       const params = { gHome, gAway, foul, yCard, lateral, corner, sOnTarget, offside, match_id: match.id, user_id: user.userID, accessToken: user.accessToken }
       this.props.setBetOnMatch(params)
-      SDK.setMatchBet(params)
+      SDK.setMatchBet(params, (resp) => { this.props.setMessage(resp) })
     }
   }
 

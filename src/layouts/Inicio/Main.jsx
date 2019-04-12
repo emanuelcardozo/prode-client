@@ -13,13 +13,15 @@ import logo from 'assets/img/balon.png'
 import Login from './Login'
 import SDK from 'library/SDK'
 
+import Snackbar from 'components/Snackbar/Snackbar'
+
 import AudioPlayer from "react-h5-audio-player"
 import BladeRunner from 'assets/blade_runner.mp4'
 
 class Main extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { mobileOpen: false, volume: "fa fa-volume-up", muted: false }
+    this.state = { mobileOpen: false, volume: "fa fa-volume-up", muted: false, open: false }
 
     this.resizeFunction = this.resizeFunction.bind(this)
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this)
@@ -50,6 +52,12 @@ class Main extends React.Component {
     }
   }
 
+  handleClose(event, reason) {
+    if (reason === 'clickaway')
+      return
+    this.props.setMessage()
+  }
+
   componentDidUpdate(e) {
     const self = this
 
@@ -64,7 +72,7 @@ class Main extends React.Component {
   }
 
   render() {
-    const { classes, ...rest } = this.props
+    const { classes, message, ...rest } = this.props
     const { volume, muted } = this.state
 
     if(!this.props.user.id) return <Login {...this.props} />
@@ -81,6 +89,18 @@ class Main extends React.Component {
           color='blue'
           user={this.props.user}
           {...rest}
+        />
+
+        <Snackbar
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          open={message.open}
+          autoHideDuration={2000}
+          onClose={this.handleClose.bind(this)}
+          ContentProps={{ 'aria-describedby': 'message-id' }}
+          close={true}
+          color={'info'}
+          closeNotification={this.props.setMessage}
+          message={<span id="message-id">{message.msg}</span>}
         />
 
         <div className={classes.mainPanel} id='mainPanel'>

@@ -8,6 +8,7 @@ const user = (state = [], action) => {
     obj = {...state}
     obj.alias = action.user['alias']
     return ({ ...obj })
+
   default:
     return state
   }

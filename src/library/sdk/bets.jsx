@@ -16,11 +16,17 @@ const bets = {
     })
   },
 
-  setMatchBet: function(params) {
+  setMatchBet: function(params, callback) {
     $.ajax({
       method: 'POST',
       data: params,
-      url: config.api + '/bet_matches'
+      url: config.api + '/bet_matches',
+      success: function (resp) {
+        callback(resp)
+      },
+      error: function(resp) {
+        callback(resp)
+      }
     })
   }
 }

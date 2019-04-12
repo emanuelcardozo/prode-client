@@ -6,7 +6,11 @@ const state = {
     stage: [],
     match: {}
   },
-  match: {}
+  match: {},
+  message: {
+    msg: "",
+    open: false
+  }
 }
 
 export default state
