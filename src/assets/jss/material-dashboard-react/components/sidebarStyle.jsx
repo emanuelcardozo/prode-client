@@ -161,7 +161,8 @@ const sidebarStyle = theme => ({
     color: "#FFFFFF"
   },
   blackFont: {
-    color: '#000000'
+    color: 'white',
+    fontWeight: 'bold'
   },
   purple: {
     backgroundColor: primaryColor,

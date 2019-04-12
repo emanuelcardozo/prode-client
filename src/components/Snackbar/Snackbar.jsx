@@ -16,7 +16,6 @@ function Snackbar({ ...props }) {
   const messageClasses = classNames({
     [classes.iconMessage]: icon !== undefined
   });
-  console.log(props);
   if (close !== undefined) {
     action = [
       <IconButton

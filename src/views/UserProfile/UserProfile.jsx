@@ -25,7 +25,8 @@ const styles = {
     fontSize: '17px',
     borderRadius: '5px',
     padding: '10px',
-    width: '120px'
+    width: '120px',
+    borderColor: 'transparent!important'
   },
   container: {
     marginTop: '30px'

@@ -12,7 +12,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 import Puntajes from './Puntajes'
 import Resultados from './Resultados'
 
-const style = {
+const style = theme => ({
   root: {
    border: '1px solid rgba(0,0,0,.125)',
    boxShadow: 'none',
@@ -67,8 +67,13 @@ const style = {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     marginBottom: '3px',
     textDecoration: 'none'
+  },
+  [theme.breakpoints.down("md")]: {
+    cardRules: {
+      margin: '0px -15px'
+    }
   }
-}
+})
 
 class Ayuda extends React.Component {
   constructor(props) {
@@ -87,50 +92,52 @@ class Ayuda extends React.Component {
     const { expanded } = this.state
 
     return (
-      <Card>
-        <CardHeader className={classes.titleContainer}>
-          <h4 className={classes.cardTitleWhite}>Como jugar al ProdEvolution</h4>
-          <p className={classes.cardCategoryWhite}>Reglas y puntajes</p>
-        </CardHeader>
-        <CardBody>
-          <ExpansionPanel
-          square
-          expanded={expanded === 'panel1'}
-          onChange={this.handleChange('panel1')}
-          >
-            <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
-              <p className={classes.rulesTitles}>+ Puntajes</p>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Puntajes />
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-          square
-          expanded={expanded === 'panel2'}
-          onChange={this.handleChange('panel2')}
-          >
-            <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
-              <p className={classes.rulesTitles}>+ Resultados</p>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Resultados />
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          {/*<ExpansionPanel
-          square
-          expanded={expanded === 'panel3'}
-          onChange={this.handleChange('panel3')}
-          >
-            <ExpansionPanelSummary>
-              <p className={classes.rulesTitles}>+ Posiciones y alias.</p>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <loquesea />
-            </ExpansionPanelDetails>
-          </ExpansionPanel>*/}
-        </CardBody>
-      </Card>
+      <div className={classes.cardRules}>
+        <Card>
+          <CardHeader className={classes.titleContainer}>
+            <h4 className={classes.cardTitleWhite}>Como jugar al ProdEvolution</h4>
+            <p className={classes.cardCategoryWhite}>Reglas y puntajes</p>
+          </CardHeader>
+          <CardBody>
+            <ExpansionPanel
+            square
+            expanded={expanded === 'panel1'}
+            onChange={this.handleChange('panel1')}
+            >
+              <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
+                <p className={classes.rulesTitles}>+ Puntajes</p>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Puntajes />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            <ExpansionPanel
+            square
+            expanded={expanded === 'panel2'}
+            onChange={this.handleChange('panel2')}
+            >
+              <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
+                <p className={classes.rulesTitles}>+ Resultados</p>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Resultados />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+            {/*<ExpansionPanel
+            square
+            expanded={expanded === 'panel3'}
+            onChange={this.handleChange('panel3')}
+            >
+              <ExpansionPanelSummary>
+                <p className={classes.rulesTitles}>+ Posiciones y alias.</p>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <loquesea />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>*/}
+          </CardBody>
+        </Card>
+      </div>
     )
   }
 }

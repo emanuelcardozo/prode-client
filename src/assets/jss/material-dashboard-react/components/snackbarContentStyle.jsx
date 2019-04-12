@@ -1,6 +1,5 @@
 import {
   primaryBoxShadow,
-  infoBoxShadow,
   successBoxShadow,
   warningBoxShadow,
   dangerBoxShadow,
