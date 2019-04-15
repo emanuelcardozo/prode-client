@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import InputGoals from './InputGoals'
 import Card from 'components/Card/Card'
 import Grid from '@material-ui/core/Grid'
-import Star from '@material-ui/icons/Star'
 import Paper from '@material-ui/core/Paper'
 import CardBody from 'components/Card/CardBody'
 import GridItem from 'components/Grid/GridItem'
@@ -19,14 +18,21 @@ class Matches extends React.Component {
 
   isZero(number) { return number === undefined ? '' : number }
 
-  getColor(goals, bets) { return goals === bets ? 'green' : 'red' }
-
-  starColor(points) {
+  backgroundColor(points) {
     switch (points) {
-    case 1: return '#e5e4e2'
-    case 2: return '#cd7f32'
-    case 3: return 'gold'
-    default: return 'white'
+    case 1: return '#f3f33b'
+    case 2: return '#4ead4e'
+    case 3: return 'linear-gradient(45deg, rgb(33, 150, 243) 30%, rgb(33, 203, 243) 90%)'
+    default: return '#ff7575'
+    }
+  }
+
+  borderColor(points) {
+    switch (points) {
+    case 1: return '3px solid rgb(205, 208, 7)'
+    case 2: return '3px solid green'
+    case 3: return '3px solid #0000ff'
+    default: return '3px solid #f90303'
     }
   }
 
@@ -60,16 +66,15 @@ class Matches extends React.Component {
                     <Grid item xs={4}>
                       {state ?
                         <div>
-                          <h3 className={classes.betsGoals} style={{ margin: '0px' }}>
-                            <span>{this.isZero(match.home.goals)}</span>-<span>{this.isZero(match.away.goals)}</span>
-                          </h3>
-                          <Star style={{ color: this.starColor(match.points), width: '30px', height: '30px' }}/>
-                          <h5 className={classes.resultGoals}>
-                            <span style={{ color: this.getColor(match.home.goals, match.bet_home) }}>{this.isZero(match.bet_home)}</span>
-                             -
-                            <span style={{ color: this.getColor(match.away.goals, match.bet_away) }}>{this.isZero(match.bet_away)}</span>
-                          </h5>
-                        </div>:
+                          <div className={classes.betsGoals} style={{ display: 'inline-flex' }}>
+                            <h2>{this.isZero(match.home.goals)}</h2>
+                            <div className={classes.resultGoals} style={{ background: this.backgroundColor(match.points), border: this.borderColor(match.points) }}>
+                              <span>{this.isZero(match.bet_home)}</span> - <span>{this.isZero(match.bet_away)}</span>
+                            </div>
+                            <h2>{this.isZero(match.away.goals)}</h2>
+                          </div>
+                        </div>
+                        :
                         <Paper className={classes.betPaperContainer}>
                           <InputGoals
                             classes={classes}

@@ -198,9 +198,14 @@ const dashboardStyle = theme => ({
     letterSpacing: '10px'
   },
   resultGoals: {
-    margin: '0px',
     letterSpacing: '2px',
-    fontWeight: '500'
+    fontWeight: '500',
+    display: 'flex',
+    color: '#ffffff',
+     margin: '35px 0 25px',
+     padding: '20px',
+     borderRadius:'15px',
+     height: '60%'
   },
   commonDiv: {
     width: 'fit-content',
@@ -236,7 +241,7 @@ const dashboardStyle = theme => ({
     betsGoals: {
       margin: '0px',
       minWidth: '100px',
-      fontSize: '25px',
+      fontSize: '20px',
       textAlign: 'center'
     },
     commonDiv: {
@@ -256,6 +261,16 @@ const dashboardStyle = theme => ({
     },
     imageTournament: {
       minHeight: 'auto'
+    },
+    resultGoals: {
+      letterSpacing: '2px',
+      fontWeight: '500',
+      display: 'flex',
+      color: '#ffffff',
+       margin: '15px 0 11px',
+       padding: '5px',
+       borderRadius:'15px',
+       height: '60%'
     }
   }
 })
