@@ -31,21 +31,30 @@ class Partido extends React.Component {
     const { user, match } = this.props
     const goals = Array.from(document.getElementsByTagName('select'))
     const inputs = Array.from(document.getElementsByTagName('input'))
-    const result = inputs.filter(word => word.checked)
-    if(result.length === 6) {
-      const gHome = goals[0].value
-      const gAway = goals[1].value
-      const foul = result[0].value
-      const yCard = result[1].value
-      const lateral = result[2].value
-      const corner = result[3].value
-      const sOnTarget = result[4].value
-      const offside = result[5].value
+    const result = []
 
-      const params = { gHome, gAway, foul, yCard, lateral, corner, sOnTarget, offside, match_id: match.id, user_id: user.userID, accessToken: user.accessToken }
-      this.props.setBetOnMatch(params)
-      SDK.setMatchBet(params, (resp) => { this.props.setMessage(resp) })
+    for(var i=0; i < inputs.length; i+=2 ) {
+      if(inputs[i].checked) {
+        result.push(inputs[i].value)
+      } else if (inputs[i+1].checked) {
+        result.push(inputs[i+1].value)
+      } else {
+        result.push("0")
+      }
     }
+
+    const gHome = goals[0].value
+    const gAway = goals[1].value
+    const foul = result[0]
+    const yCard = result[1]
+    const lateral = result[2]
+    const corner = result[3]
+    const sOnTarget = result[4]
+    const offside = result[5]
+
+    const params = { gHome, gAway, foul, yCard, lateral, corner, sOnTarget, offside, match_id: match.id, user_id: user.userID, accessToken: user.accessToken }
+    this.props.setBetOnMatch(params)
+    SDK.setMatchBet(params, (resp) => { this.props.setMessage(resp) })
   }
 
   handleChange = (event, value) => { this.setState({ value }) }
