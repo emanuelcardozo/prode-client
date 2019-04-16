@@ -4,7 +4,13 @@ import SDK from 'library/SDK'
 import PropTypes from 'prop-types'
 import Card from 'components/Card/Card'
 import CardBody from 'components/Card/CardBody'
-import CardHeader from 'components/Card/CardHeader'
+import withStyles from '@material-ui/core/styles/withStyles'
+
+const styles = theme => ({
+  [theme.breakpoints.down("sm")]: {
+    card: { marginTop: '0px' }
+  }
+})
 
 class CustomTable extends React.Component {
   constructor(props) {
@@ -38,14 +44,10 @@ class CustomTable extends React.Component {
   }
 
   render() {
-    const { title, subtitle, color, user_id } = this.props
+    const { color, user_id, classes } = this.props
 
     return (
-      <Card>
-        <CardHeader color={ color } >
-          <h4>{ title }</h4>
-          <p>{ subtitle }</p>
-        </CardHeader>
+      <Card className={classes.card}>
         <CardBody>
           <Table
             tableHeaderColor={ color }
@@ -70,4 +72,4 @@ CustomTable.propTypes = {
   data: PropTypes.array
 }
 
-export default CustomTable
+export default withStyles(styles)(CustomTable)
