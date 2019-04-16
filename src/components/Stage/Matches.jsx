@@ -20,19 +20,10 @@ class Matches extends React.Component {
 
   backgroundColor(points) {
     switch (points) {
-    case 1: return '#f3f33b'
+    case 1: return '#dddd23'
     case 2: return '#4ead4e'
     case 3: return 'linear-gradient(45deg, rgb(33, 150, 243) 30%, rgb(33, 203, 243) 90%)'
     default: return '#ff7575'
-    }
-  }
-
-  borderColor(points) {
-    switch (points) {
-    case 1: return '3px solid rgb(205, 208, 7)'
-    case 2: return '3px solid green'
-    case 3: return '3px solid #0000ff'
-    default: return '3px solid #f90303'
     }
   }
 
@@ -67,11 +58,12 @@ class Matches extends React.Component {
                       {state ?
                         <div>
                           <div className={classes.betsGoals} style={{ display: 'inline-flex' }}>
-                            <h2>{this.isZero(match.home.goals)}</h2>
-                            <div className={classes.resultGoals} style={{ background: this.backgroundColor(match.points), border: this.borderColor(match.points) }}>
-                              <span>{this.isZero(match.bet_home)}</span> - <span>{this.isZero(match.bet_away)}</span>
+                            <h3 style={{ marginRight: '-5px' }}>{this.isZero(match.home.goals)}</h3>
+                            <div className={classes.resultGoals} style={{ background: this.backgroundColor(match.points) }}>
+                              <div className={classes.resultDiv}>{this.isZero(match.bet_home)}</div>
+                              <div className={classes.resultDiv}>{this.isZero(match.bet_away)}</div>
                             </div>
-                            <h2>{this.isZero(match.away.goals)}</h2>
+                            <h3 style={{ marginLeft: '5px' }}>{this.isZero(match.away.goals)}</h3>
                           </div>
                         </div>
                         :

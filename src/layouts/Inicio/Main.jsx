@@ -21,7 +21,7 @@ import BladeRunner from 'assets/blade_runner.mp4'
 class Main extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { mobileOpen: false, volume: "fa fa-volume-up", muted: false, open: false }
+    this.state = { mobileOpen: false, open: false }
 
     this.resizeFunction = this.resizeFunction.bind(this)
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this)
@@ -39,17 +39,6 @@ class Main extends React.Component {
       new PerfectScrollbar(container)
     }
     window.addEventListener('resize', this.resizeFunction)
-  }
-
-  toggleVolume() {
-    const player = document.getElementsByTagName('audio')[0]
-    if(player.muted) {
-      this.setState({ volume: "fa fa-volume-up" })
-      player.muted = false
-    } else {
-      this.setState({ volume: "fa fa-volume-off" })
-      player.muted = true
-    }
   }
 
   handleClose(event, reason) {
@@ -73,7 +62,6 @@ class Main extends React.Component {
 
   render() {
     const { classes, message, ...rest } = this.props
-    const { volume, muted } = this.state
 
     if(!this.props.user.id) return <Login {...this.props} />
 
@@ -106,10 +94,8 @@ class Main extends React.Component {
         <div className={classes.mainPanel} id='mainPanel'>
           <div className={classes.content}>
 
-            <div onClick={this.toggleVolume.bind(this)} style={{'margin': '15px'}}><i className={volume} /></div>
-
             <div className={classes.player}>
-              <AudioPlayer src={BladeRunner} loop={true} muted={muted} />
+              <AudioPlayer src={BladeRunner} loop={true} muted={false} />
             </div>
 
             <div className={classes.container}>

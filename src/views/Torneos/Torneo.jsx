@@ -17,23 +17,33 @@ import Tab from '@material-ui/core/Tab'
 class Torneo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { container: [], ranking: [], value: 0 }
+    this.state = { container: [], ranking: [], value: 0, volume: "fa fa-volume-up", muted: false }
 
     const self = this
     const { id, stage } = self.props.computedMatch.params
     const { accessToken } = self.props.user
 
     SDK.getTournamentStage(id, stage, accessToken, function(response) { self.props.setStage(response) })
-    //SDK.getListStage(id, accessToken, function(response) { self.setState({ container: response }) })
   }
 
   handleChange = (event, value) => { this.setState({ value }) }
+
+  toggleVolume() {
+    const player = document.getElementsByTagName('audio')[0]
+    if(player.muted) {
+      this.setState({ volume: "fa fa-volume-up" })
+      player.muted = false
+    } else {
+      this.setState({ volume: "fa fa-volume-off" })
+      player.muted = true
+    }
+  }
 
   render(){
     const { bets, user, classes } = this.props
     const { id, stage } = this.props.computedMatch.params
     const tournament = bets.tournaments[id]
-    const { value } = this.state
+    const { value, volume } = this.state
 
     if(!tournament || bets.stage.length === 0) return null
 
@@ -41,6 +51,7 @@ class Torneo extends React.Component {
       <GridContainer style={{'justifyContent': 'center'}}>
         <GridItem xs={12} sm={12} md={8}>
           <AppBar position="static" style={{'background': 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)', 'boxShadow': '0 3px 5px 2px rgba(33, 203, 243, .3)'}}>
+            <div onClick={this.toggleVolume.bind(this)} className={classes.volumeContainer}><i className={volume} /></div>
             <Tabs
                 value={value}
                 onChange={this.handleChange}

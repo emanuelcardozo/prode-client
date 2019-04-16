@@ -207,6 +207,15 @@ const dashboardStyle = theme => ({
      borderRadius:'15px',
      height: '60%'
   },
+  resultDiv: {
+    width: '25px',
+    height: '25px'
+  },
+  volumeContainer: {
+    margin: '24px',
+    zIndex: '99',
+    position: 'fixed'
+  },
   commonDiv: {
     width: 'fit-content',
     margin: '0px',
@@ -263,14 +272,14 @@ const dashboardStyle = theme => ({
       minHeight: 'auto'
     },
     resultGoals: {
-      letterSpacing: '2px',
-      fontWeight: '500',
+      color: '#000000',
+      margin: '30px 0 11px',
+      height: '60%',
       display: 'flex',
-      color: '#ffffff',
-       margin: '15px 0 11px',
-       padding: '5px',
-       borderRadius:'15px',
-       height: '60%'
+      padding: '5px',
+      fontWeight: '350',
+      borderRadius: '10px',
+      letterSpacing: '2px'
     }
   }
 })
