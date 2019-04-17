@@ -4,14 +4,25 @@ import SDK from 'library/SDK'
 import FacebookLogin from 'react-facebook-login'
 
 class Login extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { disable: true}
+  }
+
+  componentDidMount() {
+    if(!localStorage.getItem('login'))
+      this.setState({disable: false})
+  }
 
   facebookResponse(response) {
     const self = this
     SDK.signin(response, function(user) {
       self.props.setUser(user) })
+      localStorage.setItem('login', true)
   }
 
   render() {
+    const { disable } = this.state
     return (
       <div className="site-wrapper">
         <div className="center">
@@ -26,6 +37,7 @@ class Login extends React.Component {
               fields='name, email, picture.type(large), id'
               cssClass="btn btn-login"
               icon="fa-facebook"
+              isDisabled={disable}
               callback={this.facebookResponse.bind(this)}
             />
           </div>

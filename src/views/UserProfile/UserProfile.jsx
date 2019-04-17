@@ -42,6 +42,7 @@ class UserProfile extends React.Component {
 
   logout() {
     window.FB.logout()
+    localStorage.removeItem('login')
     this.props.setUser(defaultState.user)
   }
 
