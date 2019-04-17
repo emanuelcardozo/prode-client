@@ -18,7 +18,7 @@ const dashboardRoutes = [
   // },
   {
     path: '/torneos',
-    sidebarName: 'Torneos',
+    sidebarName: 'Fechas',
     navbarName: 'Lista de Torneos',
     icon: 'fas fa-trophy',
     component: Torneos
@@ -32,7 +32,7 @@ const dashboardRoutes = [
   // },
   {
     path: '/partido',
-    sidebarName: 'Partidos',
+    sidebarName: 'Partido',
     navbarName: 'Próximo evento',
     icon: 'fas fa-futbol',
     component: Partido

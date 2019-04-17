@@ -192,6 +192,8 @@ const dashboardStyle = theme => ({
     cursor: 'pointer'
   },
   betsGoals: {
+    display: 'inline-flex',
+    justifyContent: 'center',
     minWidth: '220px',
     fontSize: '2.825em',
     fontWeight: '350',
@@ -214,7 +216,7 @@ const dashboardStyle = theme => ({
   volumeContainer: {
     margin: '24px',
     zIndex: '99',
-    position: 'fixed'
+    position: 'absolute'
   },
   commonDiv: {
     width: 'fit-content',
@@ -232,6 +234,31 @@ const dashboardStyle = theme => ({
     width: '100%',
     minHeight: '272px'
   },
+  containerBet: {
+    width: '65px',
+    height: '40px',
+    fontSize: '30px',
+    alignSelf: 'center',
+    textAlign: 'end',
+    paddingTop: '8px',
+    fontWeight: '500',
+    color: 'white',
+    margin: '0px 30px',
+    borderRadius: '5px'
+  },
+  supDiv: {
+    justifyContent: 'center',
+    paddingTop: '10px'
+  },
+  separator: {
+    alignSelf: 'center',
+    margin: '0px 5px'
+  },
+  newH3: {
+    fontSize: '1.825em',
+    lineHeight: '1.4em',
+    margin: '10px 0 10px'
+  },
   [theme.breakpoints.down("sm")]: {
     cover: {
       width: '50px',
@@ -248,6 +275,8 @@ const dashboardStyle = theme => ({
       margin: '0px 15px'
     },
     betsGoals: {
+      display: 'inline-flex',
+      justifyContent: 'center',
       margin: '0px',
       minWidth: '100px',
       fontSize: '20px',
@@ -280,7 +309,16 @@ const dashboardStyle = theme => ({
       fontWeight: '350',
       borderRadius: '10px',
       letterSpacing: '2px'
-    }
+    },
+    containerBet: {
+      width: '50px',
+      height: '25px',
+      fontSize: '16px',
+      paddingTop: '1px',
+      color: 'white',
+      margin: '0px 10px 0px 0px',
+      borderRadius: '5px'
+    },
   }
 })
 

@@ -20,10 +20,10 @@ class Matches extends React.Component {
 
   backgroundColor(points) {
     switch (points) {
-    case 1: return '#dddd23'
-    case 2: return '#4ead4e'
+    case 1: return '#d6d627'
+    case 2: return '#219e21'
     case 3: return 'linear-gradient(45deg, rgb(33, 150, 243) 30%, rgb(33, 203, 243) 90%)'
-    default: return '#ff7575'
+    default: return '#ef2b2b'
     }
   }
 
@@ -54,16 +54,16 @@ class Matches extends React.Component {
                         <h4 className={classes.cardTitle}><strong>{match.home.name}</strong></h4>
                       </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={4} style={{alignSelf: 'center'}}>
                       {state ?
-                        <div>
-                          <div className={classes.betsGoals} style={{ display: 'inline-flex' }}>
-                            <h3 style={{ marginRight: '-5px' }}>{this.isZero(match.home.goals)}</h3>
-                            <div className={classes.resultGoals} style={{ background: this.backgroundColor(match.points) }}>
-                              <div className={classes.resultDiv}>{this.isZero(match.bet_home)}</div>
-                              <div className={classes.resultDiv}>{this.isZero(match.bet_away)}</div>
+                        <div className={classes.supDiv}>
+                          <div className={classes.betsGoals}>
+                            <h3 className={classes.newH3}>{this.isZero(match.home.goals)}</h3>
+                            <div className={classes.containerBet} style={{ background: this.backgroundColor(match.points) }}>
+                              <span style={{padding: '0px'}}>{this.isZero(match.bet_home)}</span>
+                              <span style={{padding: '0px'}}>{this.isZero(match.bet_away)}</span>
                             </div>
-                            <h3 style={{ marginLeft: '5px' }}>{this.isZero(match.away.goals)}</h3>
+                            <h3 className={classes.newH3}>{this.isZero(match.away.goals)}</h3>
                           </div>
                         </div>
                         :
@@ -78,7 +78,7 @@ class Matches extends React.Component {
                             accessToken={accessToken}
                             matches={matches}
                             userId={userId} />
-                          <h2 style={{ alignSelf: 'center', margin: '0px 5px' }}> - </h2>
+                          <h2 className={classes.separator}> - </h2>
                           <InputGoals
                             classes={classes}
                             index={index}
