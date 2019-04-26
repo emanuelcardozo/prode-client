@@ -119,6 +119,7 @@ const dashboardStyle = theme => ({
   },
   inputField: {
     fontWeight: '400',
+    paddingLeft: '5px',
     height: '30%',
     minWidth: '15px',
     margin: '0px 30px',
