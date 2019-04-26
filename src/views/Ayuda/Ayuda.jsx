@@ -6,11 +6,9 @@ import CardHeader from 'components/Card/CardHeader'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
 
 import Puntajes from './Puntajes'
-import Resultados from './Resultados'
 
 const style = theme => ({
   root: {
@@ -76,20 +74,9 @@ const style = theme => ({
 })
 
 class Ayuda extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { expanded: '' }
-  }
-
-  handleChange = panel => (event, expanded) => {
-     this.setState({
-       expanded: expanded ? panel : false,
-     });
-   }
 
   render() {
     const { classes } = this.props
-    const { expanded } = this.state
 
     return (
       <div className={classes.cardRules}>
@@ -101,40 +88,12 @@ class Ayuda extends React.Component {
           <CardBody>
             <ExpansionPanel
             square
-            expanded={expanded === 'panel1'}
-            onChange={this.handleChange('panel1')}
+            expanded={true}
             >
-              <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
-                <p className={classes.rulesTitles}>+ Puntajes</p>
-              </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <Puntajes />
               </ExpansionPanelDetails>
             </ExpansionPanel>
-            <ExpansionPanel
-            square
-            expanded={expanded === 'panel2'}
-            onChange={this.handleChange('panel2')}
-            >
-              <ExpansionPanelSummary style={{ backgroundColor: 'rgba(0,0,0,.03)' }}>
-                <p className={classes.rulesTitles}>+ Resultados</p>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <Resultados />
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-            {/*<ExpansionPanel
-            square
-            expanded={expanded === 'panel3'}
-            onChange={this.handleChange('panel3')}
-            >
-              <ExpansionPanelSummary>
-                <p className={classes.rulesTitles}>+ Posiciones y alias.</p>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <loquesea />
-              </ExpansionPanelDetails>
-            </ExpansionPanel>*/}
           </CardBody>
         </Card>
       </div>
