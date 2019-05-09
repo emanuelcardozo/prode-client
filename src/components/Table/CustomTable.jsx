@@ -7,7 +7,7 @@ import CardBody from 'components/Card/CardBody'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 const styles = theme => ({
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("sm") && theme.breakpoints.down("md")]: {
     card: { marginTop: '0px' }
   }
 })

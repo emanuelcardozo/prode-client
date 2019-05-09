@@ -7,7 +7,7 @@ const style = theme => ({
   grid: {
     padding: "0 15px"
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("sm") && theme.breakpoints.down("md")]: {
     grid: {
       padding: "0px !important"
     }

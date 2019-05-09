@@ -66,9 +66,8 @@ class Bets extends React.Component {
           <GridItem id='dialogrid'>
             <Card>
               <div className={classes.titleContairner}>
-                <img src={home.logo.large} alt='...' style={{ width: '15%' }} />
-                <strong className={classes.versus}> VS </strong>
-                <img src={away.logo.large} alt='...' style={{ width: '15%' }} />
+                <img src={home.logo.large} alt='...' style={{ width: '15%', margin: '20px' }} />
+                <img src={away.logo.large} alt='...' style={{ width: '15%', margin: '20px' }} />
               </div>
               <CardBody>
                 {this.state.open &&

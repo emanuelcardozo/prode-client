@@ -47,7 +47,7 @@ const dropdownStyle = theme => ({
     }
   },
   pooperNav: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("sm") && theme.breakpoints.down("md")]: {
       position: "static !important",
       left: "unset !important",
       top: "unset !important",

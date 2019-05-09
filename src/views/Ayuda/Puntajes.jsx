@@ -15,7 +15,7 @@ const styles = {
     color: 'rgb(33, 150, 243)', margin: '-6px'
   },
   withoutPints: {
-    color: 'darkgray', margin: '-6px'
+    color: '#ef2b2b', margin: '-6px'
   }
 }
 

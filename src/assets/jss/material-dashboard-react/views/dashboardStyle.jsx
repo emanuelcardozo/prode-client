@@ -107,23 +107,23 @@ const dashboardStyle = theme => ({
     width: '30px !important',
     height: '30px !important'
   },
-  inputFieldBet: {
-    color: 'black !important',
-    paddingLeft: '5px',
-    fontWeight: '400',
-    height: '30%',
-    minWidth: '15px',
-    margin: '0px 25px',
-    '&:before, &:after': {
-      content: 'none'
-    }
-  },
   inputField: {
     fontWeight: '400',
     paddingLeft: '5px',
     height: '30%',
     minWidth: '15px',
-    margin: '0px 30px',
+    margin: '0px 0px',
+    '&:before, &:after': {
+      content: 'none'
+    }
+  },
+  inputFieldBet: {
+    color: 'black !important',
+    fontWeight: '400',
+    paddingLeft: '5px',
+    height: '30%',
+    minWidth: '15px',
+    margin: '0px 0px',
     '&:before, &:after': {
       content: 'none'
     }
@@ -216,6 +216,7 @@ const dashboardStyle = theme => ({
     height: '25px'
   },
   volumeContainer: {
+    cursor: 'pointer',
     margin: '24px',
     zIndex: '99',
     position: 'absolute'
@@ -259,9 +260,10 @@ const dashboardStyle = theme => ({
   newH3: {
     fontSize: '1.825em',
     lineHeight: '1.4em',
-    margin: '10px 0 10px'
+    margin: '10px 0 10px',
+    paddingLeft: '10px'
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("sm") && theme.breakpoints.down("md")]: {
     cover: {
       width: '50px',
       height: '50px',
@@ -272,9 +274,6 @@ const dashboardStyle = theme => ({
     },
     buttonStep: {
       width: '30px'
-    },
-    inputField: {
-      margin: '0px 15px'
     },
     betsGoals: {
       display: 'inline-flex',
@@ -320,6 +319,9 @@ const dashboardStyle = theme => ({
       color: 'white',
       margin: '0px 10px 0px 0px',
       borderRadius: '5px'
+    },
+    newH3: {
+      padding: '0px'
     },
   }
 })
