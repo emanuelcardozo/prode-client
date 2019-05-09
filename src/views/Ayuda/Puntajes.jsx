@@ -15,7 +15,7 @@ const styles = {
     color: 'rgb(33, 150, 243)', margin: '-6px'
   },
   withoutPints: {
-    color: '#ff7575', margin: '-6px'
+    color: 'darkgray', margin: '-6px'
   }
 }
 
@@ -23,7 +23,7 @@ class Puntajes extends React.Component {
 
   render() {
     const { classes } = this.props
-    
+
     return (
       <div>
         <p>Modo <strong>Fecha</strong>.</p>

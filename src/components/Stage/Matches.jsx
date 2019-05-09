@@ -23,7 +23,7 @@ class Matches extends React.Component {
     case 1: return '#d6d627'
     case 2: return '#219e21'
     case 3: return 'linear-gradient(45deg, rgb(33, 150, 243) 30%, rgb(33, 203, 243) 90%)'
-    default: return '#ef2b2b'
+    default: return 'darkgray'
     }
   }
 

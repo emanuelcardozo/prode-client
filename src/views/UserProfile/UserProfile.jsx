@@ -66,9 +66,7 @@ class UserProfile extends React.Component {
        style={{ margin: '0px 0px -5px 20px', width: 'auto' }}
        fullWidth
        margin="normal"
-       InputLabelProps={{
-            shrink: true,
-          }}
+       InputLabelProps={{ shrink: true }}
      />
     )
 
@@ -101,7 +99,3 @@ UserProfile.propTypes = {
 }
 
 export default withStyles(styles)(UserProfile)
-
-
-    // margin: 0px 0px -5px 20px;
-    // width: auto;
